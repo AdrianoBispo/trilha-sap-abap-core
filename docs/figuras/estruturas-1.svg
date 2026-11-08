@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="illu" viewBox="0 0 640 170" role="img" aria-labelledby="fig5t">
+      <title id="fig5t">Estrutura connection com componentes carrier_id, connection_id, airport_from_id e distance lado a lado na memória</title>
+      <text x="16" y="28" class="h tx">connection</text><text x="104" y="28" class="sm tl">TYPE ty_connection</text>
+      <g transform="translate(16 44)">
+        <rect width="130" height="64" rx="10" class="f18"></rect><text x="12" y="24" class="sm tl">carrier_id · c(3)</text><text x="12" y="48" class="mono tx" font-size="16">LH</text>
+        <rect x="138" width="150" height="64" rx="10" class="f19"></rect><text x="150" y="24" class="sm tl">connection_id · n(4)</text><text x="150" y="48" class="mono tx" font-size="16">0400</text>
+        <rect x="296" width="160" height="64" rx="10" class="f18"></rect><text x="308" y="24" class="sm tl">airport_from_id · c(3)</text><text x="308" y="48" class="mono tx" font-size="16">FRA</text>
+        <rect x="464" width="144" height="64" rx="10" class="f20"></rect><text x="476" y="24" class="sm tl">distance · i</text><text x="476" y="48" class="mono tx" font-size="16">6162</text>
+      </g>
+      <path d="M81 122 v14 h0" class="s13" stroke-width="2"></path>
+      <text x="16" y="156" class="mono tx">connection<tspan class="f13" font-weight="700">-</tspan>carrier_id</text>
+      <text x="200" y="156" class="sm tl">o hífen seleciona o componente</text>
+    </svg>

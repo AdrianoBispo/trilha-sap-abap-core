@@ -1,0 +1,27 @@
+/*
+ * Paleta das ilustrações (docs/figuras/*.svg), baseada nas cores de ilustração do SAP Horizon.
+ * As figuras usam classes curtas: f* = preenchimento, s* = contorno, t* = texto.
+ */
+:root {
+  --ill1: #9b015d; --ill2: #56bdff; --ill3: #ff7f4c; --ill4: #00144a; --ill5: #a9b4be; --ill6: #d5dadd;
+  --ill7: #dbf1ff; --ill8: #fff; --ill9: #0899a7; --ill13: #0070f2; --ill14: #0040b0; --ill18: #bce5ff;
+  --ill19: #a3dbff; --ill20: #89d1ff; --ill21: #1b90ff; --ill24: #ffb2d2; --ill26: #ffdf72; --ill27: #fff8d6;
+}
+:root[data-theme="dark"] {
+  --ill2: #4d82b8; --ill4: #688fb7; --ill5: #fff; --ill6: #818f98; --ill7: #101619; --ill8: #d5dadd;
+  --ill13: #3b5b7c; --ill14: #2a4259; --ill18: #2a4259; --ill19: #324e6b; --ill20: #222f3b; --ill21: #101619;
+  --ill24: #d094b0; --ill26: #d0b863; --ill27: #d0cdb3;
+}
+
+.illu { width: 100%; height: auto; display: block; font-family: var(--sapFontFamily); }
+.illu text { font-size: 12px; }
+.illu .h { font-weight: 700; font-size: 13px; }
+.illu .sm { font-size: 10.5px; }
+.illu .mono { font-family: var(--mono); font-size: 11px; }
+
+.f1{fill:var(--ill1)}.f2{fill:var(--ill2)}.f3{fill:var(--ill3)}.f4{fill:var(--ill4)}.f5{fill:var(--ill5)}.f6{fill:var(--ill6)}.f7{fill:var(--ill7)}.f8{fill:var(--ill8)}.f9{fill:var(--ill9)}
+.f13{fill:var(--ill13)}.f14{fill:var(--ill14)}.f18{fill:var(--ill18)}.f19{fill:var(--ill19)}.f20{fill:var(--ill20)}.f21{fill:var(--ill21)}.f24{fill:var(--ill24)}.f26{fill:var(--ill26)}.f27{fill:var(--ill27)}
+.fb{fill:var(--sapBaseColor)}.fbg{fill:var(--sapBackgroundColor)}.fsel{fill:var(--sapList_SelectionBackgroundColor)}.fok{fill:var(--sapSuccessBackground)}.finfo{fill:var(--sapInformationBackground)}.fwarn{fill:var(--sapWarningBackground)}.ferr{fill:var(--sapErrorBackground)}.fneu{fill:var(--sapNeutralBackground)}
+.s4{stroke:var(--ill4)}.s13{stroke:var(--ill13)}.s5{stroke:var(--ill5)}.sb{stroke:var(--sapGroup_ContentBorderColor)}.sl{stroke:var(--sapContent_LabelColor)}.ssel{stroke:var(--sapSelectedColor)}.sok{stroke:var(--sapSuccessBorderColor)}.sinfo{stroke:var(--sapInformationBorderColor)}.swarn{stroke:var(--sapWarningBorderColor)}.serr{stroke:var(--sapErrorBorderColor)}
+.tx{fill:var(--sapTextColor)}.tl{fill:var(--sapContent_LabelColor)}.tsel{fill:var(--sapSelectedColor)}.tok{fill:var(--sapPositiveColor)}.terr{fill:var(--sapNegativeColor)}.twarn{fill:var(--sapCriticalColor)}.tmk{fill:var(--sapContent_MarkerTextColor)}
+.nf{fill:none}

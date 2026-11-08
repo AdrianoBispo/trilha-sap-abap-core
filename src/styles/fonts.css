@@ -1,0 +1,14 @@
+/*
+ * Fontes "72" e "72 Mono" do SAP Horizon servidas localmente (sem CDN).
+ * Origem: @sap-theming/theming-base-content (Apache-2.0), ver src/assets/fonts/LICENSE-sap-theming.txt
+ */
+@font-face { font-family: "72"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/72-Regular.woff2") format("woff2"); }
+@font-face { font-family: "72"; font-style: normal; font-weight: 600; font-display: swap; src: url("../assets/fonts/72-Semibold.woff2") format("woff2"); }
+@font-face { font-family: "72"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/72-Bold.woff2") format("woff2"); }
+@font-face { font-family: "72full"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/72-Regular.woff2") format("woff2"); }
+@font-face { font-family: "72-Semibold"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/72-Semibold.woff2") format("woff2"); }
+@font-face { font-family: "72-SemiboldDuplex"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/72-Semibold.woff2") format("woff2"); }
+@font-face { font-family: "72-Bold"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/72-Bold.woff2") format("woff2"); }
+@font-face { font-family: "72Black"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/72-Bold.woff2") format("woff2"); }
+@font-face { font-family: "72Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/72Mono-Regular.woff2") format("woff2"); }
+@font-face { font-family: "72Mono"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/72Mono-Bold.woff2") format("woff2"); }

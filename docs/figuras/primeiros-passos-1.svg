@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="illu" viewBox="0 0 680 270" role="img" aria-labelledby="fig1t">
+      <title id="fig1t">ADT no Eclipse conectado a um sistema ABAP, que contém componente de software, pacote e objetos de desenvolvimento</title>
+      <rect x="10" y="30" width="230" height="200" rx="14" class="fb sb" stroke-width="1.5"></rect>
+      <rect x="10" y="30" width="230" height="30" rx="14" class="f14"></rect><rect x="10" y="46" width="230" height="14" class="f14"></rect>
+      <circle cx="28" cy="45" r="4" class="f3"></circle><circle cx="42" cy="45" r="4" class="f26"></circle><circle cx="56" cy="45" r="4" class="f2"></circle>
+      <text x="74" y="49" class="sm" fill="#fff">Eclipse · ABAP Development Tools</text>
+      <rect x="22" y="72" width="64" height="146" rx="6" class="fneu"></rect>
+      <text x="30" y="90" class="sm tl">Project</text><text x="30" y="108" class="sm tl">Explorer</text>
+      <rect x="30" y="118" width="46" height="6" rx="3" class="f5"></rect><rect x="36" y="132" width="40" height="6" rx="3" class="f5"></rect><rect x="36" y="146" width="30" height="6" rx="3" class="f20"></rect>
+      <rect x="96" y="72" width="134" height="146" rx="6" class="fbg"></rect>
+      <text x="106" y="92" class="mono f13">CLASS</text><text x="148" y="92" class="mono tx">zcl_hello</text>
+      <rect x="106" y="104" width="96" height="6" rx="3" class="f20"></rect><rect x="116" y="118" width="80" height="6" rx="3" class="f2"></rect><rect x="116" y="132" width="60" height="6" rx="3" class="f3"></rect>
+      <rect x="106" y="146" width="40" height="6" rx="3" class="f20"></rect>
+      <rect x="106" y="176" width="114" height="32" rx="6" class="f4"></rect><text x="114" y="196" class="mono" fill="#fff">› Hello World</text>
+      <path d="M252 130 H330" class="s13" stroke-width="2.5" stroke-dasharray="6 5" fill="none"></path><path d="M322 123 l10 7 -10 7" class="s13 nf" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      <text x="262" y="118" class="sm tl">HTTP(S)</text><text x="262" y="152" class="sm tl">ADT</text>
+      <rect x="340" y="14" width="330" height="244" rx="16" class="f7"></rect>
+      <text x="358" y="40" class="h tx">Sistema ABAP</text><text x="358" y="56" class="sm tl">BTP ABAP environment · S/4HANA Cloud</text>
+      <rect x="358" y="70" width="294" height="174" rx="12" class="fb"></rect>
+      <text x="372" y="92" class="sm tmk" font-weight="700">COMPONENTE DE SOFTWARE  ZLOCAL</text>
+      <rect x="372" y="102" width="266" height="128" rx="10" class="fsel ssel" stroke-width="1"></rect>
+      <text x="386" y="122" class="sm tsel" font-weight="700">PACOTE  Z_TRILHA_ABAP</text>
+      <g transform="translate(386 134)"><rect width="74" height="80" rx="8" class="fb sb"></rect><rect x="25" y="12" width="24" height="24" rx="6" class="f13"></rect><text x="37" y="29" text-anchor="middle" fill="#fff" font-weight="700">C</text><text x="37" y="56" text-anchor="middle" class="sm tx">Classe</text><text x="37" y="70" text-anchor="middle" class="sm tl">ZCL_…</text></g>
+      <g transform="translate(468 134)"><rect width="74" height="80" rx="8" class="fb sb"></rect><rect x="25" y="12" width="24" height="24" rx="6" class="f9"></rect><text x="37" y="29" text-anchor="middle" fill="#fff" font-weight="700">T</text><text x="37" y="56" text-anchor="middle" class="sm tx">Tabela</text><text x="37" y="70" text-anchor="middle" class="sm tl">ZTRAVEL</text></g>
+      <g transform="translate(550 134)"><rect width="74" height="80" rx="8" class="fb sb"></rect><rect x="25" y="12" width="24" height="24" rx="6" class="f1"></rect><text x="37" y="29" text-anchor="middle" fill="#fff" font-weight="700">V</text><text x="37" y="56" text-anchor="middle" class="sm tx">CDS View</text><text x="37" y="70" text-anchor="middle" class="sm tl">ZI_…</text></g>
+    </svg>

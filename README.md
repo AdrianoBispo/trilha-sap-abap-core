@@ -1,6 +1,6 @@
 # Trilha ABAP Core: site de estudo interativo
 
-Site de estudo de SAP ABAP em 22 lições que segue a jornada [**Acquiring Core ABAP Skills**](https://learning.sap.com/learning-journeys/acquire-core-abap-skills) da SAP Learning, com visual baseado no design system **SAP Horizon** (temas claro e escuro).
+Site de estudo de SAP ABAP em 22 lições que segue a jornada [**Acquiring Core ABAP Skills**](https://learning.sap.com/learning-journeys/acquire-core-abap-skills) da SAP Learning. Feito com **Vite + React + TypeScript** e a biblioteca [**UI5 Web Components**](https://ui5.github.io/webcomponents/) da SAP, com o visual SAP Horizon nos temas claro (Morning Horizon) e escuro (Evening Horizon).
 
 Cada lição traz objetivos, explicação, código ABAP/CDS comentado, ilustrações, um laboratório interativo, um quiz e links para a documentação oficial. Há também uma referência rápida de sintaxe com glossário e um simulado de certificação com 15 questões e nota mínima de 65%.
 
@@ -12,35 +12,48 @@ Cada lição traz objetivos, explicação, código ABAP/CDS comentado, ilustraç
 | **2. Programação ABAP intermediária** (Intermediate ABAP Programming) | Análise, testes e documentação · Tipos e conversões · Processando texto · Code pushdown em ABAP SQL · Performance de tabelas internas · Verificações de autorização · Orientação a objetos eficaz · Classes de exceção |
 | **3. Dicionário ABAP e CDS** (Data Modeling in ABAP Dictionary and ABAP CDS) | Modelagem e tipos globais · Tabelas de banco · CDS view entities · Relações e associações · Code pushdown em CDS · Anotações e meta objetos |
 
-Os laboratórios simulam no navegador, sobre dados de exemplo inspirados no modelo de voos `/DMO/`, o comportamento de: divisão com `/`, `DIV` e `MOD`; objetos e referências; `SELECT`; `CORRESPONDING`; tabelas standard, sorted e hashed; buffer transacional da EML; camadas do RAP; ABAP Unit; conversões de tipo; funções de texto; agregações; custo de leitura em tabelas internas; `AUTHORITY-CHECK`; polimorfismo; `TRY … CATCH`; definição de tabelas; expressões de caminho em CDS; `CASE` em CDS e anotações `@UI` com prévia Fiori Elements. Eles ajudam a prever o resultado; confirme sempre no ADT.
+## Como rodar
 
-## Como usar
-
-Abra `index.html` no navegador. O arquivo é autocontido (fontes, ícones e scripts embutidos) e não precisa de servidor nem de internet, exceto para os links externos. O progresso das lições e o tema escolhido ficam salvos no `localStorage` do navegador.
-
-## Como editar
-
-O `index.html` é gerado. Edite os arquivos em `src/` e rode:
+Requer Node.js 22 ou mais novo.
 
 ```bash
-python3 build.py
+npm install
+npm run dev       # servidor de desenvolvimento em http://localhost:5173
+npm run build     # verificação de tipos + build estático em dist/
+npm run preview   # serve o build
 ```
 
-| Arquivo | Conteúdo |
-| :--- | :--- |
-| `src/01_head.html` | `<title>`, tokens SAP Horizon (claro/escuro), `@font-face` e todo o CSS |
-| `src/02_shell.html` | Shell bar, navegação lateral e área principal |
-| `src/03_c1.html`, `04_c2.html`, `05_c3.html` | Conteúdo das lições dos cursos 1, 2 e 3 (um `<template id="L-…">` por lição) |
-| `src/06_data.js` | Lista de cursos e lições, quizzes, referência rápida e glossário |
-| `src/07_app.js` | Realce de sintaxe, navegação, pesquisa, progresso, quiz, simulado e roteamento por `#hash` |
-| `src/08_widgets.js` | Laboratórios interativos (`data-widget="…"` nos templates) |
-| `assets/fonts/` | Fontes 72 e 72 Mono e um subconjunto da fonte SAP-icons |
+O build gera um site estático (rotas por `#hash`), que pode ser publicado em qualquer hospedagem estática. O `vercel.json` já traz a configuração para a Vercel. O progresso das lições e o tema escolhido ficam no `localStorage` do navegador.
 
-Para adicionar uma lição: crie o `<template id="L-minha-licao">` no arquivo do curso, registre a lição em `LESSONS` e o quiz em `QUIZ`, ambos em `src/06_data.js`.
+## Editar o conteúdo
+
+**Todo o texto fica em [`docs/`](docs/), em Markdown.** Para corrigir uma explicação, incluir uma questão ou criar uma lição, edite os arquivos `.md`, sem tocar no código. O guia completo da sintaxe está em [`docs/README.md`](docs/README.md).
+
+```
+docs/
+├── inicio.md, referencia.md, simulado.md
+├── figuras/*.svg
+└── cursos/<n>-<curso>/_curso.md e NN-<lição>.md
+```
+
+## Estrutura do código
+
+| Caminho | Conteúdo |
+| :--- | :--- |
+| `vite-plugin-docs.ts` | Converte cada `.md` de `docs/` em árvore mdast no build. O navegador não carrega o parser. |
+| `vite-plugin-doc-icons.ts` | Importa só os ícones SAP citados nos Markdown |
+| `src/content/` | Leitura dos documentos: cursos, lições, quizzes, seções |
+| `src/render/Markdown.tsx` | Renderiza o Markdown com componentes UI5 (Card, MessageStrip, Table, Tag, Link…) |
+| `src/pages/` | Início, lição (ObjectPage), referência (ObjectPage) e simulado (DynamicPage) |
+| `src/labs/` | Os 20 laboratórios interativos |
+| `src/components/` | Bloco de código com realce ABAP/CDS, quiz, tabela UI5 |
+| `src/state/store.ts` | Rota, progresso, tema e toast |
+| `src/styles/` | Fontes 72 locais, paleta das ilustrações e layout. Todas as cores vêm dos parâmetros de tema `--sap…` do Horizon. |
 
 ## Créditos e licenças
 
-- Cores, fontes 72/72 Mono e ícones SAP-icons vêm do pacote [`@sap-theming/theming-base-content`](https://www.npmjs.com/package/@sap-theming/theming-base-content) 11.29.3, distribuído sob a licença Apache-2.0 (cópia em `assets/fonts/LICENSE-sap-theming.txt`). A fonte de ícones foi reduzida aos glifos usados no site.
+- Componentes, temas e ícones: [UI5 Web Components](https://github.com/UI5/webcomponents) (Apache-2.0).
+- Fontes 72/72 Mono do pacote [`@sap-theming/theming-base-content`](https://www.npmjs.com/package/@sap-theming/theming-base-content) (Apache-2.0, cópia em `src/assets/fonts/LICENSE-sap-theming.txt`), servidas localmente.
 - Estrutura inspirada no [Almanaque ABAP](https://bmoreiraribeiro.github.io/ABAP/).
 - Referências: [ABAP Keyword Documentation](https://help.sap.com/doc/abapdocu_cp_index_htm/CLOUD/en-US/index.htm) e [ABAP cheat sheets](https://github.com/SAP-samples/abap-cheat-sheets) da SAP.
 

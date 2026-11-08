@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="illu" viewBox="0 0 660 230" role="img" aria-labelledby="figpd">
+      <title id="figpd">Comparação: abordagem clássica transfere muitas linhas do banco para o servidor; code pushdown transfere apenas o resultado agregado</title>
+      <text x="16" y="24" class="h tx">Clássico: dados até o código</text>
+      <g transform="translate(16 40)">
+        <rect width="120" height="150" rx="12" class="f7"></rect><text x="60" y="24" text-anchor="middle" class="sm tx" font-weight="700">Banco</text>
+        <g class="f20"><rect x="16" y="38" width="88" height="10" rx="3"></rect><rect x="16" y="54" width="88" height="10" rx="3"></rect><rect x="16" y="70" width="88" height="10" rx="3"></rect><rect x="16" y="86" width="88" height="10" rx="3"></rect><rect x="16" y="102" width="88" height="10" rx="3"></rect><rect x="16" y="118" width="88" height="10" rx="3"></rect></g>
+        <g class="f20" opacity=".9"><rect x="140" y="40" width="40" height="8" rx="3"></rect><rect x="140" y="56" width="40" height="8" rx="3"></rect><rect x="140" y="72" width="40" height="8" rx="3"></rect><rect x="140" y="88" width="40" height="8" rx="3"></rect><rect x="140" y="104" width="40" height="8" rx="3"></rect><rect x="140" y="120" width="40" height="8" rx="3"></rect></g>
+        <path d="M128 140 H186" class="swarn" stroke-width="2.5"></path><path d="M180 134 l8 6 -8 6" class="swarn nf" stroke-width="2.5"></path>
+        <text x="136" y="168" class="sm twarn">100 mil linhas</text>
+        <rect x="196" y="20" width="110" height="130" rx="12" class="fneu"></rect><text x="251" y="44" text-anchor="middle" class="sm tx" font-weight="700">Servidor ABAP</text>
+        <text x="251" y="84" text-anchor="middle" class="mono tl">LOOP AT…</text><text x="251" y="102" text-anchor="middle" class="mono tl">sum += …</text>
+      </g>
+      <text x="350" y="24" class="h tx">Pushdown: código até os dados</text>
+      <g transform="translate(350 40)">
+        <rect width="150" height="150" rx="12" class="f7"></rect><text x="75" y="24" text-anchor="middle" class="sm tx" font-weight="700">Banco (HANA)</text>
+        <rect x="16" y="40" width="118" height="70" rx="8" class="f13"></rect><text x="75" y="70" text-anchor="middle" class="mono" fill="#fff">SUM( )</text><text x="75" y="88" text-anchor="middle" class="mono" fill="#fff">GROUP BY</text>
+        <path d="M156 75 H202" class="sok" stroke-width="2.5"></path><path d="M196 69 l8 6 -8 6" class="sok nf" stroke-width="2.5"></path>
+        <rect x="160" y="88" width="34" height="8" rx="3" class="f26"></rect>
+        <text x="152" y="122" class="sm tok">8 linhas</text>
+        <rect x="212" y="20" width="96" height="130" rx="12" class="fneu"></rect><text x="260" y="44" text-anchor="middle" class="sm tx" font-weight="700">Servidor</text>
+        <text x="260" y="84" text-anchor="middle" class="mono tl">exibe</text>
+      </g>
+    </svg>

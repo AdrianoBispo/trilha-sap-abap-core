@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="illu" viewBox="0 0 660 190" role="img" aria-labelledby="figauth">
+      <title id="figauth">Usuário recebe role que contém autorizações para o objeto /DMO/TRVL com campos /DMO/CNTRY e ACTVT</title>
+      <g transform="translate(14 40)"><circle cx="46" cy="36" r="24" class="f20"></circle><circle cx="46" cy="28" r="10" class="f13"></circle><path d="M28 52 q18 -18 36 0" class="f13"></path><text x="46" y="88" text-anchor="middle" class="h tx">Usuário</text><text x="46" y="104" text-anchor="middle" class="sm tl">ANA.SOUZA</text></g>
+      <path d="M118 76 H170" class="sl" stroke-width="2"></path><path d="M164 70 l8 6 -8 6" class="sl nf" stroke-width="2"></path>
+      <g transform="translate(176 30)"><rect width="150" height="96" rx="12" class="f7"></rect><text x="16" y="26" class="sm tmk" font-weight="700">ROLE</text><text x="16" y="48" class="h tx">Z_TRAVEL_AGENT_BR</text><text x="16" y="72" class="sm tl">mantida no app</text><text x="16" y="86" class="sm tl">Business Roles</text></g>
+      <path d="M332 76 H384" class="sl" stroke-width="2"></path><path d="M378 70 l8 6 -8 6" class="sl nf" stroke-width="2"></path>
+      <g transform="translate(390 10)"><rect width="256" height="150" rx="12" class="fb sb" stroke-width="1.5"></rect><text x="16" y="26" class="sm tmk" font-weight="700">OBJETO DE AUTORIZAÇÃO</text><text x="16" y="48" class="h tx">/DMO/TRVL</text>
+        <rect x="16" y="62" width="224" height="34" rx="8" class="fneu"></rect><text x="28" y="84" class="mono tx">/DMO/CNTRY</text><text x="226" y="84" text-anchor="end" class="mono tsel">BR, PT</text>
+        <rect x="16" y="102" width="224" height="34" rx="8" class="fneu"></rect><text x="28" y="124" class="mono tx">ACTVT</text><text x="226" y="124" text-anchor="end" class="mono tsel">03 (exibir)</text></g>
+    </svg>

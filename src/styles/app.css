@@ -1,0 +1,359 @@
+/*
+ * Estilos da aplicação. Todas as cores vêm dos parâmetros de tema do SAP Horizon
+ * (variáveis --sap…), que o UI5 Web Components troca entre sap_horizon e sap_horizon_dark.
+ */
+:root {
+  --mono: "72Mono", "72Monofull", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --gap: 1rem;
+  --radius: var(--sapElement_BorderCornerRadius, 0.75rem);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  background: var(--sapBackgroundColor);
+  color: var(--sapTextColor);
+  font-family: var(--sapFontFamily);
+  font-size: var(--sapFontSize);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Shell ---------- */
+ui5-navigation-layout { height: 100%; }
+.main { height: 100%; min-height: 0; display: flex; flex-direction: column; }
+.page { flex: 1 1 auto; height: 100%; min-height: 0; }
+.page-scroll { overflow: auto; }
+.center { display: grid; place-items: center; }
+.shell-progress { display: flex; align-items: center; gap: 0.5rem; font-size: var(--sapFontSmallSize); color: var(--sapShell_TextColor); white-space: nowrap; }
+.shell-progress ui5-progress-indicator { width: 6rem; }
+ui5-shellbar-branding img { width: 2rem; height: 2rem; }
+@media (max-width: 900px) { .shell-progress { display: none; } }
+
+/* ---------- Object Page ---------- */
+.attrs { display: flex; flex-wrap: wrap; gap: 0.75rem 3rem; padding-block: 0.25rem; }
+.attr { display: flex; flex-direction: column; gap: 0.25rem; }
+.sec { display: flex; flex-direction: column; gap: var(--gap); padding-block: 0.5rem 1rem; min-width: 0; }
+.sec-title { display: flex; align-items: center; gap: 0.5rem; }
+.sec-title-ic { color: var(--sapContent_IconColor); width: 1.25rem; height: 1.25rem; flex: none; }
+.objectives-box {
+  background: var(--sapGroup_ContentBackground);
+  border: 1px solid var(--sapGroup_ContentBorderColor);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.objectives { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0.5rem 1.5rem; }
+.objectives li { display: flex; gap: 0.5rem; align-items: flex-start; line-height: 1.4; }
+.objectives ui5-icon { color: var(--sapPositiveElementColor); flex: none; width: 1rem; height: 1rem; margin-top: 0.125rem; }
+.dp-heading { display: flex; align-items: center; gap: 0.75rem; }
+
+/* ---------- Conteúdo Markdown ---------- */
+.md-p { margin: 0; line-height: 1.6; max-width: 52rem; }
+.md-h { margin-top: 0.25rem; }
+.md-list { margin: 0; padding-left: 1.5rem; line-height: 1.6; display: flex; flex-direction: column; gap: 0.375rem; }
+.md-quote { margin: 0; padding: 0.5rem 1rem; border-left: 0.25rem solid var(--sapContent_ForegroundBorderColor); color: var(--sapContent_LabelColor); }
+.md-hr { border: 0; border-top: 1px solid var(--sapGroup_TitleBorderColor); width: 100%; }
+.md-code, kbd, .mono { font-family: var(--mono); }
+.md-code {
+  font-size: 0.875em;
+  background: var(--sapNeutralBackground);
+  color: var(--sapTextColor);
+  padding: 0.0625rem 0.3125rem;
+  border-radius: 0.25rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+kbd {
+  font-size: 0.8125em;
+  padding: 0.0625rem 0.375rem;
+  border-radius: 0.25rem;
+  background: var(--sapButton_Background);
+  border: 1px solid var(--sapButton_BorderColor);
+  border-bottom-width: 2px;
+  white-space: nowrap;
+}
+.md-strip { width: 100%; }
+.md-strip p { margin: 0; }
+.md-missing { color: var(--sapNegativeTextColor); }
+
+.md-cols { display: grid; gap: var(--gap); align-items: start; }
+.md-cols-2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); }
+.md-cols-3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); }
+.md-cols > * { min-width: 0; }
+
+.md-card { width: 100%; }
+.md-card-body { padding: 0.75rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
+.md-card-body > .table-wrap { margin-inline: -1rem; width: calc(100% + 2rem); }
+.md-card-tag { display: flex; }
+
+.md-terms { margin: 0; display: grid; grid-template-columns: minmax(7rem, max-content) 1fr; gap: 0.5rem 1rem; }
+.md-terms dt { color: var(--sapContent_LabelColor); font-family: var(--sapFontSemiboldFamily); }
+.md-terms dd { margin: 0; }
+.md-icon-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.md-icon-list li { display: flex; gap: 0.5rem; align-items: flex-start; line-height: 1.5; }
+.md-icon-list-ic { flex: none; width: 1rem; height: 1rem; margin-top: 0.1875rem; color: var(--sapContent_IconColor); }
+.md-checklist .md-icon-list-ic { color: var(--sapPositiveElementColor); }
+
+.md-figure {
+  margin: 0;
+  background: var(--sapGroup_ContentBackground);
+  border: 1px solid var(--sapGroup_ContentBorderColor);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.md-figure-art { padding: 1rem; overflow-x: auto; }
+.md-figure-art svg { min-width: 32rem; max-width: 46rem; margin: 0 auto; }
+.md-figure figcaption { padding: 0.75rem 1rem; border-top: 1px solid var(--sapGroup_ContentBorderColor); color: var(--sapContent_LabelColor); font-size: var(--sapFontSmallSize); }
+
+/* ---------- Tabelas ---------- */
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--sapList_BorderColor);
+  border-radius: var(--radius);
+  background: var(--sapList_Background);
+}
+.md-card-body > .table-wrap, .fio-list .table-wrap { border: 0; border-radius: 0; }
+.table-wrap ui5-table { width: 100%; }
+.table-wrap.no-head ui5-table-header-row { display: none; }
+.null { color: var(--sapContent_LabelColor); font-style: italic; }
+
+/* ---------- Blocos de código ---------- */
+.code {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--sapGroup_ContentBorderColor);
+  background: var(--sapShell_Background, var(--sapBaseColor));
+  min-width: 0;
+}
+.code-head {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.25rem 0.25rem 0.25rem 1rem;
+  background: var(--sapList_HeaderBackground);
+  border-bottom: 1px solid var(--sapList_BorderColor);
+  min-height: 2.5rem;
+}
+.code-title { font-family: var(--sapFontSemiboldFamily); font-size: var(--sapFontSmallSize); color: var(--sapTitleColor); flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.code-lang { font-size: var(--sapFontSmallSize); color: var(--sapContent_LabelColor); font-family: var(--mono); }
+.code pre {
+  margin: 0;
+  padding: 0.875rem 1rem;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--sapTextColor);
+  background: var(--sapBaseColor);
+  tab-size: 2;
+}
+.code pre:focus-visible { outline: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor); outline-offset: -3px; }
+.code-line { display: inline-block; min-width: 100%; padding-inline: 0.25rem; border-radius: 0.25rem; }
+.code-line.is-active { background: var(--sapList_SelectionBackgroundColor); box-shadow: inset 3px 0 0 var(--sapSelectedColor); }
+.code-ln { display: inline-block; width: 2rem; color: var(--sapContent_LabelColor); user-select: none; }
+.hl-k { color: var(--sapIndicationColor_5, #0070f2); font-weight: 700; }
+.hl-s { color: var(--sapIndicationColor_4, #256f3a); }
+.hl-t { color: var(--sapIndicationColor_8, #a100c2); }
+.hl-c { color: var(--sapContent_LabelColor); font-style: italic; }
+.hl-n { color: var(--sapIndicationColor_3, #b95100); }
+.hl-a { color: var(--sapIndicationColor_6, #046c7a); }
+
+/* ---------- Página inicial ---------- */
+.wrap { max-width: 80rem; margin: 0 auto; padding-inline: clamp(1rem, 3vw, 2rem); }
+.wrap-narrow { max-width: 56rem; margin: 0 auto; padding-block: 1rem; display: flex; flex-direction: column; gap: var(--gap); }
+.body { padding-block: 1.5rem 3rem; display: flex; flex-direction: column; gap: 2rem; }
+.hero { background: var(--sapObjectHeader_Background); border-bottom: 1px solid var(--sapObjectHeader_BorderColor, var(--sapGroup_TitleBorderColor)); }
+.hero-in { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 2rem; align-items: center; padding-block: 2.5rem; }
+.hero-text { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+.hero-lead { font-size: var(--sapFontLargeSize); line-height: 1.5; color: var(--sapContent_LabelColor); max-width: 40rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.hero-art svg { width: 100%; max-width: 26rem; height: auto; display: block; margin-inline: auto; }
+@media (max-width: 760px) { .hero-in { grid-template-columns: 1fr; } .hero-art { display: none; } }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: var(--gap); }
+.tile-body { padding: 0 1rem 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+
+/* ---------- Quiz e simulado ---------- */
+.quiz { display: flex; flex-direction: column; gap: 1.25rem; }
+.quiz-q { display: flex; flex-direction: column; gap: 0.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--sapGroup_TitleBorderColor); }
+.quiz-q:last-of-type { border-bottom: 0; padding-bottom: 0; }
+.quiz-title { margin: 0; font-family: var(--sapFontSemiboldFamily); line-height: 1.5; display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.375rem; }
+.quiz-num { color: var(--sapContent_LabelColor); }
+.quiz-badge { margin-left: 0.5rem; }
+.quiz-opts { display: flex; flex-direction: column; gap: 0.25rem; }
+.quiz-opt {
+  display: flex; align-items: center; gap: 0.25rem;
+  padding-right: 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.quiz-opt:hover:not(.is-locked) { background: var(--sapList_Hover_Background); }
+.quiz-opt.is-selected:not(.is-locked) { background: var(--sapList_SelectionBackgroundColor); }
+.quiz-opt.is-locked { cursor: default; }
+.quiz-opt.is-right { background: var(--sapSuccessBackground); border-color: var(--sapSuccessBorderColor); }
+.quiz-opt.is-wrong { background: var(--sapErrorBackground); border-color: var(--sapErrorBorderColor); }
+.quiz-opt-text { flex: 1 1 auto; line-height: 1.4; padding-block: 0.375rem; }
+.quiz-opt-ic { flex: none; width: 1rem; height: 1rem; }
+.quiz-opt-ic.ok { color: var(--sapPositiveElementColor); }
+.quiz-opt-ic.err { color: var(--sapNegativeElementColor); }
+.quiz-why { color: var(--sapContent_LabelColor); padding-left: 0.75rem; border-left: 3px solid var(--sapInformationBorderColor); display: flex; flex-direction: column; gap: 0.25rem; }
+.exam { gap: 1rem; }
+.exam-head { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: baseline; }
+.exam-q { font-size: var(--sapFontLargeSize); }
+.exam-bar { border-radius: var(--radius); }
+.result-box { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 1.5rem 2rem; }
+.score { font-size: 3rem; font-family: var(--sapFontBoldFamily); line-height: 1; }
+.score.ok { color: var(--sapPositiveTextColor); }
+.score.bad { color: var(--sapNegativeTextColor); }
+.result-courses { flex: 1 1 18rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.result-course-h { display: flex; justify-content: space-between; font-size: var(--sapFontSmallSize); }
+
+/* ---------- Pager ---------- */
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); margin-top: 1rem; }
+.pager-item {
+  display: flex; flex-direction: column; gap: 0.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  background: var(--sapTile_Background);
+  border: 1px solid var(--sapTile_BorderColor);
+  box-shadow: var(--sapContent_Shadow0);
+  color: var(--sapTextColor);
+  text-decoration: none;
+}
+.pager-item:hover { background: var(--sapTile_Hover_Background); box-shadow: var(--sapContent_Shadow2); }
+.pager-item:focus-visible { outline: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor); }
+.pager-item small { color: var(--sapContent_LabelColor); display: inline-flex; align-items: center; gap: 0.25rem; }
+.pager-item small ui5-icon { width: 0.875rem; height: 0.875rem; }
+.pager-item b { color: var(--sapLinkColor); font-family: var(--sapFontSemiboldFamily); font-weight: normal; }
+.pager-next { text-align: right; align-items: flex-end; }
+
+/* ---------- Laboratórios ---------- */
+.lab { width: 100%; }
+.lab-body { padding: 0 1rem 1rem; display: flex; flex-direction: column; gap: var(--gap); min-width: 0; }
+.lab-row { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; align-items: flex-end; }
+.lab-row.checks { align-items: center; gap: 0 0.5rem; }
+.field { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+.field > ui5-input, .field > ui5-select, .field > ui5-step-input, .field > ui5-slider { width: 100%; min-width: 6rem; }
+.field > ui5-slider { min-width: 12rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.chip { font-family: var(--mono); }
+.sp { color: var(--sapContent_LabelColor); font-style: normal; }
+.eq { align-self: center; padding-bottom: 0.5rem; }
+.note { margin: 0; color: var(--sapContent_LabelColor); font-size: var(--sapFontSmallSize); line-height: 1.5; }
+.lbl { display: block; color: var(--sapContent_LabelColor); font-size: var(--sapFontSmallSize); margin-bottom: 0.25rem; }
+.statusline { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.stack { display: flex; flex-direction: column; gap: 0.5rem; }
+.empty { padding: 1.5rem; text-align: center; color: var(--sapContent_LabelColor); }
+.result { display: inline-block; font-family: var(--mono); padding: 0.25rem 0.5rem; border-radius: 0.375rem; background: var(--sapInformationBackground); border: 1px solid var(--sapInformationBorderColor); white-space: pre-wrap; overflow-wrap: anywhere; }
+div.result { display: block; }
+.vis-box { font-family: var(--mono); background: var(--sapNeutralBackground); padding: 0.125rem 0.375rem; border-radius: 0.25rem; overflow-wrap: anywhere; }
+
+code.wrap-any { white-space: normal; overflow-wrap: anywhere; }
+.cells { display: inline-flex; gap: 2px; font-family: var(--mono); }
+.cells span { display: inline-grid; place-items: center; width: 1.5rem; height: 1.75rem; border-radius: 0.25rem; background: var(--sapInformationBackground); border: 1px solid var(--sapInformationBorderColor); }
+.cells span.blank { background: var(--sapNeutralBackground); border-color: var(--sapNeutralBorderColor); color: var(--sapContent_LabelColor); }
+
+.console {
+  font-family: var(--mono); font-size: 0.8125rem; line-height: 1.6;
+  white-space: pre-wrap; overflow-wrap: anywhere;
+  padding: 0.875rem 1rem; min-height: 4rem;
+  border-radius: var(--radius);
+  background: var(--sapShellColor);
+  color: var(--sapShell_TextColor);
+  border: 1px solid var(--sapShell_BorderColor);
+}
+:root[data-theme="light"] .console { background: #1d2d3e; color: #eaecee; border-color: #1d2d3e; }
+.console-p { opacity: 0.7; }
+.console-warn { color: var(--sapCriticalColor); }
+
+.split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: var(--gap); align-items: start; }
+.split > * { min-width: 0; }
+.split-rap { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
+@media (max-width: 760px) { .split-rap { grid-template-columns: 1fr; } }
+.panel, .mem {
+  background: var(--sapGroup_ContentBackground);
+  border: 1px solid var(--sapGroup_ContentBorderColor);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  min-width: 0;
+}
+.panel h4 { margin: 0; font-size: var(--sapFontSize); font-family: var(--sapFontSemiboldFamily); font-weight: normal; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; color: var(--sapTitleColor); }
+.panel3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: var(--gap); }
+
+/* objetos e referências */
+.heap { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: var(--gap); }
+.refv { display: flex; justify-content: space-between; gap: 0.5rem; padding: 0.375rem 0.625rem; border-radius: 0.375rem; background: var(--sapBaseColor); border: 1px solid var(--sapList_BorderColor); font-family: var(--mono); font-size: 0.8125rem; }
+.refv-static { background: var(--sapWarningBackground); border-color: var(--sapWarningBorderColor); }
+.ref-on { color: var(--sapSelectedColor); }
+.objs { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.inst { display: flex; flex-direction: column; gap: 0.125rem; padding: 0.5rem 0.625rem; border-radius: 0.5rem; background: var(--sapList_SelectionBackgroundColor); border: 1px solid var(--sapSelectedColor); font-family: var(--mono); font-size: 0.75rem; }
+.inst.gone { opacity: 0.55; border-style: dashed; background: var(--sapNeutralBackground); border-color: var(--sapNeutralBorderColor); text-decoration: line-through; }
+.inst .note { font-family: var(--sapFontFamily); text-decoration: none; }
+.log { font-family: var(--mono); font-size: 0.8125rem; display: flex; flex-direction: column; gap: 0.25rem; padding: 0.625rem 0.75rem; border-radius: var(--radius); background: var(--sapBaseColor); border: 1px solid var(--sapList_BorderColor); overflow-wrap: anywhere; }
+.log-err { color: var(--sapNegativeTextColor); }
+
+/* tabelas internas */
+.slots { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.slot { position: relative; min-width: 2.25rem; padding: 0.375rem 0.375rem 0.75rem; text-align: center; font-family: var(--mono); font-size: 0.8125rem; border-radius: 0.375rem; background: var(--sapBaseColor); border: 1px solid var(--sapList_BorderColor); }
+.slot small { position: absolute; left: 0; right: 0; bottom: 0.0625rem; font-size: 0.5625rem; color: var(--sapContent_LabelColor); }
+.buckets .slot { padding-bottom: 0.375rem; }
+.slot.new { background: var(--sapSuccessBackground); border-color: var(--sapSuccessBorderColor); }
+.slot.probe { background: var(--sapWarningBackground); border-color: var(--sapWarningBorderColor); }
+.slot.hit { background: var(--sapPositiveElementColor); border-color: var(--sapPositiveElementColor); color: var(--sapContent_ContrastTextColor); }
+.buckets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.25rem; }
+.bucket { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem; padding: 0.25rem; border-radius: 0.375rem; border: 1px dashed var(--sapList_BorderColor); min-height: 2.25rem; }
+.bucket > small { width: 100%; font-size: 0.625rem; color: var(--sapContent_LabelColor); }
+
+/* EML */
+.flowbox { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: var(--gap); }
+.fbox { padding: 0.75rem; border-radius: var(--radius); border: 1px solid var(--sapGroup_ContentBorderColor); background: var(--sapGroup_ContentBackground); display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; transition: box-shadow 0.2s, border-color 0.2s; min-width: 0; }
+.fbox.live { border-color: var(--sapSelectedColor); box-shadow: 0 0 0 2px var(--sapSelectedColor); }
+.fbox h4 { margin: 0; display: flex; gap: 0.375rem; align-items: center; font-family: var(--sapFontSemiboldFamily); font-weight: normal; }
+.fbox h4 ui5-icon { width: 1rem; height: 1rem; color: var(--sapContent_IconColor); }
+
+/* RAP */
+.layers { display: flex; flex-direction: column-reverse; gap: 0.375rem; }
+.layer {
+  display: flex; align-items: center; gap: 0.625rem; text-align: left;
+  padding: 0.5rem 0.75rem; border-radius: var(--radius);
+  border: 1px solid var(--sapList_BorderColor); background: var(--sapList_Background); color: var(--sapTextColor);
+  font: inherit; cursor: pointer;
+}
+.layer:hover { background: var(--sapList_Hover_Background); }
+.layer.on { background: var(--sapList_SelectionBackgroundColor); border-color: var(--sapList_SelectionBorderColor, var(--sapSelectedColor)); box-shadow: inset 3px 0 0 var(--sapSelectedColor); }
+.layer:focus-visible { outline: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor); }
+.layer span { display: flex; flex-direction: column; }
+.layer small { color: var(--sapContent_LabelColor); font-family: var(--mono); font-size: 0.75rem; }
+.layer-detail { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
+.layer-detail p { margin: 0; line-height: 1.5; }
+
+/* Prévia Fiori Elements */
+.preview { border: 1px solid var(--sapGroup_ContentBorderColor); border-radius: var(--radius); overflow: hidden; background: var(--sapBackgroundColor); }
+.mini-shell { display: flex; align-items: center; gap: 0.5rem; padding: 0.375rem 0.75rem; background: var(--sapShellColor); color: var(--sapShell_TextColor); border-bottom: 1px solid var(--sapShell_BorderColor); font-family: var(--sapFontSemiboldFamily); }
+.mini-tag { margin-left: auto; font-size: var(--sapFontSmallSize); color: var(--sapContent_LabelColor); font-family: var(--sapFontFamily); }
+.fio-bar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0.75rem; padding: 0.75rem; background: var(--sapObjectHeader_Background); border-bottom: 1px solid var(--sapGroup_TitleBorderColor); }
+.fio-list { background: var(--sapGroup_ContentBackground); margin: 0.75rem; border-radius: var(--radius); border: 1px solid var(--sapGroup_ContentBorderColor); overflow: hidden; }
+.fio-title { padding: 0.75rem 1rem; font-family: var(--sapFontBoldFamily); color: var(--sapGroup_TitleTextColor); }
+
+/* Construtor de tabela */
+.frows { display: flex; flex-direction: column; gap: 0.375rem; overflow-x: auto; }
+.frow { display: grid; grid-template-columns: minmax(9rem, 2fr) minmax(9rem, 1.6fr) 5rem 5rem 4rem 2.5rem; gap: 0.5rem; align-items: center; min-width: 38rem; }
+.frow > * { min-width: 0; width: 100%; }
+.frow-head span { font-size: var(--sapFontSmallSize); color: var(--sapContent_LabelColor); }
+
+/* Gráfico */
+.svg-scroll { overflow-x: auto; }
+.chart { width: 100%; min-width: 30rem; height: auto; font-family: var(--sapFontFamily); }
+.chart text { font-size: 11px; fill: var(--sapContent_LabelColor); }
+.chart .grid { stroke: var(--sapList_BorderColor); }
+.chart .cursor { stroke: var(--sapTextColor); stroke-dasharray: 4 4; }
+.chart .dot { stroke: var(--sapBaseColor); stroke-width: 2; }
+.legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; font-size: var(--sapFontSmallSize); color: var(--sapContent_LabelColor); }
+.legend span { display: inline-flex; align-items: center; gap: 0.375rem; }
+.legend i { display: inline-block; width: 0.875rem; height: 0.25rem; border-radius: 1rem; }
+
+/* Referência */
+.ref-cat { font-size: var(--sapFontSmallSize); color: var(--sapContent_LabelColor); }
+.ref-code { background: none; padding: 0; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

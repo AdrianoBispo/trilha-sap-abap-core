@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="illu" viewBox="0 0 420 300" role="img" aria-labelledby="herot"><title id="herot">Ilustração: notebook com código ABAP cercado por uma tabela, um cubo de dados e um selo de aprovação</title>
+<ellipse cx="210" cy="270" rx="170" ry="16" class="f6" opacity=".6"/>
+<path d="M60 150c0-80 70-130 150-130s160 50 160 120-60 120-160 120S60 230 60 150z" class="f7"/>
+<g transform="translate(96 78)">
+  <rect x="0" y="0" width="228" height="148" rx="12" class="f4"/>
+  <rect x="10" y="10" width="208" height="128" rx="6" class="f8"/>
+  <rect x="22" y="24" width="38" height="8" rx="4" class="f13"/><rect x="66" y="24" width="70" height="8" rx="4" class="f20"/>
+  <rect x="34" y="42" width="56" height="8" rx="4" class="f13"/><rect x="96" y="42" width="84" height="8" rx="4" class="f2"/>
+  <rect x="34" y="60" width="34" height="8" rx="4" class="f14"/><rect x="74" y="60" width="104" height="8" rx="4" class="f3"/>
+  <rect x="46" y="78" width="120" height="8" rx="4" class="f20"/>
+  <rect x="34" y="96" width="62" height="8" rx="4" class="f13"/>
+  <rect x="22" y="114" width="48" height="8" rx="4" class="f13"/>
+  <rect x="-24" y="148" width="276" height="14" rx="7" class="f5"/>
+  <rect x="88" y="148" width="52" height="6" rx="3" class="f6"/>
+</g>
+<g transform="translate(28 46)">
+  <rect width="104" height="78" rx="10" class="f8" stroke-width="1.5" style="stroke:var(--ill5)"/>
+  <rect width="104" height="20" rx="10" class="f21"/><rect y="10" width="104" height="10" class="f21"/>
+  <g class="f18"><rect x="10" y="30" width="38" height="8" rx="3"/><rect x="56" y="30" width="38" height="8" rx="3"/><rect x="10" y="46" width="38" height="8" rx="3"/><rect x="56" y="46" width="38" height="8" rx="3"/><rect x="10" y="62" width="38" height="8" rx="3"/><rect x="56" y="62" width="38" height="8" rx="3"/></g>
+</g>
+<g transform="translate(316 40)">
+  <path d="M34 0l34 18v38L34 74 0 56V18z" class="f20"/><path d="M34 0l34 18-34 18L0 18z" class="f2"/><path d="M34 36v38L0 56V18z" class="f21"/>
+</g>
+<g transform="translate(330 176)"><circle r="30" class="f12" style="fill:var(--sapPositiveColor)"/><path d="M-13 1l9 9 17-19" fill="none" stroke="var(--sapBaseColor)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="f26"><path d="M70 196l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/><path d="M262 30l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/><circle cx="378" cy="128" r="5"/></g>
+<g transform="translate(44 228)"><rect width="66" height="26" rx="13" class="f3"/><text x="33" y="17" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">SELECT</text></g>
+<g transform="translate(250 240)"><rect width="56" height="24" rx="12" class="f9"/><text x="28" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">CDS</text></g>
+</svg>

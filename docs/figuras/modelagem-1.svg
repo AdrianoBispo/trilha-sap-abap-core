@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="illu" viewBox="0 0 660 200" role="img" aria-labelledby="figdom">
+      <title id="figdom">O campo da tabela usa um elemento de dados, que se apoia em um domínio com tipo técnico</title>
+      <g transform="translate(10 30)"><rect width="190" height="140" rx="14" class="f7"></rect><text x="16" y="26" class="sm tmk" font-weight="700">DOMÍNIO</text><text x="16" y="48" class="h tx">/DMO/STATUS</text>
+        <text x="16" y="74" class="sm tl">Tipo</text><text x="174" y="74" text-anchor="end" class="mono tx">CHAR 1</text>
+        <text x="16" y="96" class="sm tl">Valores fixos</text><text x="174" y="96" text-anchor="end" class="mono tx">N  A  X</text>
+        <text x="16" y="122" class="sm tl">Como é guardado</text></g>
+      <path d="M206 100 H246" class="sl" stroke-width="2"></path><path d="M240 94 l8 6 -8 6" class="sl nf" stroke-width="2"></path>
+      <g transform="translate(252 30)"><rect width="200" height="140" rx="14" class="f18"></rect><text x="16" y="26" class="sm tmk" font-weight="700">ELEMENTO DE DADOS</text><text x="16" y="48" class="h tx">/DMO/TRAVEL_STATUS</text>
+        <text x="16" y="74" class="sm tl">Curto</text><text x="184" y="74" text-anchor="end" class="tx">Status</text>
+        <text x="16" y="96" class="sm tl">Longo</text><text x="184" y="96" text-anchor="end" class="tx">Status da viagem</text>
+        <text x="16" y="122" class="sm tl">O que significa</text></g>
+      <path d="M458 100 H498" class="sl" stroke-width="2"></path><path d="M492 94 l8 6 -8 6" class="sl nf" stroke-width="2"></path>
+      <g transform="translate(504 30)"><rect width="146" height="140" rx="14" class="fb sb" stroke-width="1.5"></rect><text x="16" y="26" class="sm tmk" font-weight="700">CAMPO</text><text x="16" y="48" class="h tx">ZTRAVEL</text>
+        <text x="16" y="74" class="mono tx">status :</text><text x="16" y="92" class="mono tsel">/dmo/travel_status</text>
+        <text x="16" y="122" class="sm tl">Onde é usado</text></g>
+    </svg>

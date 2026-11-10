@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="illu" viewBox="0 0 680 336" role="img" aria-labelledby="t-servidor-de-aplicacao-1">
+  <title id="t-servidor-de-aplicacao-1">Três camadas do sistema ABAP: clientes, instância do servidor de aplicação com dispatcher e work processes, e banco de dados</title>
+  <defs><marker id="ah-servidor-de-aplicacao-1" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 z" class="f13"></path></marker><marker id="as-servidor-de-aplicacao-1" viewBox="0 0 8 8" refX="1" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M8 0 L0 4 L8 8 z" class="f13"></path></marker></defs>
+  <rect x="180" y="8" width="130" height="36" rx="10" class="fneu" stroke-width="1"></rect>
+  <text x="245.0" y="23" class="sm tx" text-anchor="middle" font-weight="700">Navegador · ADT</text>
+  <text x="245.0" y="37" class="sm tl" text-anchor="middle">Fiori, APIs, Eclipse</text>
+  <rect x="361" y="8" width="110" height="36" rx="10" class="fneu" stroke-width="1"></rect>
+  <text x="416.0" y="23" class="sm tx" text-anchor="middle" font-weight="700">SAP GUI</text>
+  <text x="416.0" y="37" class="sm tl" text-anchor="middle">dynpros</text>
+  <rect x="517" y="8" width="140" height="36" rx="10" class="fneu" stroke-width="1"></rect>
+  <text x="587.0" y="23" class="sm tx" text-anchor="middle" font-weight="700">Sistemas externos</text>
+  <text x="587.0" y="37" class="sm tl" text-anchor="middle">SAP e não SAP</text>
+  <rect x="10" y="70" width="660" height="196" rx="14" class="f7"></rect>
+  <text x="24" y="90" class="sm tmk" font-weight="700">SISTEMA ABAP · CAMADA DE APLICAÇÃO</text>
+  <rect x="24" y="100" width="140" height="154" rx="10" class="fb sb" stroke-width="1"></rect>
+  <text x="36" y="118" class="sm tx" font-weight="700">ASCS</text>
+  <rect x="34" y="128" width="120" height="50" rx="10" class="finfo sinfo" stroke-width="1"></rect>
+  <text x="94.0" y="143" class="sm tx" text-anchor="middle" font-weight="700">Message Server</text>
+  <text x="94.0" y="157" class="sm tl" text-anchor="middle">comunicação e</text>
+  <text x="94.0" y="171" class="sm tl" text-anchor="middle">balanceamento</text>
+  <rect x="34" y="190" width="120" height="50" rx="10" class="finfo sinfo" stroke-width="1"></rect>
+  <text x="94.0" y="205" class="sm tx" text-anchor="middle" font-weight="700">Enqueue Server</text>
+  <text x="94.0" y="219" class="sm tl" text-anchor="middle">tabela de</text>
+  <text x="94.0" y="233" class="sm tl" text-anchor="middle">bloqueios</text>
+  <rect x="176" y="100" width="480" height="154" rx="10" class="fb sb" stroke-width="1"></rect>
+  <text x="330" y="118" class="sm tx" text-anchor="middle" font-weight="700">Instância</text>
+  <text x="330" y="131" class="sm tx" text-anchor="middle" font-weight="700">do AS ABAP</text>
+  <rect x="190" y="126" width="110" height="28" rx="10" class="finfo sinfo" stroke-width="1"></rect>
+  <text x="245.0" y="144" class="sm tx" text-anchor="middle" font-weight="700">ICM · HTTP(S)</text>
+  <rect x="532" y="126" width="110" height="28" rx="10" class="finfo sinfo" stroke-width="1"></rect>
+  <text x="587.0" y="144" class="sm tx" text-anchor="middle" font-weight="700">Gateway · RFC</text>
+  <rect x="190" y="166" width="452" height="26" rx="10" class="fsel ssel" stroke-width="1"></rect>
+  <text x="416.0" y="183" class="sm tsel" text-anchor="middle" font-weight="700">Dispatcher · recebe, enfileira e distribui as requisições</text>
+  <rect x="190" y="204" width="104" height="38" rx="10" class="f18" stroke-width="1"></rect>
+  <text x="242.0" y="220" class="sm tx" text-anchor="middle" font-weight="700">DIA</text>
+  <text x="242.0" y="234" class="sm tl" text-anchor="middle">diálogo</text>
+  <path d="M242 192 L242 203" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-1)"></path>
+  <rect x="306" y="204" width="104" height="38" rx="10" class="f18" stroke-width="1"></rect>
+  <text x="358.0" y="220" class="sm tx" text-anchor="middle" font-weight="700">UPD</text>
+  <text x="358.0" y="234" class="sm tl" text-anchor="middle">atualização</text>
+  <path d="M358 192 L358 203" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-1)"></path>
+  <rect x="422" y="204" width="104" height="38" rx="10" class="f18" stroke-width="1"></rect>
+  <text x="474.0" y="220" class="sm tx" text-anchor="middle" font-weight="700">BTC</text>
+  <text x="474.0" y="234" class="sm tl" text-anchor="middle">background</text>
+  <path d="M474 192 L474 203" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-1)"></path>
+  <rect x="538" y="204" width="104" height="38" rx="10" class="f18" stroke-width="1"></rect>
+  <text x="590.0" y="220" class="sm tx" text-anchor="middle" font-weight="700">SPO</text>
+  <text x="590.0" y="234" class="sm tl" text-anchor="middle">spool</text>
+  <path d="M590 192 L590 203" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-1)"></path>
+  <path d="M245 44 L245 125" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-1)"></path>
+  <text x="251.0" y="88.5" class="sm tl">HTTP(S)</text>
+  <path d="M416 44 L416 165" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-1)"></path>
+  <text x="422.0" y="62" class="sm tl">DIAG</text>
+  <path d="M587 44 L587 125" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-1)"></path>
+  <text x="593.0" y="88.5" class="sm tl">RFC</text>
+  <path d="M245 154 L245 165" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-1)"></path>
+  <path d="M587 154 L587 165" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-1)"></path>
+  <path d="M154 179 L189 179" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-1)" marker-start="url(#as-servidor-de-aplicacao-1)"></path>
+  <path d="M189 223 L155 215" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-1)"></path>
+  <rect x="176" y="292" width="480" height="36" rx="10" class="f14"></rect>
+  <text x="416" y="314" class="sm" text-anchor="middle" font-weight="700" fill="#fff">Banco de dados · SAP HANA</text>
+  <path d="M416 254 L416 291" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-1)"></path>
+  <text x="422.0" y="276.5" class="sm tl">ABAP SQL</text>
+  <text x="24" y="306" class="sm tl">Work processes executam</text>
+  <text x="24" y="320" class="sm tl">os programas ABAP</text>
+</svg>

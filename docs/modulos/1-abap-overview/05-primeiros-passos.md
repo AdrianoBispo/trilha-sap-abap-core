@@ -14,7 +14,7 @@ palavras_chave: eclipse adt pacote package hello world if_oo_adt_classrun out wr
 
 ## O que muda com o ABAP Cloud {ancora="ABAP Cloud" icone="cloud"}
 
-ABAP é a linguagem de negócio da SAP. Hoje ela roda em três cenários: o **SAP BTP, ABAP environment** (conhecido como “Steampunk”), o **SAP S/4HANA Cloud Public Edition** e o S/4HANA privado ou on-premise. A trilha *Acquiring Core ABAP Skills* ensina o modelo **ABAP Cloud**, que vale para todos eles.
+ABAP é a linguagem de negócio da SAP. Hoje ela roda em três cenários: o **SAP BTP, ABAP environment** (conhecido como “Steampunk”), o **SAP S/4HANA Cloud Public Edition** e o S/4HANA privado ou on-premise. O modelo **ABAP Cloud** vale para todos eles; as versões da linguagem e os contratos de liberação estão em [A linguagem ABAP](#linguagem-abap).
 
 No ABAP Cloud você programa com a versão de linguagem **ABAP for Cloud Development**: um subconjunto moderno da linguagem, que só usa APIs liberadas (*released*) pela SAP. Isso mantém o núcleo do sistema limpo (*clean core*) e torna as extensões seguras para upgrade.
 

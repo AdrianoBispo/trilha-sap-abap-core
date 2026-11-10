@@ -13,7 +13,7 @@ import '@ui5/webcomponents-icons/dist/syntax.js';
 import '@ui5/webcomponents-icons/dist/light-mode.js';
 import '@ui5/webcomponents-icons/dist/dark-mode.js';
 import '@ui5/webcomponents-icons/dist/document-text.js';
-import { COURSES, lessonById, LESSONS, REFERENCE } from './content/content';
+import { lessonById, LESSONS, MODULES, REFERENCE } from './content/content';
 import { toText } from './content/markdown';
 import LessonPage from './pages/LessonPage';
 import HomePage from './pages/HomePage';
@@ -30,7 +30,7 @@ function buildIndex(): Hit[] {
   const refRows = refTable && refTable.type === 'table' ? refTable.children.slice(1) : [];
   return [
     ...LESSONS.map(l => ({
-      title: l.title, desc: `Curso ${l.course.n} · ${l.sub}`, route: l.id, icon: l.icon,
+      title: l.title, desc: `Módulo ${l.module.label} · ${l.sub}`, route: l.id, icon: l.icon,
       hay: [l.title, l.sub, l.objectives.join(' '), l.keywords, l.sections.map(s => s.titleText).join(' ')].join(' ').toLowerCase(),
     })),
     ...refRows.map(r => {
@@ -102,6 +102,9 @@ export default function App() {
     if (innerWidth < 600) setMode('Collapsed');
   };
 
+  // Com sete módulos, só o módulo da lição aberta fica expandido (o primeiro, fora das lições).
+  const openModule = lesson ? lesson.module.id : MODULES[0]?.id;
+
   const total = LESSONS.length;
   const nDone = LESSONS.filter(l => done.has(l.id)).length;
 
@@ -132,7 +135,7 @@ export default function App() {
                 {APP}
               </ShellBarBranding>
             }
-            secondaryTitle="Acquiring Core ABAP Skills · estudo guiado"
+            secondaryTitle="ABAP do clássico à nuvem · estudo guiado"
             showSearchField
             searchField={<Search />}
             content={
@@ -155,8 +158,8 @@ export default function App() {
             onSelectionChange={e => onSelect((e.detail.item as HTMLElement).dataset.route)}
           >
             <SideNavigationItem text="Início" icon="home" data-route="inicio" selected={current === 'inicio'} />
-            {COURSES.map(c => (
-              <SideNavigationGroup key={c.id} text={`Curso ${c.n} · ${c.title}`} expanded>
+            {MODULES.map(c => (
+              <SideNavigationGroup key={c.id} text={`Módulo ${c.label} · ${c.title}`} expanded={openModule === c.id}>
                 {c.lessons.map(l => (
                   <SideNavigationItem
                     key={l.id}

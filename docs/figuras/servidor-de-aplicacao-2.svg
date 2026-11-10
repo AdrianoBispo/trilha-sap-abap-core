@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="illu" viewBox="0 0 680 330" role="img" aria-labelledby="t-servidor-de-aplicacao-2">
+  <title id="t-servidor-de-aplicacao-2">Memória compartilhada da instância, sessão de usuário com SAP Memory, sessões ABAP com ABAP Memory e sessões internas, e o contexto carregado no work process</title>
+  <defs><marker id="ah-servidor-de-aplicacao-2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 z" class="f13"></path></marker><marker id="as-servidor-de-aplicacao-2" viewBox="0 0 8 8" refX="1" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M8 0 L0 4 L8 8 z" class="f13"></path></marker></defs>
+  <rect x="10" y="8" width="660" height="56" rx="12" class="f7"></rect>
+  <text x="24" y="26" class="sm tmk" font-weight="700">MEMÓRIA COMPARTILHADA DA INSTÂNCIA · todos os usuários</text>
+  <rect x="24" y="34" width="200" height="22" rx="10" class="fok sok" stroke-width="1"></rect>
+  <text x="124.0" y="49" class="sm tx" text-anchor="middle" font-weight="700">Shared Objects</text>
+  <rect x="236" y="34" width="200" height="22" rx="10" class="fok sok" stroke-width="1"></rect>
+  <text x="336.0" y="49" class="sm tx" text-anchor="middle" font-weight="700">Buffers de tabela</text>
+  <rect x="448" y="34" width="200" height="22" rx="10" class="fok sok" stroke-width="1"></rect>
+  <text x="548.0" y="49" class="sm tx" text-anchor="middle" font-weight="700">Buffer de programas (PXA)</text>
+  <rect x="10" y="76" width="470" height="246" rx="12" class="f7"></rect>
+  <text x="24" y="94" class="sm tmk" font-weight="700">SESSÃO DE USUÁRIO · criada no logon</text>
+  <rect x="24" y="102" width="442" height="30" rx="10" class="fwarn swarn" stroke-width="1"></rect>
+  <text x="245.0" y="121" class="sm tx" text-anchor="middle" font-weight="700">SAP Memory · SET / GET PARAMETER ID</text>
+  <rect x="24" y="142" width="442" height="112" rx="10" class="fb sb" stroke-width="1"></rect>
+  <text x="36" y="160" class="sm tx" font-weight="700">Sessão ABAP 1 (uma janela)</text>
+  <rect x="36" y="168" width="418" height="26" rx="10" class="finfo sinfo" stroke-width="1"></rect>
+  <text x="245.0" y="185" class="sm tx" text-anchor="middle" font-weight="700">ABAP Memory · EXPORT / IMPORT … MEMORY ID</text>
+  <rect x="36" y="204" width="126" height="40" rx="10" class="fsel ssel" stroke-width="1"></rect>
+  <text x="99.0" y="221" class="sm tsel" text-anchor="middle" font-weight="700">Sessão interna 1</text>
+  <text x="99.0" y="235" class="sm tl" text-anchor="middle">programa A</text>
+  <rect x="182" y="204" width="126" height="40" rx="10" class="fsel ssel" stroke-width="1"></rect>
+  <text x="245.0" y="221" class="sm tsel" text-anchor="middle" font-weight="700">Sessão interna 2</text>
+  <text x="245.0" y="235" class="sm tl" text-anchor="middle">SUBMIT … AND RETURN</text>
+  <rect x="328" y="204" width="126" height="40" rx="10" class="fsel ssel" stroke-width="1"></rect>
+  <text x="391.0" y="221" class="sm tsel" text-anchor="middle" font-weight="700">Sessão interna 3</text>
+  <text x="391.0" y="235" class="sm tl" text-anchor="middle">CALL TRANSACTION</text>
+  <path d="M162 224 L181 224" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-2)"></path>
+  <path d="M308 224 L327 224" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-2)"></path>
+  <rect x="24" y="264" width="442" height="48" rx="10" class="fb sb" stroke-width="1"></rect>
+  <text x="36" y="282" class="sm tx" font-weight="700">Sessão ABAP 2 (outra janela)</text>
+  <text x="36" y="300" class="sm tl">tem a própria ABAP Memory e a própria sequência de sessões internas</text>
+  <rect x="530" y="76" width="140" height="246" rx="12" class="f7"></rect>
+  <text x="544" y="94" class="sm tmk" font-weight="700">WORK PROCESS</text>
+  <rect x="544" y="106" width="112" height="40" rx="10" class="fb sb" stroke-width="1"></rect>
+  <text x="600.0" y="123" class="sm tx" text-anchor="middle" font-weight="700">Roll area</text>
+  <text x="600.0" y="137" class="sm tl" text-anchor="middle">início do contexto</text>
+  <rect x="544" y="170" width="112" height="40" rx="10" class="fb sb" stroke-width="1"></rect>
+  <text x="600.0" y="187" class="sm tx" text-anchor="middle" font-weight="700">Extended Memory</text>
+  <text x="600.0" y="201" class="sm tl" text-anchor="middle">maior parte</text>
+  <rect x="544" y="234" width="112" height="40" rx="10" class="ferr serr" stroke-width="1"></rect>
+  <text x="600.0" y="251" class="sm tx" text-anchor="middle" font-weight="700">Heap (PRIV)</text>
+  <text x="600.0" y="265" class="sm tl" text-anchor="middle">se a EM acabar</text>
+  <path d="M600 146 L600 169" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-2)"></path>
+  <path d="M600 210 L600 233" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-2)"></path>
+  <text x="544" y="294" class="sm tl">alocação nesta ordem</text>
+  <text x="544" y="308" class="sm tl">(simplificada)</text>
+  <path d="M481 200 L529 200" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-servidor-de-aplicacao-2)" marker-start="url(#as-servidor-de-aplicacao-2)"></path>
+  <text x="484" y="190" class="sm tl">roll-in</text>
+  <text x="484" y="218" class="sm tl">roll-out</text>
+</svg>

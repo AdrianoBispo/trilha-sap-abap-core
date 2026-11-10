@@ -8,14 +8,15 @@ docs/
 ├── referencia.md      referência rápida (tabela de sintaxe e glossário)
 ├── simulado.md        textos do simulado
 ├── figuras/           ilustrações SVG usadas nas lições
-└── cursos/
-    └── 1-programacao-abap-basica/
-        ├── _curso.md               dados do curso
-        ├── 01-primeiros-passos.md  lição (o nome vira a URL: #primeiros-passos)
+├── arquitetura/       diagramas draw.io (fonte editável; não entram no site)
+└── modulos/
+    └── 1-abap-overview/
+        ├── _modulo.md              dados do módulo
+        ├── 01-linguagem-abap.md    lição (o nome vira a URL: #linguagem-abap)
         └── …
 ```
 
-A ordem das lições segue o número no início do nome do arquivo. O que vem depois do número é o endereço da lição.
+A ordem das lições segue o número no início do nome do arquivo. O que vem depois do número é o endereço da lição, que precisa ser único em todo o site: mudar uma lição de módulo não muda o endereço dela.
 
 ## Cabeçalho da lição
 
@@ -25,8 +26,8 @@ Cada lição começa com um bloco YAML entre `---`:
 ---
 titulo: Primeiros passos
 subtitulo: ABAP Cloud, Eclipse ADT, pacotes e sua primeira classe executável.
-unidade: "1"                # unidade na SAP Learning
 duracao: 1 h 25 min
+sap_learning: Basic ABAP Programming · unidade 1   # opcional: unidade de origem na SAP Learning
 icone: play                 # nome de um ícone SAP (ver abaixo)
 objetivos:
   - Explicar o que é ABAP Cloud e clean core
@@ -57,7 +58,7 @@ out->write( `Hello World` ).
 ```
 ````
 
-Linguagens com realce: `abap`, `cds`, `bdl`, `ddl` e `dcl`.
+Linguagens com realce: `abap`, `cds`, `bdl`, `ddl` e `dcl`. Outras, como `xml`, aparecem sem realce de palavras-chave.
 
 ## Blocos especiais
 
@@ -75,6 +76,7 @@ Linguagens com realce: `abap`, `cds`, `bdl`, `ddl` e `dcl`.
 | `::figura{arquivo="nome.svg"}` | Ilustração de `docs/figuras` |
 | `:::figura{arquivo="nome.svg"}` legenda `:::` | Ilustração com legenda |
 | `::laboratorio{id="hello"}` | Laboratório interativo |
+| `::modulos`, `::mapa-da-trilha` | Blocos gerados da página inicial |
 | `:kbd[Ctrl+F3]` | Tecla |
 | `:tag[texto]{tipo="aviso"}` | Etiqueta dentro do texto |
 
@@ -116,7 +118,7 @@ O simulado sorteia suas questões de todos os quizzes. Uma questão nova entra n
 
 ## Documentação oficial
 
-Os links do fim da lição ficam em `:::documentacao`, como uma lista de links. O link da unidade na SAP Learning é acrescentado automaticamente.
+Os links do fim da lição ficam em `:::documentacao`, como uma lista de links. Se o cabeçalho tiver `sap_learning`, o link da unidade na SAP Learning é acrescentado automaticamente.
 
 ```md
 :::documentacao
@@ -128,10 +130,11 @@ Os links do fim da lição ficam em `:::documentacao`, como uma lista de links. 
 
 Os nomes vêm da biblioteca de ícones SAP: [ui5.github.io/webcomponents/icons](https://ui5.github.io/webcomponents/icons/) (ex.: `cloud`, `database`, `key`, `source-code`). O build importa só os ícones citados nos arquivos e avisa se um nome não existir.
 
-## Nova lição ou novo curso
+## Nova lição ou novo módulo
 
-- **Lição:** crie `NN-endereco.md` na pasta do curso, com o cabeçalho, as seções, o `:::quiz` e o `:::documentacao`.
-- **Curso:** crie uma pasta `N-nome-do-curso/` com um `_curso.md` contendo `numero`, `titulo`, `titulo_en`, `icone` e `cor` (1 a 10). O texto abaixo do cabeçalho é a descrição do curso.
+- **Lição:** crie `NN-endereco.md` na pasta do módulo, com o cabeçalho, as seções, o `:::quiz` e o `:::documentacao`.
+- **Módulo:** crie uma pasta `N-nome-do-modulo/` com um `_modulo.md` contendo `numero`, `titulo`, `icone` e `cor` (1 a 10). O texto abaixo do cabeçalho é a descrição do módulo. A ordem dos módulos vem do campo `numero`, não do nome da pasta.
+- **Mover uma lição:** mova o arquivo para a pasta do outro módulo e ajuste o número. Os links e o progresso salvo continuam valendo.
 - **Laboratório:** é a única parte que exige código. Crie o componente em `src/labs/` e registre-o em `src/labs/index.ts`.
 
 Comentários `<!-- … -->` podem ser usados livremente e não aparecem no site.

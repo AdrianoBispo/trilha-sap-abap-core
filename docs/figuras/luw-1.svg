@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="illu" viewBox="0 0 680 300" role="img" aria-labelledby="t-luw-1">
+  <title id="t-luw-1">Uma SAP LUW reúne três passos de diálogo, cada um em sua LUW de banco, e grava tudo no work process de atualização após o COMMIT WORK</title>
+  <defs><marker id="ah-luw-1" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 z" class="f13"></path></marker><marker id="as-luw-1" viewBox="0 0 8 8" refX="1" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M8 0 L0 4 L8 8 z" class="f13"></path></marker></defs>
+  <rect x="10" y="8" width="660" height="176" rx="14" class="f7"></rect>
+  <text x="24" y="28" class="sm tmk" font-weight="700">SAP LUW · tudo ou nada</text>
+  <rect x="24" y="38" width="632" height="26" rx="10" class="fok sok" stroke-width="1"></rect>
+  <text x="340.0" y="55" class="sm tx" text-anchor="middle" font-weight="700">Bloqueio SAP (Enqueue Server): pedido no início, liberado ao fim da atualização</text>
+  <rect x="24" y="92" width="140" height="76" rx="10" class="fb sb" stroke-width="1"></rect>
+  <text x="94.0" y="120" class="sm tx" text-anchor="middle" font-weight="700">Passo de diálogo 1</text>
+  <text x="94.0" y="134" class="sm tl" text-anchor="middle">lê e bloqueia</text>
+  <text x="94.0" y="148" class="sm tl" text-anchor="middle">ENQUEUE_…</text>
+  <rect x="184" y="92" width="140" height="76" rx="10" class="fb sb" stroke-width="1"></rect>
+  <text x="254.0" y="120" class="sm tx" text-anchor="middle" font-weight="700">Passo de diálogo 2</text>
+  <text x="254.0" y="134" class="sm tl" text-anchor="middle">registra a gravação</text>
+  <text x="254.0" y="148" class="sm tl" text-anchor="middle">IN UPDATE TASK</text>
+  <rect x="344" y="92" width="140" height="76" rx="10" class="fb sb" stroke-width="1"></rect>
+  <text x="414.0" y="120" class="sm tx" text-anchor="middle" font-weight="700">Passo de diálogo 3</text>
+  <text x="414.0" y="134" class="sm tl" text-anchor="middle">encerra a LUW</text>
+  <text x="414.0" y="148" class="sm tl" text-anchor="middle">COMMIT WORK</text>
+  <rect x="516" y="92" width="140" height="76" rx="10" class="fsel ssel" stroke-width="1"></rect>
+  <text x="586.0" y="120" class="sm tsel" text-anchor="middle" font-weight="700">WP de atualização</text>
+  <text x="586.0" y="134" class="sm tl" text-anchor="middle">executa os módulos</text>
+  <text x="586.0" y="148" class="sm tl" text-anchor="middle">de update</text>
+  <path d="M164 130 L183 130" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-luw-1)"></path>
+  <path d="M324 130 L343 130" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-luw-1)"></path>
+  <path d="M484 130 L515 130" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-luw-1)"></path>
+  <path d="M94 92 L94 65" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-luw-1)"></path>
+  <path d="M586 92 L586 65" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-luw-1)"></path>
+  <rect x="10" y="214" width="660" height="78" rx="14" class="f7"></rect>
+  <text x="656" y="234" class="sm tmk" text-anchor="end" font-weight="700">BANCO DE DADOS</text>
+  <rect x="24" y="242" width="140" height="40" rx="10" class="fb sb" stroke-width="1"></rect>
+  <text x="94.0" y="259" class="sm tx" text-anchor="middle" font-weight="700">LUW de banco 1</text>
+  <text x="94.0" y="273" class="sm tl" text-anchor="middle">commit implícito</text>
+  <path d="M94 168 L94 241" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-luw-1)"></path>
+  <rect x="184" y="242" width="140" height="40" rx="10" class="fb sb" stroke-width="1"></rect>
+  <text x="254.0" y="259" class="sm tx" text-anchor="middle" font-weight="700">LUW de banco 2</text>
+  <text x="254.0" y="273" class="sm tl" text-anchor="middle">commit implícito</text>
+  <path d="M254 168 L254 241" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-luw-1)"></path>
+  <rect x="344" y="242" width="140" height="40" rx="10" class="fb sb" stroke-width="1"></rect>
+  <text x="414.0" y="259" class="sm tx" text-anchor="middle" font-weight="700">LUW de banco 3</text>
+  <text x="414.0" y="273" class="sm tl" text-anchor="middle">sem gravações</text>
+  <path d="M414 168 L414 241" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-luw-1)"></path>
+  <rect x="516" y="242" width="140" height="40" rx="10" class="fok sok" stroke-width="1"></rect>
+  <text x="586.0" y="259" class="sm tx" text-anchor="middle" font-weight="700">LUW da atualização</text>
+  <text x="586.0" y="273" class="sm tl" text-anchor="middle">COMMIT ou ROLLBACK</text>
+  <path d="M586 168 L586 241" class="s13 nf" stroke-width="1.8" marker-end="url(#ah-luw-1)"></path>
+</svg>

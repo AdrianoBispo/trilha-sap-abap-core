@@ -26,7 +26,7 @@ import { navigate } from '../state/store';
 import { tagProps } from './tags';
 export { tagProps };
 
-/** Diretivas folha extras que uma página pode fornecer (ex.: ::cursos na página inicial). */
+/** Diretivas folha extras que uma página pode fornecer (ex.: ::modulos na página inicial). */
 export const MdExtras = createContext<Record<string, () => ReactNode>>({});
 
 const STRIP: Record<string, 'Information' | 'Critical' | 'Positive' | 'Negative'> = {

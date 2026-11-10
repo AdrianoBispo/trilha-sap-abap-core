@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="illu" viewBox="0 0 680 250" role="img" aria-labelledby="t-evolucao-do-abap-1">
+  <title id="t-evolucao-do-abap-1">Linha do tempo dos modelos de programação ABAP: reports clássicos, ABAP Objects e ALV, SAP Gateway e OData, modelo de programação para SAP Fiori com CDS e BOPF, RAP e ABAP Cloud</title>
+  <defs><marker id="ah-evolucao-do-abap-1" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 z" class="f13"></path></marker><marker id="as-evolucao-do-abap-1" viewBox="0 0 8 8" refX="1" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M8 0 L0 4 L8 8 z" class="f13"></path></marker></defs>
+  <path d="M30 60 H650" class="s13" stroke-width="3" stroke-linecap="round"></path>
+  <circle cx="88" cy="60" r="7" class="f13"></circle>
+  <text x="88" y="40" class="sm tl" text-anchor="middle" font-weight="700">Anos 80 e 90</text>
+  <rect x="30" y="86" width="116" height="120" rx="10" class="fneu" stroke-width="1"></rect>
+  <text x="88" y="108" class="sm tx" text-anchor="middle" font-weight="700">Reports e dynpros</text>
+  <text x="88" y="132" class="sm tl" text-anchor="middle">listas com WRITE,</text>
+  <text x="88" y="148" class="sm tl" text-anchor="middle">lógica e tela no</text>
+  <text x="88" y="164" class="sm tl" text-anchor="middle">mesmo programa</text>
+  <path d="M88 67 V86" class="s13" stroke-width="1.5"></path>
+  <circle cx="214" cy="60" r="7" class="f13"></circle>
+  <text x="214" y="40" class="sm tl" text-anchor="middle" font-weight="700">Anos 2000</text>
+  <rect x="156" y="86" width="116" height="120" rx="10" class="fneu" stroke-width="1"></rect>
+  <text x="214" y="108" class="sm tx" text-anchor="middle" font-weight="700">ABAP Objects e ALV</text>
+  <text x="214" y="132" class="sm tl" text-anchor="middle">classes globais,</text>
+  <text x="214" y="148" class="sm tl" text-anchor="middle">CL_SALV_TABLE,</text>
+  <text x="214" y="164" class="sm tl" text-anchor="middle">Web Dynpro</text>
+  <path d="M214 67 V86" class="s13" stroke-width="1.5"></path>
+  <circle cx="340" cy="60" r="7" class="f13"></circle>
+  <text x="340" y="40" class="sm tl" text-anchor="middle" font-weight="700">2011</text>
+  <rect x="282" y="86" width="116" height="120" rx="10" class="finfo sinfo" stroke-width="1"></rect>
+  <text x="340" y="108" class="sm tx" text-anchor="middle" font-weight="700">Gateway e OData</text>
+  <text x="340" y="132" class="sm tl" text-anchor="middle">serviço montado na</text>
+  <text x="340" y="148" class="sm tl" text-anchor="middle">SEGW, classes DPC</text>
+  <text x="340" y="164" class="sm tl" text-anchor="middle">e MPC, UI5 separada</text>
+  <path d="M340 67 V86" class="s13" stroke-width="1.5"></path>
+  <circle cx="466" cy="60" r="7" class="f13"></circle>
+  <text x="466" y="40" class="sm tl" text-anchor="middle" font-weight="700">2015</text>
+  <rect x="408" y="86" width="116" height="120" rx="10" class="finfo sinfo" stroke-width="1"></rect>
+  <text x="466" y="108" class="sm tx" text-anchor="middle" font-weight="700">Modelo para Fiori</text>
+  <text x="466" y="132" class="sm tl" text-anchor="middle">CDS, BOPF e Gateway;</text>
+  <text x="466" y="148" class="sm tl" text-anchor="middle">anotações geram</text>
+  <text x="466" y="164" class="sm tl" text-anchor="middle">o serviço e a UI</text>
+  <path d="M466 67 V86" class="s13" stroke-width="1.5"></path>
+  <circle cx="592" cy="60" r="7" class="f13"></circle>
+  <text x="592" y="40" class="sm tl" text-anchor="middle" font-weight="700">2018 em diante</text>
+  <rect x="534" y="86" width="116" height="120" rx="10" class="fsel ssel" stroke-width="1"></rect>
+  <text x="592" y="108" class="sm tx" text-anchor="middle" font-weight="700">RAP e ABAP Cloud</text>
+  <text x="592" y="132" class="sm tl" text-anchor="middle">CDS e behavior,</text>
+  <text x="592" y="148" class="sm tl" text-anchor="middle">APIs liberadas,</text>
+  <text x="592" y="164" class="sm tl" text-anchor="middle">clean core</text>
+  <path d="M592 67 V86" class="s13" stroke-width="1.5"></path>
+  <text x="30" y="232" class="sm tl">Cada geração separa mais a regra de negócio da tela e do protocolo.</text>
+</svg>

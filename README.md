@@ -32,7 +32,7 @@ npm run build     # verificação de tipos + build estático em dist/
 npm run preview   # serve o build
 ```
 
-O build gera um site estático (rotas por `#hash`: `#inicio`, `#referencia`, `#<módulo>`, `#<lição>` e `#<lição>/<seção>`), que pode ser publicado em qualquer hospedagem estática. O `vercel.json` já traz a configuração para a Vercel. O progresso das lições e o tema escolhido ficam no `localStorage` do navegador.
+O build gera um site estático (rotas por `#hash`: `#inicio`, `#referencia`, `#<módulo>`, `#<lição>` e `#<lição>/<seção>`), que pode ser publicado em qualquer hospedagem estática. O `vercel.json` já traz a configuração para a Vercel. O tema escolhido fica no `localStorage` do navegador.
 
 ## Editar o conteúdo
 
@@ -61,7 +61,7 @@ A pasta [`docs/arquitetura/`](docs/arquitetura/) guarda três diagramas editáve
 | `src/pages/` | Início, página do módulo, lição e referência, no formato de artigo |
 | `src/labs/` | Os 22 laboratórios interativos |
 | `src/components/` | Índice lateral do módulo, cabeçalho de artigo, bloco de código com realce ABAP/CDS, tabela UI5 |
-| `src/state/store.ts` | Rota, progresso, tema e toast |
+| `src/state/store.ts` | Rota, seção visível, tema e toast |
 | `src/styles/` | Fontes 72 locais, paleta das ilustrações e layout. Todas as cores vêm dos parâmetros de tema `--sap…` do Horizon. |
 
 ## Créditos e licenças

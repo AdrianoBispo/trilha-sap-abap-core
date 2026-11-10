@@ -61,15 +61,12 @@ export function scrollToSection(id?: string, smooth = true) {
   else document.querySelector('.page-scroll')?.scrollTo({ top: 0, behavior });
 }
 
-/* ---------- progresso das lições ---------- */
-const done = createStore<ReadonlySet<string>>(new Set(storage.get<string[]>('done', [])));
-export const useDone = () => useSyncExternalStore(done.subscribe, done.get);
-export function setDone(id: string, value: boolean) {
-  const next = new Set(done.get());
-  if (value) next.add(id);
-  else next.delete(id);
-  storage.set('done', [...next]);
-  done.set(next);
+/* ---------- limpeza ---------- */
+// O site não acompanha mais o progresso: apaga a lista de lições lidas de versões anteriores.
+try {
+  localStorage.removeItem(PREFIX + 'done');
+} catch {
+  /* armazenamento indisponível */
 }
 
 /* ---------- tema SAP Horizon claro/escuro ---------- */

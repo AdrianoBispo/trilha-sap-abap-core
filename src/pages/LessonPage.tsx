@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
-import { Button, Icon } from '@ui5/webcomponents-react';
+import { Icon } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-icons/dist/accept.js';
 import '@ui5/webcomponents-icons/dist/time-entry-request.js';
 import { LEARNING_JOURNEY, MODULES, type Lesson } from '../content/content';
 import { Blocks, Inline } from '../render/Markdown';
 import { ArticleHead, LinkList, Pager, type PagerItem } from '../components/Parts';
-import { scrollToSection, setActiveSection, setDone, toast, useDone } from '../state/store';
+import { scrollToSection, setActiveSection } from '../state/store';
 
 /** Distância do topo da área de rolagem a partir da qual uma seção conta como “a atual”. */
 const SPY_OFFSET = 120;
@@ -19,8 +19,6 @@ function whenLaidOut(el: HTMLElement, fn: () => void) {
 }
 
 export default function LessonPage({ lesson: l, section }: { lesson: Lesson; section?: string }) {
-  const done = useDone();
-  const isDone = done.has(l.id);
   const c = l.module;
   const scroller = useRef<HTMLDivElement>(null);
 
@@ -84,11 +82,6 @@ export default function LessonPage({ lesson: l, section }: { lesson: Lesson; sec
     };
   }, [l.id]);
 
-  const toggle = () => {
-    setDone(l.id, !isDone);
-    toast(!isDone ? 'Lição marcada como lida' : 'Marcação removida');
-  };
-
   // Anterior e próxima dentro do módulo; nas pontas, a página do módulo.
   const nextModule = MODULES[MODULES.indexOf(c) + 1];
   const before = c.lessons[l.num - 2];
@@ -112,10 +105,7 @@ export default function LessonPage({ lesson: l, section }: { lesson: Lesson; sec
           eyebrow={`Módulo ${c.label} · Lição ${l.num} de ${c.lessons.length}`}
           title={l.title}
           lead={l.sub}
-          meta={[
-            ...(l.dur ? [<><Icon name="time-entry-request" className="meta-ic" />{l.dur} de leitura</>] : []),
-            ...(isDone ? [<span className="meta-done"><Icon name="accept" className="meta-ic" />Lida</span>] : []),
-          ]}
+          meta={l.dur ? [<><Icon name="time-entry-request" className="meta-ic" />{l.dur} de leitura</>] : []}
         />
 
         {l.objectives.length > 0 && (
@@ -141,15 +131,6 @@ export default function LessonPage({ lesson: l, section }: { lesson: Lesson; sec
               <LinkList links={links} />
             </section>
           )}
-          <div className="done-box">
-            <div>
-              <b>{isDone ? 'Lição lida' : 'Terminou a leitura?'}</b>
-              <span>{isDone ? 'Ela aparece como lida no índice do módulo.' : 'Marque a lição como lida para acompanhar o progresso no módulo.'}</span>
-            </div>
-            <Button design={isDone ? 'Default' : 'Emphasized'} icon="accept" onClick={toggle}>
-              {isDone ? 'Desmarcar' : 'Marcar como lida'}
-            </Button>
-          </div>
           <Pager prev={prev} next={next} label="Lição anterior e próxima" />
         </footer>
       </article>

@@ -115,7 +115,7 @@ Os nomes vêm da biblioteca de ícones SAP: [ui5.github.io/webcomponents/icons](
 
 - **Lição:** crie `NN-endereco.md` na pasta do módulo, com o cabeçalho, as seções e o `:::documentacao`.
 - **Módulo:** crie uma pasta `N-nome-do-modulo/` com um `_modulo.md` contendo `numero`, `titulo`, `icone` e `cor` (1 a 10). O texto abaixo do cabeçalho é a descrição do módulo. A ordem dos módulos vem do campo `numero`, não do nome da pasta.
-- **Mover uma lição:** mova o arquivo para a pasta do outro módulo e ajuste o número. Os links e o progresso salvo continuam valendo.
+- **Mover uma lição:** mova o arquivo para a pasta do outro módulo e ajuste o número. Os links continuam valendo.
 - **Laboratório:** é a única parte que exige código. Crie o componente em `src/labs/` e registre-o em `src/labs/index.ts`.
 
 Comentários `<!-- … -->` podem ser usados livremente e não aparecem no site.

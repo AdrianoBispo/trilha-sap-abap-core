@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
-  Button, IllustratedMessage, NavigationLayout, ProgressIndicator, SearchItem, ShellBar, ShellBarBranding, ShellBarItem,
+  Button, IllustratedMessage, NavigationLayout, SearchItem, ShellBar, ShellBarBranding, ShellBarItem,
   ShellBarSearch, Toast,
 } from '@ui5/webcomponents-react';
 import type { NavigationLayoutDomRef, ToastDomRef } from '@ui5/webcomponents-react';
@@ -18,7 +18,7 @@ import ModulePage from './pages/ModulePage';
 import HomePage from './pages/HomePage';
 import ReferencePage from './pages/ReferencePage';
 import ModuleNav from './components/ModuleNav';
-import { navigate, scrollToSection, toggleTheme, useDone, useRoute, useTheme, useToastState } from './state/store';
+import { navigate, scrollToSection, toggleTheme, useRoute, useTheme, useToastState } from './state/store';
 
 const APP = 'Trilha ABAP Core';
 
@@ -95,7 +95,6 @@ function Search({ slot }: { slot?: string }) {
 /* ---------- App ---------- */
 export default function App() {
   const route = useRoute();
-  const done = useDone();
   const theme = useTheme();
   const toastState = useToastState();
   const toastRef = useRef<ToastDomRef>(null);
@@ -130,9 +129,6 @@ export default function App() {
     if (innerWidth < 600) setMode('Collapsed');
   };
 
-  const total = LESSONS.length;
-  const nDone = LESSONS.filter(l => done.has(l.id)).length;
-
   let page;
   if (view.kind === 'lesson') page = <LessonPage key={view.lesson.id} lesson={view.lesson} section={view.section} />;
   else if (view.kind === 'module') page = <ModulePage key={view.module.id} module={view.module} />;
@@ -164,12 +160,6 @@ export default function App() {
             secondaryTitle="ABAP do clássico à nuvem · documentação guiada"
             showSearchField
             searchField={<Search />}
-            content={
-              <div className="shell-progress" title="Lições lidas">
-                <span>{nDone}/{total} lidas</span>
-                <ProgressIndicator hideValue value={(nDone / total) * 100} valueState={nDone === total ? 'Positive' : 'None'} accessibleName={`${nDone} de ${total} lições lidas`} />
-              </div>
-            }
           >
             <ShellBarItem icon="syntax" text="Referência rápida" onClick={() => navigate('referencia')} />
             <ShellBarItem

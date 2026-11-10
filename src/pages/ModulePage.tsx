@@ -1,21 +1,17 @@
-import { Button, Icon, ProgressIndicator } from '@ui5/webcomponents-react';
-import '@ui5/webcomponents-icons/dist/accept.js';
+import { Button, Icon } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-icons/dist/play.js';
 import '@ui5/webcomponents-icons/dist/time-entry-request.js';
 import '@ui5/webcomponents-icons/dist/list.js';
 import '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
 import { formatMinutes, MODULES, type Module } from '../content/content';
 import { ArticleHead, Pager, type PagerItem } from '../components/Parts';
-import { navigate, useDone } from '../state/store';
+import { navigate } from '../state/store';
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
 export default function ModulePage({ module: c }: { module: Module }) {
-  const done = useDone();
   const n = c.lessons.length;
-  const read = c.lessons.filter(l => done.has(l.id)).length;
-  const nextLesson = c.lessons.find(l => !done.has(l.id));
-  const start = nextLesson ?? c.lessons[0];
+  const start = c.lessons[0];
 
   const i = MODULES.indexOf(c);
   const prevM = MODULES[i - 1];
@@ -36,21 +32,12 @@ export default function ModulePage({ module: c }: { module: Module }) {
           meta={[
             <><Icon name="list" className="meta-ic" />{n} {n === 1 ? 'lição' : 'lições'}</>,
             <><Icon name="time-entry-request" className="meta-ic" />{formatMinutes(c.minutes)} de leitura</>,
-            <><Icon name="accept" className="meta-ic" />{read} de {n} lidas</>,
           ]}
         >
-          <div className="module-progress">
-            <ProgressIndicator
-              value={n ? (read / n) * 100 : 0}
-              displayValue={`${Math.round(n ? (read / n) * 100 : 0)}%`}
-              valueState={read === n && n > 0 ? 'Positive' : 'None'}
-              accessibleName={`${read} de ${n} lições lidas`}
-            />
-          </div>
           {start && (
             <div className="article-actions">
               <Button design="Emphasized" icon="play" onClick={() => navigate(start.id)}>
-                {read === 0 ? 'Começar a leitura' : nextLesson ? `Continuar: ${nextLesson.title}` : 'Reler desde o início'}
+                Começar a leitura
               </Button>
             </div>
           )}
@@ -60,7 +47,6 @@ export default function ModulePage({ module: c }: { module: Module }) {
           <h2 className="article-h2">Lições</h2>
           <ol className="post-list">
             {c.lessons.map(l => {
-              const isDone = done.has(l.id);
               const nSecs = l.sections.filter(s => s.title.length > 0).length;
               return (
                 <li key={l.id}>
@@ -72,7 +58,6 @@ export default function ModulePage({ module: c }: { module: Module }) {
                       <span className="post-meta">
                         {l.dur && <span><Icon name="time-entry-request" className="meta-ic" />{l.dur}</span>}
                         <span>{nSecs} {nSecs === 1 ? 'seção' : 'seções'}</span>
-                        {isDone && <span className="meta-done"><Icon name="accept" className="meta-ic" />Lida</span>}
                       </span>
                     </span>
                     <Icon name="navigation-right-arrow" className="post-arrow" />

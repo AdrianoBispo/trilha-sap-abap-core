@@ -24,10 +24,7 @@ ui5-navigation-layout { height: 100%; }
 .page { flex: 1 1 auto; height: 100%; min-height: 0; }
 .page-scroll { overflow: auto; }
 .center { display: grid; place-items: center; }
-.shell-progress { display: flex; align-items: center; gap: 0.5rem; font-size: var(--sapFontSmallSize); color: var(--sapShell_TextColor); white-space: nowrap; }
-.shell-progress ui5-progress-indicator { width: 6rem; }
 ui5-shellbar-branding img { width: 2rem; height: 2rem; }
-@media (max-width: 900px) { .shell-progress { display: none; } }
 
 /* ---------- Artigo (lições, módulos e referência) ---------- */
 .sec { display: flex; flex-direction: column; gap: var(--gap); padding-block: 0.5rem 1rem; min-width: 0; }
@@ -66,10 +63,7 @@ ui5-shellbar-branding img { width: 2rem; height: 2rem; }
 .article-meta { list-style: none; margin: 0.25rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.375rem 1.25rem; font-size: var(--sapFontSmallSize); color: var(--sapContent_LabelColor); }
 .article-meta li { display: inline-flex; align-items: center; }
 .meta-ic { width: 0.875rem; height: 0.875rem; margin-right: 0.375rem; color: var(--sapContent_IconColor); flex: none; }
-.meta-done, .meta-done .meta-ic { color: var(--sapPositiveTextColor); display: inline-flex; align-items: center; }
 .article-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
-.module-progress { max-width: 24rem; }
-.module-progress ui5-progress-indicator { width: 100%; }
 
 .article-sec { display: flex; flex-direction: column; gap: var(--gap); min-width: 0; scroll-margin-top: 1.5rem; }
 .article-h2 {
@@ -94,17 +88,6 @@ ui5-shellbar-branding img { width: 2rem; height: 2rem; }
 .objectives { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 0.5rem 1.5rem; }
 .objectives li { display: flex; gap: 0.5rem; align-items: flex-start; line-height: 1.45; }
 .objectives ui5-icon { color: var(--sapPositiveElementColor); flex: none; width: 1rem; height: 1rem; margin-top: 0.1875rem; }
-
-.done-box {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;
-  padding: 1rem 1.25rem;
-  border-radius: var(--radius);
-  background: var(--sapGroup_ContentBackground);
-  border: 1px solid var(--sapGroup_ContentBorderColor);
-}
-.done-box > div { display: flex; flex-direction: column; gap: 0.25rem; }
-.done-box b { font-family: var(--sapFontSemiboldFamily); font-weight: normal; color: var(--sapTitleColor); }
-.done-box span { color: var(--sapContent_LabelColor); font-size: var(--sapFontSmallSize); }
 
 /* Lista de lições na página do módulo */
 .post-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 1px solid var(--sapGroup_TitleBorderColor); }
@@ -131,7 +114,6 @@ ui5-shellbar-branding img { width: 2rem; height: 2rem; }
 /* Cabeçalho do índice lateral */
 .snav-head { display: flex; flex-direction: column; gap: 0.25rem; padding: 1rem 1rem 0.75rem; border-bottom: 1px solid var(--sapGroup_TitleBorderColor); }
 .snav-title { font-family: var(--sapFontBoldFamily); font-size: var(--sapFontLargeSize); color: var(--sapTitleColor); line-height: 1.3; }
-.snav-head ui5-progress-indicator { width: 100%; margin-top: 0.25rem; }
 
 /* ---------- Conteúdo Markdown ---------- */
 .md-p { margin: 0; line-height: 1.7; }

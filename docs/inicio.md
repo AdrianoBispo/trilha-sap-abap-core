@@ -57,7 +57,7 @@ A referência rápida reúne a sintaxe mais usada, com filtro por categoria e li
 - As lições derivadas da trilha *Acquiring Core ABAP Skills* indicam, no fim, a unidade correspondente na SAP Learning.
 - Os blocos de código têm botão de copiar. Exemplos de ABAP clássico estão marcados como Standard ABAP; os demais seguem a sintaxe do ABAP Cloud.
 - Laboratórios simulam o comportamento do ABAP no navegador. Eles ajudam a prever o resultado; confirme sempre no sistema.
-- Cada módulo tem uma página própria, com as lições na ordem de estudo e um índice lateral das seções. Marque a lição como lida: o progresso fica salvo neste navegador.
+- Cada módulo tem uma página própria, com as lições na ordem de estudo e um índice lateral das seções.
 :::
 ::::
 

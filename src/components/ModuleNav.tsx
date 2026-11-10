@@ -1,7 +1,7 @@
-import { ProgressIndicator, SideNavigation, SideNavigationGroup, SideNavigationItem, SideNavigationSubItem, Tag } from '@ui5/webcomponents-react';
+import { SideNavigation, SideNavigationGroup, SideNavigationItem, SideNavigationSubItem } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-icons/dist/home.js';
 import type { Module } from '../content/content';
-import { useActiveSection, useDone } from '../state/store';
+import { useActiveSection } from '../state/store';
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
@@ -16,9 +16,7 @@ export default function ModuleNav({ module: c, lessonId, onSelect, slot }: {
   onSelect: (route: string | undefined) => void;
   slot?: string;
 }) {
-  const done = useDone();
   const active = useActiveSection();
-  const read = c.lessons.filter(l => done.has(l.id)).length;
 
   return (
     <SideNavigation
@@ -29,12 +27,6 @@ export default function ModuleNav({ module: c, lessonId, onSelect, slot }: {
         <div className="snav-head">
           <span className="eyebrow">Módulo {c.label}</span>
           <span className="snav-title">{c.title}</span>
-          <ProgressIndicator
-            value={c.lessons.length ? (read / c.lessons.length) * 100 : 0}
-            displayValue={`${read} de ${c.lessons.length} lidas`}
-            valueState={read === c.lessons.length ? 'Positive' : 'None'}
-            accessibleName={`${read} de ${c.lessons.length} lições lidas`}
-          />
         </div>
       }
       fixedItems={<SideNavigationItem text="Todos os módulos" icon="home" data-route="inicio" />}
@@ -52,7 +44,6 @@ export default function ModuleNav({ module: c, lessonId, onSelect, slot }: {
               data-route={l.id}
               expanded={current}
               selected={current && !active}
-              tag={done.has(l.id) ? <Tag design="Set2" colorScheme="8" size="S" hideStateIcon title="Lida">✓</Tag> : undefined}
             >
               {l.sections.map(s => (
                 <SideNavigationSubItem

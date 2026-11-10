@@ -1,6 +1,6 @@
 ---
-titulo: Análise, testes e documentação
-subtitulo: ATC, ABAP Unit, profiling, SQL trace e ABAP Doc.
+titulo: Análise e testes
+subtitulo: ATC, ABAP Unit, profiling e SQL trace.
 sap_learning: "Intermediate ABAP Programming · unidade 1 + 9"
 duracao: "3 h 54 min"
 icone: inspection
@@ -8,8 +8,8 @@ objetivos:
   - Rodar o ATC e interpretar prioridades
   - Escrever uma classe de teste
   - Rodar testes ABAP Unit
-  - Documentar com ABAP Doc
-palavras_chave: atc abap unit for testing setup assert_equals profiler sql trace abap doc
+  - Medir com o profiler e o SQL trace
+palavras_chave: atc abap unit for testing setup assert_equals profiler sql trace
 ---
 
 ## Análise estática com o ATC {ancora="ATC" icone="inspection"}
@@ -99,22 +99,9 @@ Ative pela aplicação **ABAP Trace Requests** ou pela transação ST05 em siste
 :::
 ::::
 
-## Documentando com ABAP Doc {ancora="ABAP Doc" icone="document-text"}
-
-Comentários que começam com `"!` logo antes de uma declaração viram documentação: aparecem no **Element Info** (:kbd[F2]) para quem usa sua classe. Use `@parameter` e `@raising` para descrever a assinatura.
-
-```abap title="ABAP Doc"
-"! <p class="shorttext synchronized">Calcula preço com desconto</p>
-"! @parameter i_price   | Preço original
-"! @parameter i_percent | Desconto entre 0 e 100
-"! @parameter r_price   | Preço final
-"! @raising cx_abap_invalid_value | Percentual fora da faixa
-METHODS apply_discount
-  IMPORTING i_price        TYPE /dmo/total_price
-            i_percent      TYPE i
-  RETURNING VALUE(r_price) TYPE /dmo/total_price
-  RAISING   cx_abap_invalid_value.
-```
+:::nota
+A documentação de classes e métodos com ABAP Doc está em [Comentários e documentação](#comentarios-e-documentacao).
+:::
 
 :::quiz
 ### Qual adição marca uma classe local como classe de teste?
@@ -135,14 +122,14 @@ METHODS apply_discount
 
 > setup roda antes de cada teste; class_setup roda uma vez por classe.
 
-### Como começa um comentário ABAP Doc?
+### No SQL trace, o que indica um `SELECT` dentro de loop?
 
-- [ ] `*!`
-- [x] `"!`
-- [ ] `//!`
-- [ ] `@doc`
+- [ ] Um comando com duração muito alta
+- [x] O mesmo comando repetido muitas vezes
+- [ ] Um comando sem `WHERE`
+- [ ] Um `COMMIT WORK` entre os comandos
 
-> ABAP Doc usa "! logo antes da declaração documentada.
+> Comandos idênticos em sequência, cada um lendo poucas linhas, são a assinatura do SELECT em loop.
 :::
 
 :::documentacao

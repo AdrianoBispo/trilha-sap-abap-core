@@ -1,17 +1,18 @@
 ---
-selo: Acquiring Core ABAP Skills · ABAP Cloud
-titulo: Aprenda ABAP do Hello World ao RAP
-resumo: Um guia de estudo em português que segue a trilha oficial da SAP Learning em 22 lições, com código comentado, laboratórios interativos e quizzes. Cada lição aponta para a documentação ABAP oficial.
+selo: ABAP do clássico à nuvem
+titulo: Aprenda ABAP do servidor de aplicação ao RAP
+resumo: "Um guia de estudo em português com {licoes} lições em {modulos} módulos: como o sistema funciona, a linguagem, modularização, jobs, CDS, RAP, integração, enhancements e tratamento de erros. Código comentado, {laboratorios} laboratórios interativos e quizzes, com links para a documentação oficial."
 ilustracao: inicio.svg
 ---
 
 <!--
   Página inicial.
   - O cabeçalho (selo, título, resumo e ilustração) vem do bloco acima.
+    No resumo, {licoes}, {modulos} e {laboratorios} são trocados pelas quantidades atuais.
   - ::modulos e ::mapa-da-trilha são gerados automaticamente a partir de docs/modulos/.
 -->
 
-## Percurso de aprendizagem {icone="learning-assistant"}
+## Módulos {icone="learning-assistant"}
 
 ::modulos
 
@@ -25,23 +26,23 @@ ilustracao: inicio.svg
 :::cartao{etiqueta="Iniciante" tipo="info"}
 ### Nunca programou em ABAP
 
-Siga o Curso 1 em ordem. Faça os laboratórios de cada lição antes do quiz.
+Siga os módulos em ordem. O módulo 01 explica onde o código roda antes de você escrever a primeira classe.
 
-[Primeiros passos](#primeiros-passos)
+[A linguagem ABAP](#linguagem-abap)
 :::
 
 :::cartao{etiqueta="ABAP clássico" tipo="c5"}
 ### Já conhece ABAP on-premise
 
-Revise o que muda no ABAP Cloud e vá direto para EML, RAP e CDS.
+Veja o que mudou do report e do módulo de função até o ABAP Cloud, e siga para CDS e RAP.
 
-[Business objects e EML](#business-objects)
+[Do ABAP clássico à nuvem](#evolucao-do-abap)
 :::
 
 :::cartao{etiqueta="Certificação" tipo="c7"}
 ### Preparando o exame
 
-Use o Curso 2 para aprofundar e treine com o simulado: nota mínima de 65%, como na prova real.
+Revise os módulos 02, 05 e 06 e treine com o simulado: nota mínima de 65%, como na prova real.
 
 [Simulado de certificação](#simulado)
 :::
@@ -52,8 +53,9 @@ Use o Curso 2 para aprofundar e treine com o simulado: nota mínima de 65%, como
 ::::::colunas{n="2"}
 ::::cartao
 :::checklist
-- Cada lição corresponde a uma unidade da trilha *Acquiring Core ABAP Skills*, com a duração estimada pela SAP Learning.
-- Os blocos de código têm botão de copiar e seguem a sintaxe do ABAP Cloud, prontos para colar no ADT.
+- Os módulos seguem uma ordem de estudo: do funcionamento do sistema à linguagem, e daí a dados, RAP, integração e extensões.
+- As lições derivadas da trilha *Acquiring Core ABAP Skills* indicam, no fim, a unidade correspondente na SAP Learning.
+- Os blocos de código têm botão de copiar. Exemplos de ABAP clássico estão marcados como Standard ABAP; os demais seguem a sintaxe do ABAP Cloud.
 - Laboratórios simulam o comportamento do ABAP no navegador. Eles ajudam a prever o resultado; confirme sempre no sistema.
 - Marque a lição como concluída. O progresso fica salvo neste navegador.
 :::
@@ -63,8 +65,9 @@ Use o Curso 2 para aprofundar e treine com o simulado: nota mínima de 65%, como
 ### Fontes
 
 :::links
-- [SAP Learning: Acquiring Core ABAP Skills](https://learning.sap.com/learning-journeys/acquire-core-abap-skills)
+- [ABAP Cloud (SAP Help Portal)](https://help.sap.com/docs/abap-cloud?locale=en-US)
 - [ABAP Keyword Documentation (ABAP Cloud)](https://help.sap.com/doc/abapdocu_cp_index_htm/CLOUD/en-US/index.htm)
+- [SAP Learning: Acquiring Core ABAP Skills](https://learning.sap.com/learning-journeys/acquire-core-abap-skills)
 - [ABAP cheat sheets (SAP-samples)](https://github.com/SAP-samples/abap-cheat-sheets)
 - [Almanaque ABAP: inspiração de estrutura](https://bmoreiraribeiro.github.io/ABAP/)
 :::

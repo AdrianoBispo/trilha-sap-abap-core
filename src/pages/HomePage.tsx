@@ -8,6 +8,7 @@ import '@ui5/webcomponents-icons/dist/circle-task.js';
 import { figure, HOME, LESSONS, MODULES } from '../content/content';
 import { Blocks, Inline, MdExtras } from '../render/Markdown';
 import { SectionTitle } from '../components/Parts';
+import { LABS } from '../labs';
 import { navigate, useDone } from '../state/store';
 import { accent } from './common';
 
@@ -82,6 +83,9 @@ export default function HomePage() {
   const nextLesson = LESSONS.find(l => !done.has(l.id));
   const m = HOME.meta;
   const art = m.ilustracao ? figure(m.ilustracao) : undefined;
+  // O resumo pode citar as quantidades atuais: {licoes}, {modulos} e {laboratorios}.
+  const counts: Record<string, number> = { licoes: LESSONS.length, modulos: MODULES.length, laboratorios: Object.keys(LABS).length };
+  const lead = m.resumo?.replace(/\{(\w+)\}/g, (all, k: string) => (k in counts ? String(counts[k]) : all));
 
   return (
     <div className="page page-scroll">
@@ -90,7 +94,7 @@ export default function HomePage() {
           <div className="hero-text">
             {m.selo && <Tag design="Information" hideStateIcon className="hero-eyebrow">{m.selo}</Tag>}
             <Title level="H1" size="H1" wrappingType="Normal" className="hero-title">{m.titulo}</Title>
-            {m.resumo && <Text className="hero-lead">{m.resumo}</Text>}
+            {lead && <Text className="hero-lead">{lead}</Text>}
             <div className="hero-actions">
               <Button design="Emphasized" icon="play" onClick={() => navigate(nextLesson ? nextLesson.id : 'simulado')}>
                 {done.size ? `Continuar: ${nextLesson ? nextLesson.title : 'simulado'}` : 'Começar pela primeira lição'}

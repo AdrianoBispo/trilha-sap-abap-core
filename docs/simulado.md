@@ -1,6 +1,6 @@
 ---
 titulo: Simulado de certificação
-subtitulo: 15 questões sorteadas das 22 lições. Como no exame SAP real, a nota mínima é 65%. Você revisa as respostas no final.
+subtitulo: 15 questões sorteadas dos quizzes de todas as lições. Como no exame SAP real, a nota mínima é 65%. Você revisa as respostas no final.
 icone: education
 cor: 5
 questoes: 15

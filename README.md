@@ -2,7 +2,7 @@
 
 Site de estudo de SAP ABAP em português, com 48 lições em 10 módulos: do funcionamento do servidor de aplicação ao RAP, passando por modularização, jobs, CDS, integração, enhancements e tratamento de erros. Parte das lições deriva da jornada [**Acquiring Core ABAP Skills**](https://learning.sap.com/learning-journeys/acquire-core-abap-skills) da SAP Learning. Feito com **Vite + React + TypeScript** e a biblioteca [**UI5 Web Components**](https://ui5.github.io/webcomponents/) da SAP, com o visual SAP Horizon nos temas claro (Morning Horizon) e escuro (Evening Horizon).
 
-Cada lição traz objetivos, explicação, código ABAP/CDS comentado, ilustrações, laboratórios interativos, um quiz e links para a documentação oficial. Há também uma referência rápida de sintaxe com glossário e um simulado de certificação com 15 questões e nota mínima de 65%.
+O site é organizado como um blog de documentação: cada módulo tem uma página própria (`#abap-overview`, `#elementos-fundamentais`…) com as lições em ordem, e cada lição é um artigo com objetivos, explicação, código ABAP/CDS comentado, ilustrações, laboratórios interativos e links para a documentação oficial. Na página do módulo e nas lições dele, um índice lateral lista as lições e as seções de cada uma, destacando a seção visível. Há também uma referência rápida de sintaxe com glossário.
 
 ## Conteúdo
 
@@ -32,7 +32,7 @@ npm run build     # verificação de tipos + build estático em dist/
 npm run preview   # serve o build
 ```
 
-O build gera um site estático (rotas por `#hash`), que pode ser publicado em qualquer hospedagem estática. O `vercel.json` já traz a configuração para a Vercel. O progresso das lições e o tema escolhido ficam no `localStorage` do navegador.
+O build gera um site estático (rotas por `#hash`: `#inicio`, `#referencia`, `#<módulo>`, `#<lição>` e `#<lição>/<seção>`), que pode ser publicado em qualquer hospedagem estática. O `vercel.json` já traz a configuração para a Vercel. O progresso das lições e o tema escolhido ficam no `localStorage` do navegador.
 
 ## Editar o conteúdo
 
@@ -40,7 +40,7 @@ O build gera um site estático (rotas por `#hash`), que pode ser publicado em qu
 
 ```
 docs/
-├── inicio.md, referencia.md, simulado.md
+├── inicio.md, referencia.md
 ├── figuras/*.svg
 ├── arquitetura/*.drawio
 └── modulos/<n>-<módulo>/_modulo.md e NN-<lição>.md
@@ -56,11 +56,11 @@ A pasta [`docs/arquitetura/`](docs/arquitetura/) guarda três diagramas editáve
 | :--- | :--- |
 | `vite-plugin-docs.ts` | Converte cada `.md` de `docs/` em árvore mdast no build. O navegador não carrega o parser. |
 | `vite-plugin-doc-icons.ts` | Importa só os ícones SAP citados nos Markdown |
-| `src/content/` | Leitura dos documentos: módulos, lições, quizzes, seções |
+| `src/content/` | Leitura dos documentos: módulos, lições, seções |
 | `src/render/Markdown.tsx` | Renderiza o Markdown com componentes UI5 (Card, MessageStrip, Table, Tag, Link…) |
-| `src/pages/` | Início, lição (ObjectPage), referência (ObjectPage) e simulado (DynamicPage) |
+| `src/pages/` | Início, página do módulo, lição e referência, no formato de artigo |
 | `src/labs/` | Os 22 laboratórios interativos |
-| `src/components/` | Bloco de código com realce ABAP/CDS, quiz, tabela UI5 |
+| `src/components/` | Índice lateral do módulo, cabeçalho de artigo, bloco de código com realce ABAP/CDS, tabela UI5 |
 | `src/state/store.ts` | Rota, progresso, tema e toast |
 | `src/styles/` | Fontes 72 locais, paleta das ilustrações e layout. Todas as cores vêm dos parâmetros de tema `--sap…` do Horizon. |
 

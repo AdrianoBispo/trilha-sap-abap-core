@@ -1,16 +1,15 @@
 # Como editar o conteúdo
 
-Todo o texto do site está nesta pasta, em Markdown. Não é preciso mexer no código para corrigir uma explicação, trocar um exemplo, adicionar uma questão ou criar uma lição. Com `npm run dev` rodando, a página recarrega sozinha a cada arquivo salvo.
+Todo o texto do site está nesta pasta, em Markdown. Não é preciso mexer no código para corrigir uma explicação, trocar um exemplo ou criar uma lição. Com `npm run dev` rodando, a página recarrega sozinha a cada arquivo salvo.
 
 ```
 docs/
 ├── inicio.md          página inicial
 ├── referencia.md      referência rápida (tabela de sintaxe e glossário)
-├── simulado.md        textos do simulado
 ├── figuras/           ilustrações SVG usadas nas lições
 ├── arquitetura/       diagramas draw.io (fonte editável; não entram no site)
 └── modulos/
-    └── 1-abap-overview/
+    └── 1-abap-overview/          módulo (sem o número, vira a URL: #abap-overview)
         ├── _modulo.md              dados do módulo
         ├── 01-linguagem-abap.md    lição (o nome vira a URL: #linguagem-abap)
         └── …
@@ -98,24 +97,6 @@ Para colocar um bloco dentro de outro, o bloco de fora precisa de mais `:` que o
 ::::
 ```
 
-## Quiz
-
-No fim da lição, dentro de `:::quiz`, cada `###` é uma pergunta. Marque a alternativa certa com `[x]` e escreva a explicação em uma citação (`>`):
-
-```md
-:::quiz
-### Qual atalho ativa o objeto no ADT?
-
-- [ ] :kbd[F8]
-- [x] :kbd[Ctrl+F3]
-- [ ] :kbd[Ctrl+1]
-
-> Ctrl+F3 ativa. F8 abre o Data Preview.
-:::
-```
-
-O simulado sorteia suas questões de todos os quizzes. Uma questão nova entra no simulado automaticamente.
-
 ## Documentação oficial
 
 Os links do fim da lição ficam em `:::documentacao`, como uma lista de links. Se o cabeçalho tiver `sap_learning`, o link da unidade na SAP Learning é acrescentado automaticamente.
@@ -132,7 +113,7 @@ Os nomes vêm da biblioteca de ícones SAP: [ui5.github.io/webcomponents/icons](
 
 ## Nova lição ou novo módulo
 
-- **Lição:** crie `NN-endereco.md` na pasta do módulo, com o cabeçalho, as seções, o `:::quiz` e o `:::documentacao`.
+- **Lição:** crie `NN-endereco.md` na pasta do módulo, com o cabeçalho, as seções e o `:::documentacao`.
 - **Módulo:** crie uma pasta `N-nome-do-modulo/` com um `_modulo.md` contendo `numero`, `titulo`, `icone` e `cor` (1 a 10). O texto abaixo do cabeçalho é a descrição do módulo. A ordem dos módulos vem do campo `numero`, não do nome da pasta.
 - **Mover uma lição:** mova o arquivo para a pasta do outro módulo e ajuste o número. Os links e o progresso salvo continuam valendo.
 - **Laboratório:** é a única parte que exige código. Crie o componente em `src/labs/` e registre-o em `src/labs/index.ts`.

@@ -17,7 +17,7 @@ import type { AvatarColorScheme } from './common';
 export default function LessonPage({ lesson: l }: { lesson: Lesson }) {
   const done = useDone();
   const isDone = done.has(l.id);
-  const c = l.course;
+  const c = l.module;
   const prev = LESSONS[l.idx - 1];
   const next = LESSONS[l.idx + 1];
 
@@ -39,7 +39,7 @@ export default function LessonPage({ lesson: l }: { lesson: Lesson }) {
           breadcrumbs={
             <Breadcrumbs onItemClick={e => { const h = (e.detail.item as HTMLElement).getAttribute('href'); if (h) { e.preventDefault(); navigate(h.slice(1)); } }}>
               <BreadcrumbsItem href="#inicio">Início</BreadcrumbsItem>
-              <BreadcrumbsItem href={`#${c.lessons[0].id}`}>Curso {c.n} · {c.title}</BreadcrumbsItem>
+              <BreadcrumbsItem href={`#${c.lessons[0].id}`}>Módulo {c.label} · {c.title}</BreadcrumbsItem>
               <BreadcrumbsItem>{l.title}</BreadcrumbsItem>
             </Breadcrumbs>
           }
@@ -53,7 +53,8 @@ export default function LessonPage({ lesson: l }: { lesson: Lesson }) {
       headerArea={
         <ObjectPageHeader>
           <div className="attrs">
-            <div className="attr"><Label showColon={false}>Unidade SAP Learning</Label><Text>{c.en} · {l.unit}</Text></div>
+            <div className="attr"><Label showColon={false}>Módulo</Label><Text>{c.label} · {c.title}</Text></div>
+            <div className="attr"><Label showColon={false}>Lição</Label><Text>{l.num} de {c.lessons.length}</Text></div>
             <div className="attr"><Label showColon={false}>Duração estimada</Label><Text>{l.dur}</Text></div>
             <div className="attr">
               <Label showColon={false}>Status</Label>
@@ -91,7 +92,7 @@ export default function LessonPage({ lesson: l }: { lesson: Lesson }) {
       <ObjectPageSection key="s-documentacao" id="s-documentacao" titleText="Documentação" hideTitleText>
         <div className="sec">
           <SectionTitle icon="course-book">Documentação oficial</SectionTitle>
-          <LinkList links={[...l.docs, { title: `SAP Learning: ${c.en}, unidade ${l.unit}`, url: LEARNING_JOURNEY }]} />
+          <LinkList links={l.sapLearning ? [...l.docs, { title: `SAP Learning: ${l.sapLearning}`, url: LEARNING_JOURNEY }] : l.docs} />
           <Pager
             prev={prev ? { id: prev.id, title: prev.title, label: 'Anterior' } : { id: 'inicio', title: 'Início', label: 'Voltar' }}
             next={next ? { id: next.id, title: next.title, label: 'Próxima' } : { id: 'simulado', title: 'Simulado de certificação', label: 'Próximo' }}

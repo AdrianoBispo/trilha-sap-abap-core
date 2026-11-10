@@ -5,17 +5,17 @@ import '@ui5/webcomponents-icons/dist/play.js';
 import '@ui5/webcomponents-icons/dist/education.js';
 import '@ui5/webcomponents-icons/dist/accept.js';
 import '@ui5/webcomponents-icons/dist/circle-task.js';
-import { COURSES, figure, HOME, LESSONS } from '../content/content';
+import { figure, HOME, LESSONS, MODULES } from '../content/content';
 import { Blocks, Inline, MdExtras } from '../render/Markdown';
 import { SectionTitle } from '../components/Parts';
 import { navigate, useDone } from '../state/store';
 import { accent } from './common';
 
-function CourseTiles() {
+function ModuleTiles() {
   const done = useDone();
   return (
     <div className="tiles">
-      {COURSES.map(c => {
+      {MODULES.map(c => {
         const d = c.lessons.filter(l => done.has(l.id)).length;
         return (
           <Card
@@ -25,8 +25,8 @@ function CourseTiles() {
               <CardHeader
                 interactive
                 titleText={c.title}
-                subtitleText={c.en}
-                additionalText={`Curso ${c.n}`}
+                subtitleText={`Módulo ${c.label}`}
+                additionalText={`${c.lessons.length} lições`}
                 avatar={<Avatar icon={c.icon} colorScheme={accent(c.color)} shape="Square" size="S" />}
                 onClick={() => c.lessons[0] && navigate(c.lessons[0].id)}
               />
@@ -47,14 +47,14 @@ function TrailMap() {
   const done = useDone();
   return (
     <div className="md-cols md-cols-3">
-      {COURSES.map(c => (
+      {MODULES.map(c => (
         <Card
           key={c.id}
           className="md-card"
-          header={<CardHeader titleText={c.title} subtitleText={`Curso ${c.n}`} avatar={<Avatar icon={c.icon} colorScheme={accent(c.color)} shape="Square" size="XS" />} />}
+          header={<CardHeader titleText={c.title} subtitleText={`Módulo ${c.label}`} avatar={<Avatar icon={c.icon} colorScheme={accent(c.color)} shape="Square" size="XS" />} />}
         >
           <List
-            accessibleName={`Lições do curso ${c.n}`}
+            accessibleName={`Lições do módulo ${c.label}`}
             separators="Inner"
             onItemClick={e => { const id = (e.detail.item as HTMLElement).dataset.id; if (id) navigate(id); }}
           >
@@ -64,7 +64,7 @@ function TrailMap() {
                 data-id={l.id}
                 type="Navigation"
                 icon={done.has(l.id) ? 'accept' : 'circle-task'}
-                description={`Unidade ${l.unit} · ${l.dur}`}
+                description={l.dur}
                 highlight={done.has(l.id) ? 'Positive' : 'None'}
               >
                 {l.title}
@@ -102,7 +102,7 @@ export default function HomePage() {
         </div>
       </section>
       <div className="wrap body">
-        <MdExtras.Provider value={{ cursos: () => <CourseTiles />, 'mapa-da-trilha': () => <TrailMap /> }}>
+        <MdExtras.Provider value={{ modulos: () => <ModuleTiles />, 'mapa-da-trilha': () => <TrailMap /> }}>
           {HOME.sections.map(s => (
             <section className="sec" key={s.id} id={s.id}>
               {s.title.length > 0 && <SectionTitle icon={s.icon}><Inline nodes={s.title} /></SectionTitle>}

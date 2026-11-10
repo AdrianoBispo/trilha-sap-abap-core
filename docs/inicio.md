@@ -8,12 +8,12 @@ ilustracao: inicio.svg
 <!--
   Página inicial.
   - O cabeçalho (selo, título, resumo e ilustração) vem do bloco acima.
-  - ::cursos e ::mapa-da-trilha são gerados automaticamente a partir de docs/cursos/.
+  - ::modulos e ::mapa-da-trilha são gerados automaticamente a partir de docs/modulos/.
 -->
 
 ## Percurso de aprendizagem {icone="learning-assistant"}
 
-::cursos
+::modulos
 
 ## Mapa da trilha {icone="tree"}
 

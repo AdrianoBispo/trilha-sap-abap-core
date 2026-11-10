@@ -12,13 +12,15 @@ const parseDoc = <F,>(doc: ParsedDoc | undefined): { meta: F; nodes: RootContent
   doc ? (structuredClone(doc) as { meta: F; nodes: RootContent[] }) : { meta: {} as F, nodes: [] };
 const svgs = import.meta.glob('/docs/figuras/*.svg', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
 
+/** Trilha da SAP Learning que deu origem a parte das lições (campo `sap_learning` do cabeçalho). */
 export const LEARNING_JOURNEY = 'https://learning.sap.com/learning-journeys/acquire-core-abap-skills';
 
-export interface Course {
+export interface Module {
   n: number;
+  /** Número com dois dígitos, como aparece na navegação: "01". */
+  label: string;
   id: string;
   title: string;
-  en: string;
   icon: string;
   color: number;
   desc: string;
@@ -38,10 +40,11 @@ export interface Lesson {
   id: string;
   idx: number;
   num: number;
-  course: Course;
+  module: Module;
   title: string;
   sub: string;
-  unit: string;
+  /** Unidade correspondente na SAP Learning, quando a lição deriva de uma. */
+  sapLearning: string;
   dur: string;
   icon: string;
   objectives: string[];
@@ -52,9 +55,9 @@ export interface Lesson {
   file: string;
 }
 
-interface CourseMeta { numero: number; titulo: string; titulo_en: string; icone?: string; cor?: number }
+interface ModuleMeta { numero: number; titulo: string; icone?: string; cor?: number }
 interface LessonMeta {
-  titulo: string; subtitulo?: string; unidade?: string | number; duracao?: string; icone?: string;
+  titulo: string; subtitulo?: string; sap_learning?: string; duracao?: string; icone?: string;
   objetivos?: string[]; palavras_chave?: string;
 }
 
@@ -84,49 +87,50 @@ function parseQuiz(blocks: RootContent[], lessonId: string, file: string): QuizQ
 }
 
 function build() {
-  const courses: Course[] = [];
-  const byFolder = new Map<string, Course>();
+  const modules: Module[] = [];
+  const byFolder = new Map<string, Module>();
   for (const [file, src] of Object.entries(files)) {
-    const m = file.match(/^\/docs\/cursos\/([^/]+)\/_curso\.md$/);
+    const m = file.match(/^\/docs\/modulos\/([^/]+)\/_modulo\.md$/);
     if (!m) continue;
-    const { meta, nodes } = parseDoc<CourseMeta>(src);
-    const c: Course = {
-      n: Number(meta.numero) || courses.length + 1,
+    const { meta, nodes } = parseDoc<ModuleMeta>(src);
+    const n = Number(meta.numero) || modules.length + 1;
+    const c: Module = {
+      n,
+      label: String(n).padStart(2, '0'),
       id: m[1],
       title: meta.titulo,
-      en: meta.titulo_en ?? '',
       icon: meta.icone ?? 'course-book',
       color: Number(meta.cor) || 6,
       desc: toText(nodes).trim(),
       lessons: [],
     };
-    courses.push(c);
+    modules.push(c);
     byFolder.set(m[1], c);
   }
-  courses.sort((a, b) => a.n - b.n);
+  modules.sort((a, b) => a.n - b.n);
 
   const lessonFiles = Object.keys(files)
-    .filter(f => /^\/docs\/cursos\/[^/]+\/\d+-[^/]+\.md$/.test(f))
+    .filter(f => /^\/docs\/modulos\/[^/]+\/\d+-[^/]+\.md$/.test(f))
     .sort();
   for (const file of lessonFiles) {
-    const [, folder, name] = file.match(/^\/docs\/cursos\/([^/]+)\/(\d+-[^/]+)\.md$/)!;
-    const course = byFolder.get(folder);
-    if (!course) {
-      console.warn(`[docs] ${file}: pasta sem _curso.md.`);
+    const [, folder, name] = file.match(/^\/docs\/modulos\/([^/]+)\/(\d+-[^/]+)\.md$/)!;
+    const mod = byFolder.get(folder);
+    if (!mod) {
+      console.warn(`[docs] ${file}: pasta sem _modulo.md.`);
       continue;
     }
     const { meta, nodes } = parseDoc<LessonMeta>(files[file]);
     const id = name.replace(/^\d+-/, '');
     const quiz = takeContainers(nodes, 'quiz').flatMap(b => parseQuiz(b, id, file));
     const docs = takeContainers(nodes, 'documentacao').flatMap(readLinks);
-    course.lessons.push({
+    mod.lessons.push({
       id,
       idx: 0,
-      num: course.lessons.length + 1,
-      course,
+      num: mod.lessons.length + 1,
+      module: mod,
       title: meta.titulo ?? id,
       sub: meta.subtitulo ?? '',
-      unit: String(meta.unidade ?? ''),
+      sapLearning: String(meta.sap_learning ?? ''),
       dur: meta.duracao ?? '',
       icon: meta.icone ?? 'document-text',
       objectives: meta.objetivos ?? [],
@@ -137,12 +141,12 @@ function build() {
       file,
     });
   }
-  const lessons = courses.flatMap(c => c.lessons);
+  const lessons = modules.flatMap(c => c.lessons);
   lessons.forEach((l, i) => (l.idx = i));
-  return { courses, lessons };
+  return { modules, lessons };
 }
 
-export const { courses: COURSES, lessons: LESSONS } = build();
+export const { modules: MODULES, lessons: LESSONS } = build();
 export const lessonById = (id: string) => LESSONS.find(l => l.id === id);
 
 /* ---------- Páginas avulsas ---------- */

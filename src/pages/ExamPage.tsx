@@ -7,7 +7,7 @@ import '@ui5/webcomponents-icons/dist/refresh.js';
 import '@ui5/webcomponents-icons/dist/nav-back.js';
 import '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
 import '@ui5/webcomponents-icons/dist/accept.js';
-import { COURSES, EXAM, LESSONS, lessonById, type QuizQuestion } from '../content/content';
+import { EXAM, MODULES, LESSONS, lessonById, type QuizQuestion } from '../content/content';
 import { QuizOptions } from '../components/Quiz';
 import { Blocks, Inline } from '../render/Markdown';
 import { navigate } from '../state/store';
@@ -110,8 +110,8 @@ function Result({ sim, min, onRestart }: { sim: Sim; min: number; onRestart: () 
   const right = sim.qs.filter((q, i) => sim.ans[i] === q.answer).length;
   const pct = Math.round((right / sim.qs.length) * 100);
   const ok = pct >= min;
-  const byCourse = COURSES.map(c => {
-    const idx = sim.qs.map((q, i) => [q, i] as const).filter(([q]) => lessonById(q.lessonId)?.course === c);
+  const byModule = MODULES.map(c => {
+    const idx = sim.qs.map((q, i) => [q, i] as const).filter(([q]) => lessonById(q.lessonId)?.module === c);
     return { c, n: idx.length, r: idx.filter(([q, i]) => sim.ans[i] === q.answer).length };
   });
   const msg = EXAM.containers[ok ? 'aprovado' : 'reprovado'];
@@ -125,10 +125,10 @@ function Result({ sim, min, onRestart }: { sim: Sim; min: number; onRestart: () 
             <div className="note">{right} de {sim.qs.length} corretas</div>
           </div>
           <Tag design={ok ? 'Positive' : 'Negative'} size="L">{ok ? 'Aprovado' : `Abaixo de ${min}%`}</Tag>
-          <div className="result-courses">
-            {byCourse.map(x => (
+          <div className="result-modules">
+            {byModule.filter(x => x.n > 0).map(x => (
               <div key={x.c.id}>
-                <div className="result-course-h"><span>Curso {x.c.n} · {x.c.title}</span><b>{x.r}/{x.n}</b></div>
+                <div className="result-module-h"><span>Módulo {x.c.label} · {x.c.title}</span><b>{x.r}/{x.n}</b></div>
                 <ProgressIndicator value={x.n ? (x.r / x.n) * 100 : 0} displayValue={`${x.r}/${x.n}`} valueState={x.n && x.r === x.n ? 'Positive' : 'None'} />
               </div>
             ))}

@@ -204,8 +204,8 @@ kbd {
 .score { font-size: 3rem; font-family: var(--sapFontBoldFamily); line-height: 1; }
 .score.ok { color: var(--sapPositiveTextColor); }
 .score.bad { color: var(--sapNegativeTextColor); }
-.result-courses { flex: 1 1 18rem; display: flex; flex-direction: column; gap: 0.5rem; }
-.result-course-h { display: flex; justify-content: space-between; font-size: var(--sapFontSmallSize); }
+.result-modules { flex: 1 1 18rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.result-module-h { display: flex; justify-content: space-between; font-size: var(--sapFontSmallSize); }
 
 /* ---------- Pager ---------- */
 .pager { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); margin-top: 1rem; }

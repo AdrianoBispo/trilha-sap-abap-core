@@ -102,6 +102,9 @@ export default function App() {
     if (innerWidth < 600) setMode('Collapsed');
   };
 
+  // Com sete módulos, só o módulo da lição aberta fica expandido (o primeiro, fora das lições).
+  const openModule = lesson ? lesson.module.id : MODULES[0]?.id;
+
   const total = LESSONS.length;
   const nDone = LESSONS.filter(l => done.has(l.id)).length;
 
@@ -156,7 +159,7 @@ export default function App() {
           >
             <SideNavigationItem text="Início" icon="home" data-route="inicio" selected={current === 'inicio'} />
             {MODULES.map(c => (
-              <SideNavigationGroup key={c.id} text={`Módulo ${c.label} · ${c.title}`} expanded>
+              <SideNavigationGroup key={c.id} text={`Módulo ${c.label} · ${c.title}`} expanded={openModule === c.id}>
                 {c.lessons.map(l => (
                   <SideNavigationItem
                     key={l.id}

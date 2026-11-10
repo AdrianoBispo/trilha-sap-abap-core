@@ -342,6 +342,11 @@ code.wrap-any { white-space: normal; overflow-wrap: anywhere; }
 .frow > * { min-width: 0; width: 100%; }
 .frow-head span { font-size: var(--sapFontSmallSize); color: var(--sapContent_LabelColor); }
 
+/* Simuladores do Function Builder e do Class Builder: linhas com colunas definidas pelo componente */
+.prow { display: grid; gap: 0.5rem; align-items: center; min-width: 44rem; }
+.prow > * { min-width: 0; width: 100%; }
+.prow > ui5-checkbox { width: auto; justify-self: start; }
+
 /* Gráfico */
 .svg-scroll { overflow-x: auto; }
 .chart { width: 100%; min-width: 30rem; height: auto; font-family: var(--sapFontFamily); }

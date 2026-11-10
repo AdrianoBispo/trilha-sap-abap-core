@@ -85,35 +85,6 @@ DATA(dates) = VALUE string_table(
 ```
 :::
 
-:::quiz
-### Qual tipo de tabela tem leitura pela chave completa em tempo constante?
-
-- [ ] `STANDARD`
-- [ ] `SORTED`
-- [x] `HASHED`
-- [ ] Nenhum
-
-> Tabelas hashed usam função hash; o tempo de leitura não depende do número de linhas.
-
-### O que acontece ao usar `itab[ chave ]` quando a linha não existe?
-
-- [ ] Retorna linha inicial
-- [ ] `sy-subrc = 4`
-- [x] Exceção `CX_SY_ITAB_LINE_NOT_FOUND`
-- [ ] Dump sempre, sem tratamento possível
-
-> Expressões de tabela lançam CX_SY_ITAB_LINE_NOT_FOUND, a menos que use OPTIONAL ou DEFAULT.
-
-### Inserir uma chave duplicada em uma `SORTED TABLE` com `UNIQUE KEY` via `INSERT … INTO TABLE` resulta em:
-
-- [ ] Duplicata inserida
-- [x] `sy-subrc = 4`, nada inserido
-- [ ] Ordenação perdida
-- [ ] Tabela limpa
-
-> Com chave única, INSERT recusa a duplicata e define sy-subrc = 4.
-:::
-
 :::documentacao
 - [LOOP AT itab](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abaploop_at_itab.htm)
 - [READ TABLE](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapread_table.htm)

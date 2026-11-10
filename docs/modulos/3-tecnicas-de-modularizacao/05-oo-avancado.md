@@ -70,35 +70,6 @@ ENDCLASS.
 ```
 :::
 
-:::quiz
-### Qual adição permite que uma subclasse substitua a implementação de um método herdado?
-
-- [ ] `FINAL`
-- [x] `REDEFINITION`
-- [ ] `ABSTRACT`
-- [ ] `DEFAULT`
-
-> METHODS m REDEFINITION na subclasse substitui a implementação da superclasse.
-
-### Um downcast inválido com `CAST` lança:
-
-- [x] `CX_SY_MOVE_CAST_ERROR`
-- [ ] `CX_SY_ZERODIVIDE`
-- [ ] `CX_ABAP_INVALID_VALUE`
-- [ ] Nada
-
-> Use IS INSTANCE OF antes do CAST para evitar CX_SY_MOVE_CAST_ERROR.
-
-### O que `CREATE PRIVATE` garante?
-
-- [ ] A classe não pode ter métodos públicos
-- [x] Só a própria classe cria instâncias
-- [ ] A classe é abstrata
-- [ ] A classe não tem construtor
-
-> Instâncias só podem ser criadas dentro da classe, como em factories e singletons.
-:::
-
 :::documentacao
 - [INTERFACE](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapinterface.htm)
 - [Cheat sheet: ABAP Object Orientation](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/04_ABAP_Object_Orientation.md)

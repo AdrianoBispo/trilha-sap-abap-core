@@ -69,35 +69,6 @@ DATA(x) = 7 / 2.                 " 4    (tipo deduzido: i)
 DATA(y) = CONV decfloat34( 7 ) / 2.  " 3.5
 ```
 
-:::quiz
-### Qual o resultado de atribuir o texto `'12.5'` a uma variável do tipo `i`?
-
-- [ ] 12
-- [x] 13
-- [ ] 12.5
-- [ ] Exceção
-
-> A conversão para i arredonda comercialmente: 12,5 vira 13.
-
-### Atribuir `'A1B2C3'` a uma variável `n LENGTH 6` resulta em:
-
-- [ ] `A1B2C3`
-- [x] `000123`
-- [ ] `123000`
-- [ ] Exceção
-
-> Para n, só os dígitos são passados, alinhados à direita e completados com zeros.
-
-### Qual operador lança exceção se a conversão perder informação?
-
-- [ ] `CONV`
-- [ ] `CAST`
-- [x] `EXACT`
-- [ ] `VALUE`
-
-> EXACT verifica perda (ex.: arredondamento) e lança exceção, ao contrário de CONV.
-:::
-
 :::documentacao
 - [Conversion Rules](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenconversion_rules.htm)
 - [Cheat sheet: Data Types and Data Objects](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/16_Data_Types_and_Objects.md)

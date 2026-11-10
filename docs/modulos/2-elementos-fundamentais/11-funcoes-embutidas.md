@@ -149,44 +149,6 @@ ENDIF.
 
 `line_exists( )` e `line_index( )` recebem uma expressão de tabela, mas **não** lançam exceção quando a linha não existe. São a forma segura de testar antes de ler. Para ler direto com um valor de reserva, use `VALUE #( itab[ … ] OPTIONAL )`.
 
-:::quiz
-### Qual função devolve um valor do tipo `abap_bool`?
-
-- [ ] `boolc( )`
-- [x] `xsdbool( )`
-- [ ] `contains( )`
-- [ ] `sign( )`
-
-> xsdbool devolve c de tamanho 1, compatível com abap_true e abap_false. boolc devolve string.
-
-### Quanto vale `floor( CONV decfloat34( '-2.75' ) )`?
-
-- [ ] -2
-- [x] -3
-- [ ] 2
-- [ ] -2.75
-
-> floor devolve o maior inteiro que não ultrapassa o argumento. Para negativos, isso é "mais para baixo".
-
-### O que `line_index( itab[ id = 99 ] )` devolve quando a linha não existe?
-
-- [ ] Lança `CX_SY_ITAB_LINE_NOT_FOUND`
-- [x] 0
-- [ ] -1
-- [ ] O número de linhas da tabela
-
-> Dentro de line_index e line_exists, a expressão de tabela não lança exceção.
-
-### Em que unidade `utclong_diff( )` devolve a diferença?
-
-- [ ] Dias
-- [ ] Minutos
-- [x] Segundos
-- [ ] Milissegundos
-
-> O resultado é um decfloat34 com a diferença em segundos, incluindo frações.
-:::
-
 :::documentacao
 - [ABAP Keyword Documentation: funções embutidas](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenbuilt_in_functions_overview.htm)
 - [Cheat sheet: Built-In Functions](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/24_Builtin_Functions.md)

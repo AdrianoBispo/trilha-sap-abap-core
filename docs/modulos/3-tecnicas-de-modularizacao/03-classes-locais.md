@@ -90,35 +90,6 @@ ENDTRY.
 ```
 :::::
 
-:::quiz
-### Como se chama um componente estático de uma classe a partir de fora?
-
-- [ ] `objeto->componente`
-- [x] `classe=>componente`
-- [ ] `classe-componente`
-- [ ] `classe~componente`
-
-> O seletor => acessa componentes estáticos; -> acessa componentes de instância via referência.
-
-### Quantos parâmetros `RETURNING` um método pode ter?
-
-- [ ] Nenhum
-- [x] Exatamente um
-- [ ] Até dez
-- [ ] Ilimitados
-
-> Um método funcional tem um único parâmetro RETURNING, sempre passado por valor.
-
-### O que acontece com um objeto quando nenhuma referência aponta mais para ele?
-
-- [ ] Continua até o fim da sessão
-- [ ] Gera um dump
-- [x] É removido pelo garbage collector
-- [ ] É salvo no banco
-
-> Objetos sem referências são recolhidos automaticamente pelo garbage collector.
-:::
-
 :::documentacao
 - [CLASS](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapclass.htm)
 - [METHODS](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapmethods.htm)

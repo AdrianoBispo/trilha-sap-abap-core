@@ -99,44 +99,6 @@ Dentro do work process, o contexto do usuário ocupa primeiro uma pequena **roll
 No **ABAP Cloud** não existem `EXPORT … TO MEMORY`, `SET PARAMETER` nem `SUBMIT`. Cada chamada OData é uma requisição independente, e o estado entre requisições fica no banco: nas tabelas ativas ou nas tabelas de rascunho (*draft*) do RAP.
 :::
 
-:::quiz
-### Qual componente decide que work process atende uma requisição?
-
-- [ ] Message Server
-- [ ] ICM
-- [x] Dispatcher
-- [ ] Gateway
-
-> O dispatcher mantém a fila e distribui as requisições aos work processes livres.
-
-### Qual área de memória é compartilhada por todas as janelas (sessões ABAP) de um mesmo usuário?
-
-- [ ] ABAP Memory
-- [x] SAP Memory
-- [ ] Memória da sessão interna
-- [ ] Heap
-
-> A SAP Memory pertence à sessão de usuário. A ABAP Memory vale só dentro de uma sequência de chamadas.
-
-### O que acontece quando um programa executa `SUBMIT zrel AND RETURN`?
-
-- [ ] Abre uma nova janela do SAP GUI
-- [x] Cria uma nova sessão interna e volta à anterior no fim
-- [ ] Cria um job em background
-- [ ] Encerra a sessão de usuário
-
-> O programa chamado ganha sua própria sessão interna, empilhada sobre a do chamador.
-
-### Por que um work process em modo PRIV é um problema?
-
-- [ ] Ele perde a conexão com o banco
-- [x] Ele fica reservado para um único usuário até a transação terminar
-- [ ] Ele não consegue ler a shared memory
-- [ ] Ele ignora autorizações
-
-> Com o contexto em heap, memória privada do processo, não há como trocar de usuário entre passos de diálogo.
-:::
-
 :::documentacao
 - [ABAP Keyword Documentation: veja os tópicos Program Execution e Memory Organization](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm)
 - [Cheat sheet: SAP LUW (sessões e passos de diálogo)](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/17_SAP_LUW.md)

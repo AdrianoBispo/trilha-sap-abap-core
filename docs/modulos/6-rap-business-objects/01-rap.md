@@ -79,35 +79,6 @@ etag master LocalLastChanged
 }
 ```
 
-:::quiz
-### Qual artefato define quais entidades um serviço OData expõe?
-
-- [ ] Service binding
-- [x] Service definition
-- [ ] Behavior definition
-- [ ] Metadata extension
-
-> A service definition lista as entidades expostas; o service binding define protocolo e tipo (UI, API).
-
-### Em um BO managed, quem implementa create, update e delete?
-
-- [ ] O desenvolvedor, em ABAP
-- [x] O framework RAP
-- [ ] O Fiori Elements
-- [ ] O ATC
-
-> No cenário managed o framework cuida da persistência padrão; você adiciona apenas lógica específica.
-
-### Qual elemento de comportamento verifica a consistência dos dados antes de salvar?
-
-- [ ] Determination
-- [ ] Action
-- [x] Validation
-- [ ] Feature control
-
-> Validations rodam no save e podem rejeitar dados inconsistentes.
-:::
-
 :::documentacao
 - [Cheat sheet: RAP Behavior Definition Language](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/36_RAP_Behavior_Definition_Language.md)
 - [Cheat sheet: CDS View Entities](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/15_CDS_View_Entities.md)

@@ -143,44 +143,6 @@ Em sistemas mais antigos, a consulta analítica é uma CDS view comum com a anot
 | Protocolo | OData | InA |
 | Camadas | Interface e projeção de consumo | Cubo, dimensões e consulta |
 
-:::quiz
-### O que torna um campo do cubo uma medida?
-
-- [ ] Ser numérico
-- [ ] Ser campo chave
-- [x] Ter a anotação `@Aggregation.default`
-- [ ] Ter a anotação `@Semantics.text`
-
-> A anotação declara que o campo se agrega e como. Sem ela, o campo é tratado como dimensão.
-
-### Por que o cubo não usa `GROUP BY`?
-
-- [ ] Porque CDS não permite agregação em cubos
-- [x] Porque a agregação é feita pelo mecanismo analítico, conforme as dimensões escolhidas
-- [ ] Porque os dados já estão agregados na tabela
-- [ ] Porque o `GROUP BY` fica na dimensão
-
-> Um agrupamento fixo impediria o usuário de navegar por outras combinações.
-
-### O que significa `transient` em `define transient view entity`?
-
-- [ ] A view é apagada a cada transporte
-- [ ] Os dados ficam em memória
-- [x] A view não gera objeto no banco e não pode ser lida com ABAP SQL
-- [ ] A view só existe em desenvolvimento
-
-> A projeção analítica é só uma descrição para o mecanismo analítico.
-
-### Que tipo de service binding expõe uma consulta analítica?
-
-- [ ] OData V2 - UI
-- [ ] OData V4 - Web API
-- [x] InA - UI
-- [ ] SQL - Web API
-
-> InA é o protocolo usado pelo SAP Analytics Cloud e pelas grades analíticas.
-:::
-
 :::documentacao
 - [ABAP Analytics (SAP Help Portal)](https://help.sap.com/docs/abap-cloud/abap-analytics/abap-analytics?locale=en-US)
 - [ABAP Data Models (SAP Help Portal)](https://help.sap.com/docs/abap-cloud/abap-data-models/abap-data-models?locale=en-US)

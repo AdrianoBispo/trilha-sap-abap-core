@@ -71,35 +71,6 @@ DATA travels TYPE /dmo/t_travel.
 | `abap.string( 0 )` | Texto longo | `string` |
 | `abap.clnt` | Mandante | `c LENGTH 3` |
 
-:::quiz
-### Onde ficam os rótulos de campo (curto, médio, longo)?
-
-- [ ] No domínio
-- [x] No elemento de dados
-- [ ] Na tabela
-- [ ] Na CDS view
-
-> O elemento de dados carrega o significado de negócio e os rótulos.
-
-### O que um domínio define?
-
-- [x] Tipo técnico, tamanho e valores fixos
-- [ ] Rótulos para a UI
-- [ ] Regras de autorização
-- [ ] A chave da tabela
-
-> O domínio descreve as propriedades técnicas e valores permitidos.
-
-### Qual tipo do Dictionary representa um valor monetário?
-
-- [ ] `abap.dec`
-- [x] `abap.curr`
-- [ ] `abap.cuky`
-- [ ] `abap.quan`
-
-> abap.curr guarda o valor; abap.cuky guarda o código da moeda referenciado por ele.
-:::
-
 :::documentacao
 - [Cheat sheet: ABAP Dictionary](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/26_ABAP_Dictionary.md)
 - [Cheat sheet: Data Types and Data Objects](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/16_Data_Types_and_Objects.md)

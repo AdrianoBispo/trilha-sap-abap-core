@@ -2,7 +2,7 @@
  * Carrega todo o conteúdo textual de docs/ (Vite import.meta.glob).
  * Nenhum texto das páginas fica no código: tudo vem dos arquivos Markdown.
  */
-import type { BlockContent, PhrasingContent, RootContent } from 'mdast';
+import type { RootContent } from 'mdast';
 import { readLinks, splitSections, takeContainers, toText, type LinkItem, type ParsedDoc, type Section } from './markdown';
 
 // Cada .md chega já convertido em { meta, nodes } pelo plugin vite-plugin-docs.ts.
@@ -19,21 +19,17 @@ export interface Module {
   n: number;
   /** Número com dois dígitos, como aparece na navegação: "01". */
   label: string;
+  /** Nome da pasta, ex.: "1-abap-overview". */
   id: string;
+  /** Endereço da página do módulo: o nome da pasta sem o número ("abap-overview" → #abap-overview). */
+  slug: string;
   title: string;
   icon: string;
   color: number;
   desc: string;
   lessons: Lesson[];
-}
-
-export interface QuizQuestion {
-  question: PhrasingContent[];
-  options: PhrasingContent[][];
-  optionsText: string[];
-  answer: number;
-  why: RootContent[];
-  lessonId: string;
+  /** Soma das durações das lições, em minutos. */
+  minutes: number;
 }
 
 export interface Lesson {
@@ -46,11 +42,12 @@ export interface Lesson {
   /** Unidade correspondente na SAP Learning, quando a lição deriva de uma. */
   sapLearning: string;
   dur: string;
+  /** Duração em minutos, lida de `duracao` ("1 h 25 min" → 85). */
+  minutes: number;
   icon: string;
   objectives: string[];
   keywords: string;
   sections: Section[];
-  quiz: QuizQuestion[];
   docs: LinkItem[];
   file: string;
 }
@@ -61,30 +58,17 @@ interface LessonMeta {
   objetivos?: string[]; palavras_chave?: string;
 }
 
-function parseQuiz(blocks: RootContent[], lessonId: string, file: string): QuizQuestion[] {
-  const qs: QuizQuestion[] = [];
-  let cur: QuizQuestion | null = null;
-  for (const n of blocks) {
-    if (n.type === 'heading') {
-      cur = { question: n.children, options: [], optionsText: [], answer: -1, why: [], lessonId };
-      qs.push(cur);
-    } else if (cur && n.type === 'list') {
-      n.children.forEach(li => {
-        const para = li.children.find(c => c.type === 'paragraph');
-        const inl = para && para.type === 'paragraph' ? para.children : [];
-        if (li.checked) cur!.answer = cur!.options.length;
-        cur!.options.push(inl);
-        cur!.optionsText.push(toText(inl).trim());
-      });
-    } else if (cur && n.type === 'blockquote') {
-      cur.why.push(...(n.children as BlockContent[]));
-    }
-  }
-  for (const q of qs) {
-    if (q.answer < 0) console.warn(`[docs] ${file}: a questão "${toText(q.question)}" não tem resposta marcada com [x].`);
-  }
-  return qs.filter(q => q.answer >= 0 && q.options.length > 1);
-}
+/** "1 h 25 min" → 85; "45 min" → 45. */
+const toMinutes = (d: string) => {
+  const h = d.match(/(\d+)\s*h/), m = d.match(/(\d+)\s*min/);
+  return (h ? Number(h[1]) * 60 : 0) + (m ? Number(m[1]) : 0);
+};
+
+/** 225 → "3 h 45 min". */
+export const formatMinutes = (n: number) => {
+  const h = Math.floor(n / 60), m = n % 60;
+  return h ? (m ? `${h} h ${String(m).padStart(2, '0')} min` : `${h} h`) : `${m} min`;
+};
 
 function build() {
   const modules: Module[] = [];
@@ -98,11 +82,13 @@ function build() {
       n,
       label: String(n).padStart(2, '0'),
       id: m[1],
+      slug: m[1].replace(/^\d+-/, ''),
       title: meta.titulo,
       icon: meta.icone ?? 'course-book',
       color: Number(meta.cor) || 6,
       desc: toText(nodes).trim(),
       lessons: [],
+      minutes: 0,
     };
     modules.push(c);
     byFolder.set(m[1], c);
@@ -121,7 +107,6 @@ function build() {
     }
     const { meta, nodes } = parseDoc<LessonMeta>(files[file]);
     const id = name.replace(/^\d+-/, '');
-    const quiz = takeContainers(nodes, 'quiz').flatMap(b => parseQuiz(b, id, file));
     const docs = takeContainers(nodes, 'documentacao').flatMap(readLinks);
     mod.lessons.push({
       id,
@@ -132,22 +117,30 @@ function build() {
       sub: meta.subtitulo ?? '',
       sapLearning: String(meta.sap_learning ?? ''),
       dur: meta.duracao ?? '',
+      minutes: toMinutes(meta.duracao ?? ''),
       icon: meta.icone ?? 'document-text',
       objectives: meta.objetivos ?? [],
       keywords: meta.palavras_chave ?? '',
       sections: splitSections(nodes),
-      quiz,
       docs,
       file,
     });
   }
   const lessons = modules.flatMap(c => c.lessons);
   lessons.forEach((l, i) => (l.idx = i));
+  modules.forEach(c => (c.minutes = c.lessons.reduce((t, l) => t + l.minutes, 0)));
+  // Módulos e lições dividem o mesmo espaço de endereços (#slug).
+  const taken = new Set([...RESERVED, ...lessons.map(l => l.id)]);
+  for (const c of modules) if (taken.has(c.slug)) console.warn(`[docs] O endereço do módulo "${c.slug}" coincide com o de uma lição ou página.`);
   return { modules, lessons };
 }
 
+/** Páginas avulsas: seus endereços não podem ser usados por módulos nem lições. */
+const RESERVED = ['inicio', 'referencia'];
+
 export const { modules: MODULES, lessons: LESSONS } = build();
 export const lessonById = (id: string) => LESSONS.find(l => l.id === id);
+export const moduleBySlug = (slug: string) => MODULES.find(c => c.slug === slug);
 
 /* ---------- Páginas avulsas ---------- */
 
@@ -169,11 +162,9 @@ function page<F>(name: string, containerNames: string[] = []): PageDoc<F> {
 
 export interface HomeMeta { selo?: string; titulo?: string; resumo?: string; ilustracao?: string }
 export interface RefMeta { titulo?: string; subtitulo?: string; icone?: string; cor?: number }
-export interface ExamMeta { titulo?: string; subtitulo?: string; icone?: string; cor?: number; questoes?: number; nota_minima?: number }
 
 export const HOME = page<HomeMeta>('inicio');
 export const REFERENCE = page<RefMeta>('referencia');
-export const EXAM = page<ExamMeta>('simulado', ['aprovado', 'reprovado']);
 
 /** SVG de docs/figuras pelo nome do arquivo. */
 export const figure = (name: string): string | undefined => svgs[`/docs/figuras/${name}`];

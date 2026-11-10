@@ -87,35 +87,6 @@ O compilador e o ATC bloqueiam o que não é liberado. Veja as APIs em *Released
 :::
 ::::
 
-:::quiz
-### Qual interface uma classe implementa para escrever no console do ADT com :kbd[F9]?
-
-- [x] `IF_OO_ADT_CLASSRUN`
-- [ ] `IF_SERIALIZABLE_OBJECT`
-- [ ] `IF_T100_MESSAGE`
-- [ ] `IF_ABAP_CONSOLE`
-
-> O método IF_OO_ADT_CLASSRUN~MAIN recebe o objeto out, usado para escrever no console.
-
-### O que caracteriza a versão de linguagem ABAP for Cloud Development?
-
-- [ ] Permite qualquer tabela do sistema
-- [x] Usa apenas APIs liberadas e sintaxe moderna
-- [ ] Só funciona no SAP GUI
-- [ ] É uma linguagem diferente do ABAP
-
-> É um subconjunto do ABAP restrito a objetos liberados, garantindo extensões seguras para upgrade.
-
-### Qual atalho ativa o objeto de desenvolvimento aberto no ADT?
-
-- [ ] :kbd[F8]
-- [x] :kbd[Ctrl+F3]
-- [ ] :kbd[Ctrl+1]
-- [ ] :kbd[Shift+F1]
-
-> Ctrl+F3 ativa. F8 abre o Data Preview, Ctrl+1 é quick fix e Shift+F1 formata.
-:::
-
 :::documentacao
 - [ABAP for Cloud Development (Keyword Documentation)](https://help.sap.com/doc/abapdocu_cp_index_htm/CLOUD/en-US/index.htm)
 - [Cheat sheet: ABAP for Cloud Development](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/19_ABAP_for_Cloud_Development.md)

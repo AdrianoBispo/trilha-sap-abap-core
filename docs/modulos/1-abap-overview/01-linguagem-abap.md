@@ -93,35 +93,6 @@ DATA(today_cloud) = cl_abap_context_info=>get_system_date( ).
 
 Quando não existe API liberada para o que você precisa em um sistema privado ou on-premise, a saída recomendada é um **wrapper**: uma classe em Standard ABAP que encapsula o objeto não liberado e que você mesmo libera com contrato C1 para o seu código ABAP Cloud. O acesso sujo fica isolado em um ponto só.
 
-:::quiz
-### O que a versão da linguagem ABAP de um objeto determina?
-
-- [ ] Apenas o idioma dos textos
-- [x] A sintaxe permitida e quais objetos o código pode usar
-- [ ] A versão do kernel do servidor
-- [ ] O protocolo do serviço OData
-
-> A versão é um atributo do objeto de repositório. Ela restringe os comandos aceitos e os objetos acessíveis.
-
-### Qual contrato de liberação permite usar uma classe SAP dentro do seu código ABAP Cloud?
-
-- [ ] C0 · Extend
-- [x] C1 · Use System-Internally
-- [ ] C2 · Use as Remote API
-- [ ] C3 · Manage Configuration Content
-
-> C1 libera o uso dentro do sistema. C0 é para estender, C2 para chamadas remotas.
-
-### Um objeto aparece com estado *Deprecated*. O que isso significa?
-
-- [ ] Foi apagado do sistema
-- [ ] Nunca foi liberado
-- [x] Continua utilizável, mas há um sucessor que deve ser adotado
-- [ ] Só pode ser usado em Standard ABAP
-
-> Deprecated mantém a compatibilidade e indica o sucessor na aba API State.
-:::
-
 :::documentacao
 - [ABAP Cloud (SAP Help Portal)](https://help.sap.com/docs/abap-cloud?locale=en-US)
 - [SAP BTP ABAP environment (SAP Help Portal)](https://help.sap.com/docs/sap-btp-abap-environment?locale=en-US)

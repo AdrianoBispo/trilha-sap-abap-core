@@ -126,44 +126,6 @@ O RAP é o único modelo transacional disponível no ABAP Cloud e o recomendado 
 Reports, ALV, dynpros, SEGW e BOPF **continuam funcionando** em sistemas S/4HANA privados e on-premise com Standard ABAP. Eles só não existem no ABAP Cloud. Uma lista em ALV vira um app *list report* do Fiori Elements sobre um serviço RAP.
 :::
 
-:::quiz
-### Em um report clássico, qual evento contém o processamento principal após a tela de seleção?
-
-- [ ] `INITIALIZATION`
-- [ ] `AT SELECTION-SCREEN`
-- [x] `START-OF-SELECTION`
-- [ ] `TOP-OF-PAGE`
-
-> START-OF-SELECTION roda depois que o usuário executa a tela de seleção.
-
-### Qual classe gera um ALV de exibição com menos código?
-
-- [ ] `CL_GUI_ALV_GRID`
-- [x] `CL_SALV_TABLE`
-- [ ] `CL_ABAP_TYPEDESCR`
-- [ ] `CL_GUI_CUSTOM_CONTAINER`
-
-> CL_SALV_TABLE=>factory deduz as colunas da tabela interna. CL_GUI_ALV_GRID exige contêiner e field catalog.
-
-### Em um serviço criado na SEGW, onde ficava a implementação das operações?
-
-- [ ] Na classe MPC
-- [x] Na classe DPC (extensão `_DPC_EXT`)
-- [ ] Na behavior definition
-- [ ] Na service binding
-
-> A MPC define o modelo; a DPC implementa leitura e gravação.
-
-### Que artefato do RAP ocupa o lugar do BOPF?
-
-- [ ] Service binding
-- [ ] Metadata extension
-- [x] Behavior definition com sua behavior pool
-- [ ] Access control
-
-> A BDEF declara operações, validações, determinações e ações, e a behavior pool as implementa.
-:::
-
 :::documentacao
 - [ABAP RESTful Application Programming Model (SAP Help Portal)](https://help.sap.com/docs/abap-cloud/abap-rap/abap-restful-application-programming-model?locale=en-US)
 - [ABAP Programming Model for SAP Fiori (SAP Help Portal)](https://help.sap.com/docs/ABAP_PLATFORM_NEW/cc0c305d2fab47bd808adcad3ca7ee9d/3b77569ca8ee4226bdab4fcebd6f6ea6.html?locale=en-US)

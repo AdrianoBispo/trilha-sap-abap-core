@@ -159,44 +159,6 @@ Em Standard ABAP, o mesmo recurso é usado pelos módulos de função `BAL_LOG_C
 | Quem opera o processo, depois | Application log |
 | O desenvolvedor, diante de um bug | Dump, com `ASSERT` ou exceção não tratada |
 
-:::quiz
-### O que uma mensagem do tipo `E` faz em um job em background?
-
-- [ ] Abre um pop-up
-- [ ] É ignorada
-- [x] Cancela o job
-- [ ] Gera um dump
-
-> Sem tela para corrigir a entrada, o erro encerra o processamento e o job fica Canceled.
-
-### O que `MESSAGE … INTO DATA(text)` faz?
-
-- [ ] Exibe a mensagem e guarda uma cópia
-- [x] Monta o texto e preenche os campos `sy-msg…`, sem exibir nada
-- [ ] Grava a mensagem no application log
-- [ ] Lança uma exceção
-
-> A adição INTO transforma o comando em uma montagem de texto, segura em qualquer contexto.
-
-### Em RAP, onde uma validação coloca o texto do erro?
-
-- [ ] Em `failed`
-- [x] Em `reported`
-- [ ] Em `sy-msgv1`
-- [ ] No job log
-
-> failed marca as instâncias com erro; reported carrega as mensagens, opcionalmente ligadas a campos.
-
-### Para quem é o application log?
-
-- [ ] Para o usuário corrigir um campo na tela
-- [ ] Para o código que chamou o método
-- [x] Para quem acompanha o processo depois que ele terminou
-- [ ] Para o compilador
-
-> O log persiste o resultado de processos sem interface, como jobs e integrações.
-:::
-
 :::documentacao
 - [ABAP Keyword Documentation: MESSAGE](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapmessage.htm)
 - [ABAP Keyword Documentation: mensagens em classes de exceção](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenmessage_interfaces.htm)

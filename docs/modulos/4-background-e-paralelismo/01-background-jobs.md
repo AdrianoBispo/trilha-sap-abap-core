@@ -100,44 +100,6 @@ ENDSELECT.
 
 No ABAP Cloud não existem SM36, `SUBMIT` nem variantes. O equivalente são os **application jobs**, tema da [próxima lição](#application-jobs).
 
-:::quiz
-### O que acontece com um programa de diálogo que excede o tempo máximo configurado?
-
-- [ ] Passa automaticamente para background
-- [x] É cancelado com erro de runtime
-- [ ] Continua em um work process de atualização
-- [ ] Fica em espera até o usuário confirmar
-
-> O limite protege os work processes de diálogo. Trabalho longo deve ser agendado como job.
-
-### Qual status indica que o job já pode iniciar, mas ainda espera um work process livre?
-
-- [ ] Scheduled
-- [ ] Released
-- [x] Ready
-- [ ] Active
-
-> Released espera a condição de início; Ready já a satisfez e aguarda um work process BTC.
-
-### Qual é a sequência correta para criar um job por código?
-
-- [ ] `SUBMIT`, `JOB_OPEN`, `JOB_CLOSE`
-- [x] `JOB_OPEN`, `SUBMIT … VIA JOB`, `JOB_CLOSE`
-- [ ] `JOB_CLOSE`, `JOB_OPEN`, `SUBMIT`
-- [ ] `JOB_OPEN`, `JOB_CLOSE`, `SUBMIT`
-
-> JOB_OPEN devolve o número do job, SUBMIT acrescenta o step e JOB_CLOSE define o início.
-
-### Em um job, o que uma mensagem do tipo E provoca?
-
-- [ ] Um pop-up para o administrador
-- [ ] Nada: é ignorada
-- [x] O cancelamento do job
-- [ ] O reinício do step
-
-> Sem tela para corrigir a entrada, a mensagem de erro encerra o step e o job fica Canceled.
-:::
-
 :::documentacao
 - [ABAP Keyword Documentation: SUBMIT … VIA JOB](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapsubmit_via_job.htm)
 - [SAP Help Portal: ABAP Platform](https://help.sap.com/docs/ABAP_PLATFORM_NEW?locale=en-US)

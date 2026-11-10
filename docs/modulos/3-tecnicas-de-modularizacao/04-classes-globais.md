@@ -131,44 +131,6 @@ ENDIF.
 
 Herança, polimorfismo e padrões de projeto continuam em [Orientação a objetos eficaz](#oo-avancado); o tratamento de exceções, no módulo 10, em [Classes de exceção](#excecoes).
 
-:::quiz
-### Qual adição no cabeçalho torna uma classe global?
-
-- [ ] `GLOBAL`
-- [x] `PUBLIC`
-- [ ] `CREATE PUBLIC`
-- [ ] `FINAL`
-
-> PUBLIC na linha CLASS … DEFINITION marca a classe como objeto da biblioteca de classes.
-
-### Uma classe é declarada com `CREATE PRIVATE`. Como outro programa obtém uma instância?
-
-- [ ] Com `NEW`
-- [ ] Com `CREATE OBJECT`
-- [x] Por um método estático da própria classe
-- [ ] Não é possível
-
-> Só a classe pode instanciar a si mesma, então ela oferece um método de fábrica.
-
-### Em qual aba do ADT ficam as classes de teste de uma classe global?
-
-- [ ] Global Class
-- [ ] Local Types
-- [x] Test Classes
-- [ ] Macros
-
-> A aba Test Classes corresponde ao include CCAU do class pool.
-
-### Como se chama, na implementação, o método `book` vindo da interface `zif_flight_booking`?
-
-- [ ] `METHOD book.`
-- [x] `METHOD zif_flight_booking~book.`
-- [ ] `METHOD zif_flight_booking=>book.`
-- [ ] `METHOD zif_flight_booking->book.`
-
-> O til liga o nome da interface ao componente. Um alias pode encurtar o nome.
-:::
-
 :::documentacao
 - [ABAP Keyword Documentation: CLASS … DEFINITION](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapclass_definition.htm)
 - [ABAP Keyword Documentation: INTERFACE](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapinterface.htm)

@@ -115,44 +115,6 @@ O ADT ajuda: com o cursor no nome do método, o quick fix **Add ABAP Doc** gera 
 Comentários que começam com `TODO`, `FIXME` ou `XXX` aparecem na visão **Tasks** do ADT. É um jeito simples de não perder pendências dentro do código.
 :::
 
-:::quiz
-### Onde o asterisco precisa estar para a linha ser um comentário?
-
-- [x] Na primeira coluna
-- [ ] Em qualquer posição
-- [ ] Depois do ponto final
-- [ ] Antes de uma aspa dupla
-
-> O asterisco só vale na coluna 1. Para comentar a partir de outra coluna, use aspas duplas.
-
-### Como começa um comentário ABAP Doc?
-
-- [ ] `*!`
-- [x] `"!`
-- [ ] `//!`
-- [ ] `##`
-
-> ABAP Doc usa "! logo antes da declaração documentada.
-
-### Para que serve o pragma `##NEEDED`?
-
-- [ ] Marca um método obrigatório
-- [ ] Torna a variável global
-- [x] Silencia o aviso de variável declarada e não usada
-- [ ] Gera documentação automática
-
-> Pragmas desligam avisos específicos da verificação de sintaxe, naquele comando.
-
-### Qual trecho de ABAP Doc aparece como descrição breve do método nas listas do ADT?
-
-- [ ] A primeira linha de `@parameter`
-- [x] O parágrafo com `class="shorttext synchronized"`
-- [ ] O texto de `@raising`
-- [ ] Qualquer texto em `<strong>`
-
-> O atributo synchronized liga o texto à descrição breve do objeto.
-:::
-
 :::documentacao
 - [ABAP Keyword Documentation: comentários](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abencomment.htm)
 - [ABAP Keyword Documentation: ABAP Doc](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abendoccomment.htm)

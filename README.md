@@ -1,16 +1,25 @@
 # Trilha ABAP Core: site de estudo interativo
 
-Site de estudo de SAP ABAP em 22 lições que segue a jornada [**Acquiring Core ABAP Skills**](https://learning.sap.com/learning-journeys/acquire-core-abap-skills) da SAP Learning. Feito com **Vite + React + TypeScript** e a biblioteca [**UI5 Web Components**](https://ui5.github.io/webcomponents/) da SAP, com o visual SAP Horizon nos temas claro (Morning Horizon) e escuro (Evening Horizon).
+Site de estudo de SAP ABAP em português, com 48 lições em 10 módulos: do funcionamento do servidor de aplicação ao RAP, passando por modularização, jobs, CDS, integração, enhancements e tratamento de erros. Parte das lições deriva da jornada [**Acquiring Core ABAP Skills**](https://learning.sap.com/learning-journeys/acquire-core-abap-skills) da SAP Learning. Feito com **Vite + React + TypeScript** e a biblioteca [**UI5 Web Components**](https://ui5.github.io/webcomponents/) da SAP, com o visual SAP Horizon nos temas claro (Morning Horizon) e escuro (Evening Horizon).
 
-Cada lição traz objetivos, explicação, código ABAP/CDS comentado, ilustrações, um laboratório interativo, um quiz e links para a documentação oficial. Há também uma referência rápida de sintaxe com glossário e um simulado de certificação com 15 questões e nota mínima de 65%.
+Cada lição traz objetivos, explicação, código ABAP/CDS comentado, ilustrações, laboratórios interativos, um quiz e links para a documentação oficial. Há também uma referência rápida de sintaxe com glossário e um simulado de certificação com 15 questões e nota mínima de 65%.
 
 ## Conteúdo
 
-| Curso | Lições |
+| Módulo | Lições |
 | :--- | :--- |
-| **1. Programação ABAP básica** (Basic ABAP Programming) | Primeiros passos · Técnicas básicas · Classes locais · Lendo dados do banco · Estruturas · Tabelas internas · Business objects e EML · Modelo RAP |
-| **2. Programação ABAP intermediária** (Intermediate ABAP Programming) | Análise, testes e documentação · Tipos e conversões · Processando texto · Code pushdown em ABAP SQL · Performance de tabelas internas · Verificações de autorização · Orientação a objetos eficaz · Classes de exceção |
-| **3. Dicionário ABAP e CDS** (Data Modeling in ABAP Dictionary and ABAP CDS) | Modelagem e tipos globais · Tabelas de banco · CDS view entities · Relações e associações · Code pushdown em CDS · Anotações e meta objetos |
+| **01 · ABAP Overview** | A linguagem ABAP · O servidor de aplicação ABAP · Do ABAP clássico à nuvem · LUW · Primeiros passos |
+| **02 · Elementos fundamentais da linguagem ABAP** | Técnicas básicas · Tipos e conversões · Variáveis do sistema · Estruturas · Tabelas internas · Performance de tabelas internas · Modelagem e tipos globais · Tabelas de banco · Lendo dados do banco · Processando texto · Funções embutidas · Comentários e documentação |
+| **03 · Técnicas de modularização** | Modularização e paradigmas · Módulos de função · Classes locais · Classes globais · Orientação a objetos eficaz · Análise e testes |
+| **04 · Background jobs e programação paralela** | Background jobs · Application jobs e bgPF · Programação paralela |
+| **05 · Modelagem e análise de dados** | CDS view entities · Relações e associações · Code pushdown em CDS · Anotações e meta objetos · Code pushdown em ABAP SQL · AMDP · Performance de consultas · Modelos analíticos em CDS |
+| **06 · RAP Business Objects** | Modelo RAP · Business objects e EML · Verificações de autorização |
+| **07 · Integração e conectividade no ABAP** | Integração no ABAP · RFC, BAPI e IDoc · HTTP, OData e eventos |
+| **08 · ABAP Enhancement** | Enhancements clássicos · BAdIs · Extensibilidade no ABAP Cloud |
+| **09 · ABAP: External Interfaces** | Arquivos e data clusters · XML e JSON |
+| **10 · Tratamento de erros** | Erros no ABAP · Classes de exceção · Mensagens e logs |
+
+Entre os laboratórios estão os simuladores do **Function Builder** (SE37) e do **Class Builder** (SE24), que mostram o código gerado a partir das abas dessas ferramentas.
 
 ## Como rodar
 
@@ -33,8 +42,13 @@ O build gera um site estático (rotas por `#hash`), que pode ser publicado em qu
 docs/
 ├── inicio.md, referencia.md, simulado.md
 ├── figuras/*.svg
-└── cursos/<n>-<curso>/_curso.md e NN-<lição>.md
+├── arquitetura/*.drawio
+└── modulos/<n>-<módulo>/_modulo.md e NN-<lição>.md
 ```
+
+## Diagramas de arquitetura
+
+A pasta [`docs/arquitetura/`](docs/arquitetura/) guarda três diagramas editáveis no [draw.io](https://app.diagrams.net/), no estilo do SAP Architecture Center: a arquitetura do servidor de aplicação ABAP, o gerenciamento de sessões e memória, e a SAP LUW. As figuras das lições correspondentes, em `docs/figuras/`, são versões simplificadas deles, desenhadas com a paleta do site para acompanhar os temas claro e escuro. O script `gerar_diagramas.py` documenta como os arquivos foram gerados; ele depende de uma biblioteca de ícones SAP local e não faz parte do build.
 
 ## Estrutura do código
 
@@ -42,10 +56,10 @@ docs/
 | :--- | :--- |
 | `vite-plugin-docs.ts` | Converte cada `.md` de `docs/` em árvore mdast no build. O navegador não carrega o parser. |
 | `vite-plugin-doc-icons.ts` | Importa só os ícones SAP citados nos Markdown |
-| `src/content/` | Leitura dos documentos: cursos, lições, quizzes, seções |
+| `src/content/` | Leitura dos documentos: módulos, lições, quizzes, seções |
 | `src/render/Markdown.tsx` | Renderiza o Markdown com componentes UI5 (Card, MessageStrip, Table, Tag, Link…) |
 | `src/pages/` | Início, lição (ObjectPage), referência (ObjectPage) e simulado (DynamicPage) |
-| `src/labs/` | Os 20 laboratórios interativos |
+| `src/labs/` | Os 22 laboratórios interativos |
 | `src/components/` | Bloco de código com realce ABAP/CDS, quiz, tabela UI5 |
 | `src/state/store.ts` | Rota, progresso, tema e toast |
 | `src/styles/` | Fontes 72 locais, paleta das ilustrações e layout. Todas as cores vêm dos parâmetros de tema `--sap…` do Horizon. |

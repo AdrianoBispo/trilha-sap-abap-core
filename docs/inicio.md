@@ -9,16 +9,12 @@ ilustracao: inicio.svg
   Página inicial.
   - O cabeçalho (selo, título, resumo e ilustração) vem do bloco acima.
     No resumo, {licoes}, {modulos} e {laboratorios} são trocados pelas quantidades atuais.
-  - ::modulos e ::mapa-da-trilha são gerados automaticamente a partir de docs/modulos/.
+  - ::modulos é gerado automaticamente a partir de docs/modulos/.
 -->
 
 ## Módulos {icone="learning-assistant"}
 
 ::modulos
-
-## Mapa da trilha {icone="tree"}
-
-::mapa-da-trilha
 
 ## Por onde começar? {icone="sys-help"}
 

@@ -75,7 +75,7 @@ Linguagens com realce: `abap`, `cds`, `bdl`, `ddl` e `dcl`. Outras, como `xml`, 
 | `::figura{arquivo="nome.svg"}` | Ilustração de `docs/figuras` |
 | `:::figura{arquivo="nome.svg"}` legenda `:::` | Ilustração com legenda |
 | `::laboratorio{id="hello"}` | Laboratório interativo |
-| `::modulos`, `::mapa-da-trilha` | Blocos gerados da página inicial |
+| `::modulos` | Bloco gerado da página inicial (cards dos módulos) |
 | `:kbd[Ctrl+F3]` | Tecla |
 | `:tag[texto]{tipo="aviso"}` | Etiqueta dentro do texto |
 

@@ -1,5 +1,5 @@
 import {
-  Avatar, Button, Card, CardHeader, List, ListItemStandard, Tag, Text, Title,
+  Avatar, Button, Card, CardHeader, Tag, Text, Title,
 } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-icons/dist/play.js';
 import '@ui5/webcomponents-icons/dist/syntax.js';
@@ -40,38 +40,6 @@ function ModuleTiles() {
   );
 }
 
-function TrailMap() {
-  return (
-    <div className="md-cols md-cols-3">
-      {MODULES.map(c => (
-        <Card
-          key={c.id}
-          className="md-card"
-          header={<CardHeader interactive onClick={() => navigate(c.slug)} titleText={c.title} subtitleText={`Módulo ${c.label}`} avatar={<Avatar icon={c.icon} colorScheme={accent(c.color)} shape="Square" size="XS" />} />}
-        >
-          <List
-            accessibleName={`Lições do módulo ${c.label}`}
-            separators="Inner"
-            onItemClick={e => { const id = (e.detail.item as HTMLElement).dataset.id; if (id) navigate(id); }}
-          >
-            {c.lessons.map(l => (
-              <ListItemStandard
-                key={l.id}
-                data-id={l.id}
-                type="Navigation"
-                icon={l.icon}
-                description={l.dur}
-              >
-                {l.title}
-              </ListItemStandard>
-            ))}
-          </List>
-        </Card>
-      ))}
-    </div>
-  );
-}
-
 export default function HomePage() {
   const m = HOME.meta;
   const art = m.ilustracao ? figure(m.ilustracao) : undefined;
@@ -98,7 +66,7 @@ export default function HomePage() {
         </div>
       </section>
       <div className="wrap body">
-        <MdExtras.Provider value={{ modulos: () => <ModuleTiles />, 'mapa-da-trilha': () => <TrailMap /> }}>
+        <MdExtras.Provider value={{ modulos: () => <ModuleTiles /> }}>
           {HOME.sections.map(s => (
             <section className="sec" key={s.id} id={s.id}>
               {s.title.length > 0 && <SectionTitle icon={s.icon}><Inline nodes={s.title} /></SectionTitle>}

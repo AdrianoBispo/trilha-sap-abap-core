@@ -22,7 +22,11 @@ interface Props {
   accessibleName?: string;
 }
 
-/** Tabela UI5 (ui5-table) com o visual de lista do SAP Horizon. */
+/**
+ * Tabela UI5 (ui5-table) com o visual de lista do SAP Horizon.
+ * O conteúdo de cada célula vai dentro de um <span>: a célula é um contêiner flex, e sem ele
+ * os espaços entre texto e trechos em negrito ou código seriam descartados.
+ */
 export default function DataTable({ columns, rows, noDataText = 'Nenhuma linha.', className, hideHeader, accessibleName }: Props) {
   return (
     <div className={`table-wrap${className ? ' ' + className : ''}${hideHeader ? ' no-head' : ''}`}>
@@ -44,7 +48,7 @@ export default function DataTable({ columns, rows, noDataText = 'Nenhuma linha.'
           <TableRow key={i} rowKey={String(i)}>
             {columns.map(c => (
               <TableCell key={c.key} horizontalAlign={c.align}>
-                {c.mono ? <span className="mono">{r[c.key] == null ? <span className="null">null</span> : r[c.key]}</span> : r[c.key]}
+                {c.mono ? <span className="mono">{r[c.key] == null ? <span className="null">null</span> : r[c.key]}</span> : <span className="cell-flow">{r[c.key]}</span>}
               </TableCell>
             ))}
           </TableRow>

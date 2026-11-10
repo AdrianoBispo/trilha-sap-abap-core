@@ -117,6 +117,7 @@ kbd {
 .table-wrap ui5-table { width: 100%; }
 .table-wrap.no-head ui5-table-header-row { display: none; }
 .null { color: var(--sapContent_LabelColor); font-style: italic; }
+.cell-flow { min-width: 0; line-height: 1.5; }
 
 /* ---------- Blocos de código ---------- */
 .code {

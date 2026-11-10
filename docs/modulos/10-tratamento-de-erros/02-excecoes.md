@@ -60,35 +60,6 @@ RAISE EXCEPTION NEW zcx_travel_invalid(
   end_date   = end ).
 ```
 
-:::quiz
-### Qual superclasse obriga a declarar `RAISING` ou tratar a exceção, verificado pelo compilador?
-
-- [x] `CX_STATIC_CHECK`
-- [ ] `CX_DYNAMIC_CHECK`
-- [ ] `CX_NO_CHECK`
-- [ ] `CX_ROOT` diretamente
-
-> Exceções de CX_STATIC_CHECK são verificadas em tempo de compilação.
-
-### Qual exceção ocorre em `100 / 0`?
-
-- [ ] `CX_SY_CONVERSION_NO_NUMBER`
-- [x] `CX_SY_ZERODIVIDE`
-- [ ] `CX_SY_ARITHMETIC_OVERFLOW`
-- [ ] Nenhuma, resulta 0
-
-> Divisão por zero lança CX_SY_ZERODIVIDE. Só 0 / 0 resulta em 0 sem exceção.
-
-### Com vários `CATCH`, qual é executado?
-
-- [ ] O último compatível
-- [x] O primeiro compatível
-- [ ] Todos os compatíveis
-- [ ] O mais específico, onde estiver
-
-> Os CATCH são avaliados em ordem; por isso coloque as classes mais específicas primeiro.
-:::
-
 :::documentacao
 - [TRY](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abaptry.htm)
 - [RAISE EXCEPTION](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapraise_exception_class.htm)

@@ -59,35 +59,6 @@ ENDIF.
 Dentro de implementações de comportamento (behavior pool) você **não** chama `COMMIT ENTITIES`: quem controla a transação é o framework RAP.
 :::
 
-:::quiz
-### Onde `MODIFY ENTITIES` grava as alterações?
-
-- [ ] Direto no banco
-- [x] No buffer transacional
-- [ ] Num arquivo
-- [ ] No cache do navegador
-
-> As alterações ficam no buffer transacional até COMMIT ENTITIES.
-
-### Por que não usar `UPDATE` direto em tabelas de um business object?
-
-- [ ] `UPDATE` não existe no ABAP Cloud
-- [x] Ignoraria validações, determinações e bloqueios do BO
-- [ ] É mais lento
-- [ ] Não grava em HANA
-
-> O BO concentra a lógica de negócio; escrever na tabela pula todas essas regras.
-
-### Em uma implementação de comportamento (behavior pool), você deve chamar `COMMIT ENTITIES`?
-
-- [ ] Sim, sempre
-- [x] Não, o framework RAP controla a transação
-- [ ] Só em validações
-- [ ] Só com draft
-
-> Dentro do comportamento quem decide o commit é o framework; COMMIT ENTITIES é para consumidores externos.
-:::
-
 :::documentacao
 - [Cheat sheet: ABAP EML in RAP](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/08_EML_ABAP_for_RAP.md)
 - [Cheat sheet: SAP LUW](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/17_SAP_LUW.md)

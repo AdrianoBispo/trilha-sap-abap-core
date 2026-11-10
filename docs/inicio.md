@@ -1,7 +1,7 @@
 ---
 selo: ABAP do clássico à nuvem
 titulo: Aprenda ABAP do servidor de aplicação ao RAP
-resumo: "Um guia de estudo em português com {licoes} lições em {modulos} módulos: como o sistema funciona, a linguagem, modularização, jobs, CDS, RAP, integração, enhancements e tratamento de erros. Código comentado, {laboratorios} laboratórios interativos e quizzes, com links para a documentação oficial."
+resumo: "Um guia de estudo em português com {licoes} lições em {modulos} módulos: como o sistema funciona, a linguagem, modularização, jobs, CDS, RAP, integração, enhancements e tratamento de erros. Código comentado, ilustrações e {laboratorios} laboratórios interativos, com links para a documentação oficial."
 ilustracao: inicio.svg
 ---
 
@@ -39,12 +39,12 @@ Veja o que mudou do report e do módulo de função até o ABAP Cloud, e siga pa
 [Do ABAP clássico à nuvem](#evolucao-do-abap)
 :::
 
-:::cartao{etiqueta="Certificação" tipo="c7"}
-### Preparando o exame
+:::cartao{etiqueta="Consulta" tipo="c7"}
+### Procura um comando
 
-Revise os módulos 02, 05 e 06 e treine com o simulado: nota mínima de 65%, como na prova real.
+A referência rápida reúne a sintaxe mais usada, com filtro por categoria e link para a lição que explica cada item.
 
-[Simulado de certificação](#simulado)
+[Referência rápida](#referencia)
 :::
 ::::
 
@@ -57,7 +57,7 @@ Revise os módulos 02, 05 e 06 e treine com o simulado: nota mínima de 65%, com
 - As lições derivadas da trilha *Acquiring Core ABAP Skills* indicam, no fim, a unidade correspondente na SAP Learning.
 - Os blocos de código têm botão de copiar. Exemplos de ABAP clássico estão marcados como Standard ABAP; os demais seguem a sintaxe do ABAP Cloud.
 - Laboratórios simulam o comportamento do ABAP no navegador. Eles ajudam a prever o resultado; confirme sempre no sistema.
-- Marque a lição como concluída. O progresso fica salvo neste navegador.
+- Cada módulo tem uma página própria, com as lições na ordem de estudo e um índice lateral das seções. Marque a lição como lida: o progresso fica salvo neste navegador.
 :::
 ::::
 

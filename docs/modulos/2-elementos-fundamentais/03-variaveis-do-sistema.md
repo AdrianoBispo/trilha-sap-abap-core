@@ -100,35 +100,6 @@ out->write( |{ user } em { today DATE = ISO }, UTC { timestamp }| ).
 
 Em CDS, as informações equivalentes vêm das variáveis de sessão: `$session.user`, `$session.client`, `$session.system_language`, `$session.system_date` e `$session.user_date`.
 
-:::quiz
-### Depois de um `SELECT … INTO TABLE`, que campo informa quantas linhas foram lidas?
-
-- [ ] `sy-tabix`
-- [ ] `sy-index`
-- [x] `sy-dbcnt`
-- [ ] `sy-subrc`
-
-> sy-dbcnt traz a quantidade de linhas processadas no banco. sy-subrc só diz se houve alguma.
-
-### Dentro de `DO 5 TIMES`, qual campo conta as voltas?
-
-- [x] `sy-index`
-- [ ] `sy-tabix`
-- [ ] `sy-fdpos`
-- [ ] `sy-dbcnt`
-
-> sy-index conta as voltas de DO e WHILE. sy-tabix é o índice de linhas de tabelas internas.
-
-### Qual é a forma liberada de obter o usuário atual no ABAP Cloud?
-
-- [ ] `sy-uname`
-- [ ] `sy-mandt`
-- [x] `cl_abap_context_info=>get_user_technical_name( )`
-- [ ] `$session.user`
-
-> CL_ABAP_CONTEXT_INFO é a API liberada em ABAP. $session.user existe, mas em CDS.
-:::
-
 :::documentacao
 - [ABAP Keyword Documentation: campos de sistema](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abensystem_fields.htm)
 - [ABAP Keyword Documentation · ABAP Cloud](https://help.sap.com/docs/abap-cloud/abap-keywords/abap-keyword-documentation?locale=en-US)

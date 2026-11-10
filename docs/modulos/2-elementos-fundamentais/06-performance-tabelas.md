@@ -73,35 +73,6 @@ LOOP AT connections ASSIGNING FIELD-SYMBOL(<c>).
 ENDLOOP.
 ```
 
-:::quiz
-### Em uma tabela sorted com 1.024 linhas, quantas comparações a busca binária faz no pior caso?
-
-- [ ] 1
-- [x] 10 a 11
-- [ ] 512
-- [ ] 1.024
-
-> log₂(1024) = 10; no pior caso cerca de 11 comparações.
-
-### Qual forma de `LOOP` evita copiar cada linha?
-
-- [ ] `INTO DATA(wa)`
-- [x] `ASSIGNING FIELD-SYMBOL(<fs>)`
-- [ ] `TRANSPORTING NO FIELDS` sempre
-- [ ] `WHERE`
-
-> Field-symbols apontam para a própria linha da tabela, sem cópia.
-
-### Para que servem chaves secundárias?
-
-- [ ] Ordenar o banco
-- [x] Ler rápido por outro critério sem duplicar a tabela
-- [ ] Criptografar dados
-- [ ] Substituir a chave primária
-
-> Uma tabela pode ter chaves secundárias sorted ou hashed para acessos por outros campos.
-:::
-
 :::documentacao
 - [Cheat sheet: Internal Tables](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/01_Internal_Tables.md)
 - [Cheat sheet: Performance Notes](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/32_Performance_Notes.md)

@@ -127,44 +127,6 @@ Para dados de configuração pequenos e muito lidos, o **buffer de tabelas** evi
 
 No SQL trace, procure primeiro por **comandos idênticos repetidos**: é a assinatura do `SELECT` em loop. Depois, pelos comandos de maior duração total, e só então por comandos individuais lentos.
 
-:::quiz
-### Qual é o risco de `FOR ALL ENTRIES` com a tabela de entrada vazia?
-
-- [ ] A consulta devolve erro de sintaxe
-- [ ] Nenhuma linha é lida
-- [x] A tabela do banco é lida por inteiro
-- [ ] O programa entra em loop
-
-> Sem linhas na tabela de entrada, a condição que depende dela é descartada.
-
-### O que caracteriza um `SELECT` em loop no SQL trace?
-
-- [ ] Um comando com duração muito alta
-- [x] Muitas execuções do mesmo comando, cada uma lendo uma linha
-- [ ] Um comando sem `WHERE`
-- [ ] Um `COMMIT` entre os comandos
-
-> A repetição de comandos idênticos é o sinal. Cada execução é rápida; o total, não.
-
-### Por que filtrar por um campo calculado em uma CDS view costuma ser lento?
-
-- [ ] Campos calculados não aceitam `WHERE`
-- [x] O banco precisa calcular o campo para todas as linhas antes de filtrar
-- [ ] O filtro é aplicado no servidor ABAP
-- [ ] A view deixa de usar o mandante
-
-> O filtro não pode ser levado até a tabela de origem, então nenhuma linha é descartada cedo.
-
-### Qual é a forma eficiente de verificar se existe ao menos uma linha?
-
-- [ ] `SELECT *` e testar `lines( )`
-- [ ] `SELECT COUNT( * )` e comparar com zero
-- [x] `SELECT SINGLE @abap_true … INTO @DATA(found)`
-- [ ] `LOOP` com `EXIT` na primeira volta
-
-> O banco para na primeira linha encontrada e não transporta nenhuma coluna.
-:::
-
 :::documentacao
 - [ABAP Keyword Documentation: notas de performance do ABAP SQL](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenabap_sql_perfo.htm)
 - [ABAP Data Models (SAP Help Portal)](https://help.sap.com/docs/abap-cloud/abap-data-models/abap-data-models?locale=en-US)

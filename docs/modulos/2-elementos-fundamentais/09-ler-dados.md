@@ -64,35 +64,6 @@ SELECT FROM I_Country
   INTO TABLE @DATA(countries).
 ```
 
-:::quiz
-### O que o prefixo `@` indica em um comando ABAP SQL?
-
-- [ ] Um campo da tabela
-- [x] Uma host variable ABAP
-- [ ] Um comentário
-- [ ] Um parâmetro de CDS
-
-> Variáveis e expressões ABAP dentro do SQL são escapadas com @.
-
-### Após um `SELECT` que não encontra nenhuma linha, qual é o `sy-subrc`?
-
-- [ ] 0
-- [x] 4
-- [ ] 8
-- [ ] 12
-
-> sy-subrc = 4 quando nenhuma linha é encontrada; 0 quando ao menos uma é lida.
-
-### No ABAP Cloud, como ler dados de tabelas padrão SAP?
-
-- [ ] Direto com `SELECT` na tabela
-- [x] Por CDS views liberadas
-- [ ] Com `CALL TRANSACTION`
-- [ ] Pelo SAP GUI
-
-> Tabelas SAP não são liberadas; o acesso é feito por CDS views liberadas como I_Country.
-:::
-
 :::documentacao
 - [SELECT](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapselect.htm)
 - [Cheat sheet: ABAP SQL](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/03_ABAP_SQL.md)

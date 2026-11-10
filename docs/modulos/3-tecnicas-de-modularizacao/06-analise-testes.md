@@ -103,35 +103,6 @@ Ative pela aplicação **ABAP Trace Requests** ou pela transação ST05 em siste
 A documentação de classes e métodos com ABAP Doc está em [Comentários e documentação](#comentarios-e-documentacao).
 :::
 
-:::quiz
-### Qual adição marca uma classe local como classe de teste?
-
-- [x] `FOR TESTING`
-- [ ] `TEST CLASS`
-- [ ] `INHERITING FROM cl_test`
-- [ ] `RISK LEVEL`
-
-> FOR TESTING marca a classe e cada método de teste; DURATION e RISK LEVEL são atributos adicionais.
-
-### Quando o método `setup` é executado?
-
-- [ ] Uma vez por classe
-- [x] Antes de cada método de teste
-- [ ] Depois de todos os testes
-- [ ] Só se falhar
-
-> setup roda antes de cada teste; class_setup roda uma vez por classe.
-
-### No SQL trace, o que indica um `SELECT` dentro de loop?
-
-- [ ] Um comando com duração muito alta
-- [x] O mesmo comando repetido muitas vezes
-- [ ] Um comando sem `WHERE`
-- [ ] Um `COMMIT WORK` entre os comandos
-
-> Comandos idênticos em sequência, cada um lendo poucas linhas, são a assinatura do SELECT em loop.
-:::
-
 :::documentacao
 - [Cheat sheet: ABAP Unit Tests](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/14_ABAP_Unit_Tests.md)
 - [Cheat sheet: Performance Notes](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/32_Performance_Notes.md)

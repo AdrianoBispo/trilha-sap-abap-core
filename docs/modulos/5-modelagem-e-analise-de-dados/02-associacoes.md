@@ -61,35 +61,6 @@ SELECT FROM zi_connection
 Em ABAP SQL o caminho começa com barra invertida e usa hífen: `\_Carrier-Name`. Filtros e cardinalidade entram entre colchetes.
 :::
 
-:::quiz
-### Quando o join de uma associação é executado?
-
-- [ ] Sempre que a view é ativada
-- [x] Somente quando uma expressão de caminho usa a associação
-- [ ] Nunca
-- [ ] Só em ABAP SQL
-
-> Associações são joins sob demanda: só viram SQL quando usadas.
-
-### O que `[0..*]` indica?
-
-- [ ] Exatamente uma linha
-- [x] Nenhuma ou muitas linhas no destino
-- [ ] No máximo uma
-- [ ] Uma ou mais
-
-> A cardinalidade 0..* permite nenhuma ou várias linhas correspondentes.
-
-### Como escrever o caminho para `Name` via `_Carrier` em ABAP SQL?
-
-- [ ] `_Carrier.Name`
-- [x] `\_Carrier-Name`
-- [ ] `_Carrier~Name`
-- [ ] `_Carrier=>Name`
-
-> ABAP SQL usa barra invertida e hífen; CDS usa _Carrier.Name.
-:::
-
 :::documentacao
 - [Cheat sheet: CDS View Entities](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/15_CDS_View_Entities.md)
 - [Cheat sheet: ABAP SQL](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/03_ABAP_SQL.md)

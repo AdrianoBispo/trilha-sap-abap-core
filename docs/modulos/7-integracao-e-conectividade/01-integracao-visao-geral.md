@@ -112,44 +112,6 @@ No SAP BTP, o destino também pode vir do **serviço Destination** da subconta (
 | Avisar outros sistemas de uma mudança, sem acoplamento | **Evento de negócio** |
 | Integrar vários sistemas com mapeamento e roteamento | Middleware, como o SAP Integration Suite, falando com o ABAP por um dos protocolos acima |
 
-:::quiz
-### Um sistema externo chama um serviço OData do sistema ABAP. Do ponto de vista do ABAP, a comunicação é:
-
-- [x] Inbound
-- [ ] Outbound
-- [ ] Assíncrona
-- [ ] Local
-
-> Inbound é quando o ABAP oferece o serviço e outro sistema inicia a chamada.
-
-### No sistema clássico, onde se define para qual servidor vai uma chamada RFC?
-
-- [ ] SICF
-- [x] SM59
-- [ ] SOAMANAGER
-- [ ] SE37
-
-> A SM59 mantém os destinos RFC. O código só usa o nome do destino.
-
-### No ABAP Cloud, qual objeto liga um communication scenario a um communication system?
-
-- [ ] Outbound service
-- [ ] Communication user
-- [x] Communication arrangement
-- [ ] Service binding
-
-> O arrangement é criado pelo administrador e ativa a integração em runtime.
-
-### Qual estilo de integração tolera que o sistema de destino esteja fora do ar no momento do envio?
-
-- [ ] Síncrono
-- [x] Assíncrono
-- [ ] RFC síncrono
-- [ ] OData
-
-> A mensagem fica em uma fila e é entregue quando o destino voltar.
-:::
-
 :::documentacao
 - [ABAP Integration and Connectivity (SAP Help Portal)](https://help.sap.com/docs/abap-cloud/abap-integration-connectivity/abap-integration-and-connectivity?locale=en-US)
 - [SAP BTP ABAP environment (SAP Help Portal)](https://help.sap.com/docs/sap-btp-abap-environment?locale=en-US)

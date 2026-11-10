@@ -80,35 +80,6 @@ INSERT ztravel FROM TABLE @( VALUE #(
 out->write( |Inseridas: { sy-dbcnt }| ).
 ```
 
-:::quiz
-### Qual classe de entrega é usada para dados de aplicação (mestre e movimento)?
-
-- [x] `#A`
-- [ ] `#C`
-- [ ] `#L`
-- [ ] `#S`
-
-> #A é aplicação; #C customizing; #L temporário; #S sistema.
-
-### Qual é o tamanho máximo do nome de uma tabela de banco no Dictionary?
-
-- [ ] 8
-- [x] 16
-- [ ] 30
-- [ ] 40
-
-> Nomes de tabelas de banco têm até 16 caracteres.
-
-### Um campo `abap.curr` precisa de:
-
-- [x] Uma anotação apontando para o campo de moeda
-- [ ] Ser chave
-- [ ] Valor inicial
-- [ ] Uma CDS view
-
-> @Semantics.amount.currencyCode liga o valor ao campo de moeda (abap.cuky).
-:::
-
 :::documentacao
 - [Cheat sheet: ABAP Dictionary](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/26_ABAP_Dictionary.md)
 :::

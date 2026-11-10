@@ -1,19 +1,14 @@
 import { useMemo, useState } from 'react';
 import type { RootContent, Table as MdTable } from 'mdast';
-import {
-  Avatar, Breadcrumbs, BreadcrumbsItem, Icon, Input, Link, ObjectPage, ObjectPageSection, ObjectPageTitle,
-  SegmentedButton, SegmentedButtonItem, Text, Title,
-} from '@ui5/webcomponents-react';
+import { Icon, Input, Link, SegmentedButton, SegmentedButtonItem } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-icons/dist/search.js';
-import '@ui5/webcomponents-icons/dist/course-book.js';
 import { lessonById, REFERENCE } from '../content/content';
 import { toText } from '../content/markdown';
 import { highlight } from '../components/highlight';
 import DataTable from '../components/DataTable';
-import { LinkList, SectionTitle } from '../components/Parts';
+import { ArticleHead, LinkList } from '../components/Parts';
 import { Blocks, Inline } from '../render/Markdown';
 import { navigate } from '../state/store';
-import { accent } from './common';
 
 interface RefRow { cat: string; syntax: string; what: RootContent[]; lesson: string }
 
@@ -80,30 +75,14 @@ function RefTable({ table }: { table: MdTable }) {
 export default function ReferencePage() {
   const m = REFERENCE.meta;
   return (
-    <ObjectPage
-      className="page"
-      mode="Default"
-      image={<Avatar icon={m.icone ?? 'syntax'} colorScheme={accent(m.cor)} size="L" shape="Square" />}
-      titleArea={
-        <ObjectPageTitle
-          header={<Title level="H1" size="H2">{m.titulo}</Title>}
-          subHeader={<Text>{m.subtitulo}</Text>}
-          breadcrumbs={
-            <Breadcrumbs onItemClick={e => { if ((e.detail.item as HTMLElement).getAttribute('href')) { e.preventDefault(); navigate('inicio'); } }}>
-              <BreadcrumbsItem href="#inicio">Início</BreadcrumbsItem>
-              <BreadcrumbsItem>Recursos</BreadcrumbsItem>
-            </Breadcrumbs>
-          }
-        />
-      }
-    >
-      {[
-      ...REFERENCE.sections.map(s => {
-        const tableIdx = s.nodes.findIndex(n => n.type === 'table' && toText(n.children[0].children[0]).trim() === 'Categoria');
-        return (
-          <ObjectPageSection key={s.id} id={`s-${s.id}`} titleText={s.anchor} hideTitleText>
-            <div className="sec">
-              {s.title.length > 0 && <SectionTitle icon={s.icon}><Inline nodes={s.title} /></SectionTitle>}
+    <div className="page page-scroll">
+      <article className="article article-wide">
+        <ArticleHead crumbs={[{ label: 'Início', route: 'inicio' }, { label: m.titulo ?? 'Referência' }]} eyebrow="Consulta" title={m.titulo} lead={m.subtitulo} />
+        {REFERENCE.sections.map(s => {
+          const tableIdx = s.nodes.findIndex(n => n.type === 'table' && toText(n.children[0].children[0]).trim() === 'Categoria');
+          return (
+            <section key={s.id} id={`s-${s.id}`} className="article-sec">
+              {s.title.length > 0 && <h2 className="article-h2"><Inline nodes={s.title} /></h2>}
               {tableIdx >= 0 ? (
                 <>
                   <Blocks nodes={s.nodes.slice(0, tableIdx)} />
@@ -113,19 +92,18 @@ export default function ReferencePage() {
               ) : (
                 <Blocks nodes={s.nodes} />
               )}
-            </div>
-          </ObjectPageSection>
-        );
-      }),
-      ...(REFERENCE.links.length > 0 ? [
-        <ObjectPageSection key="s-documentacao" id="s-documentacao" titleText="Documentação" hideTitleText>
-          <div className="sec">
-            <SectionTitle icon="course-book">Documentação oficial</SectionTitle>
-            <LinkList links={REFERENCE.links} />
-          </div>
-        </ObjectPageSection>,
-      ] : []),
-      ]}
-    </ObjectPage>
+            </section>
+          );
+        })}
+        {REFERENCE.links.length > 0 && (
+          <footer className="article-foot">
+            <section className="article-sec">
+              <h2 className="article-h2">Documentação oficial</h2>
+              <LinkList links={REFERENCE.links} />
+            </section>
+          </footer>
+        )}
+      </article>
+    </div>
   );
 }

@@ -83,7 +83,7 @@ export function splitSections(nodes: RootContent[]): Section[] {
   return sections;
 }
 
-/** Remove e devolve os blocos `:::nome` do nível superior (ex.: quiz, documentacao). */
+/** Remove e devolve os blocos `:::nome` do nível superior (ex.: documentacao). */
 export function takeContainers(nodes: RootContent[], name: string): RootContent[][] {
   const found: RootContent[][] = [];
   for (let i = nodes.length - 1; i >= 0; i--) {

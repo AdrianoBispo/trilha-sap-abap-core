@@ -74,35 +74,6 @@ extend view entity ZI_Connection with
 Extensões são o caminho *clean core*: você acrescenta campos sem tocar no objeto original, e o upgrade não sobrescreve seu código.
 :::
 
-:::quiz
-### Qual anotação permite metadata extensions em uma view?
-
-- [x] `@Metadata.allowExtensions: true`
-- [ ] `@UI.extend`
-- [ ] `@AbapCatalog.extensible`
-- [ ] `@ObjectModel.extension`
-
-> Sem @Metadata.allowExtensions: true, a view não aceita metadata extensions.
-
-### Qual anotação coloca um campo como coluna na list report?
-
-- [ ] `@UI.selectionField`
-- [x] `@UI.lineItem`
-- [ ] `@UI.facet`
-- [ ] `@UI.headerInfo`
-
-> @UI.lineItem define colunas; @UI.selectionField define filtros.
-
-### Entre as camadas `#CORE` e `#CUSTOMER`, qual prevalece?
-
-- [ ] `#CORE`
-- [x] `#CUSTOMER`
-- [ ] A mais antiga
-- [ ] Nenhuma, dá erro
-
-> Camadas mais altas sobrescrevem as inferiores; #CUSTOMER fica no topo.
-:::
-
 :::documentacao
 - [Cheat sheet: CDS View Entities](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/15_CDS_View_Entities.md)
 :::

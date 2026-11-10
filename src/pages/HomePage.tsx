@@ -2,7 +2,7 @@ import {
   Avatar, Button, Card, CardHeader, List, ListItemStandard, ProgressIndicator, Tag, Text, Title,
 } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-icons/dist/play.js';
-import '@ui5/webcomponents-icons/dist/education.js';
+import '@ui5/webcomponents-icons/dist/syntax.js';
 import '@ui5/webcomponents-icons/dist/accept.js';
 import '@ui5/webcomponents-icons/dist/circle-task.js';
 import { figure, HOME, LESSONS, MODULES } from '../content/content';
@@ -29,13 +29,13 @@ function ModuleTiles() {
                 subtitleText={`Módulo ${c.label}`}
                 additionalText={`${c.lessons.length} lições`}
                 avatar={<Avatar icon={c.icon} colorScheme={accent(c.color)} shape="Square" size="S" />}
-                onClick={() => c.lessons[0] && navigate(c.lessons[0].id)}
+                onClick={() => navigate(c.slug)}
               />
             }
           >
             <div className="tile-body">
               <Text>{c.desc}</Text>
-              <ProgressIndicator value={c.lessons.length ? (d / c.lessons.length) * 100 : 0} displayValue={`${d} de ${c.lessons.length} lições`} valueState={d === c.lessons.length ? 'Positive' : 'None'} />
+              <ProgressIndicator value={c.lessons.length ? (d / c.lessons.length) * 100 : 0} displayValue={`${d} de ${c.lessons.length} lidas`} valueState={d === c.lessons.length ? 'Positive' : 'None'} />
             </div>
           </Card>
         );
@@ -52,7 +52,7 @@ function TrailMap() {
         <Card
           key={c.id}
           className="md-card"
-          header={<CardHeader titleText={c.title} subtitleText={`Módulo ${c.label}`} avatar={<Avatar icon={c.icon} colorScheme={accent(c.color)} shape="Square" size="XS" />} />}
+          header={<CardHeader interactive onClick={() => navigate(c.slug)} titleText={c.title} subtitleText={`Módulo ${c.label}`} avatar={<Avatar icon={c.icon} colorScheme={accent(c.color)} shape="Square" size="XS" />} />}
         >
           <List
             accessibleName={`Lições do módulo ${c.label}`}
@@ -96,10 +96,10 @@ export default function HomePage() {
             <Title level="H1" size="H1" wrappingType="Normal" className="hero-title">{m.titulo}</Title>
             {lead && <Text className="hero-lead">{lead}</Text>}
             <div className="hero-actions">
-              <Button design="Emphasized" icon="play" onClick={() => navigate(nextLesson ? nextLesson.id : 'simulado')}>
-                {done.size ? `Continuar: ${nextLesson ? nextLesson.title : 'simulado'}` : 'Começar pela primeira lição'}
+              <Button design="Emphasized" icon="play" onClick={() => navigate(done.size && nextLesson ? nextLesson.id : MODULES[0].slug)}>
+                {done.size && nextLesson ? `Continuar: ${nextLesson.title}` : `Começar pelo módulo ${MODULES[0].label}`}
               </Button>
-              <Button icon="education" onClick={() => navigate('simulado')}>Fazer o simulado</Button>
+              <Button icon="syntax" onClick={() => navigate('referencia')}>Referência rápida</Button>
             </div>
           </div>
           {art && <div className="hero-art" dangerouslySetInnerHTML={{ __html: art }} />}

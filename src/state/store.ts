@@ -48,6 +48,19 @@ export function navigate(id: string) {
   location.hash = id;
 }
 
+/* ---------- seção da lição visível na tela ---------- */
+// A lição atualiza conforme a rolagem; o índice lateral do módulo destaca a seção.
+const activeSection = createStore('');
+export const useActiveSection = () => useSyncExternalStore(activeSection.subscribe, activeSection.get);
+export const setActiveSection = (id: string) => { if (activeSection.get() !== id) activeSection.set(id); };
+
+/** Rola a página até a seção `id` da lição aberta (elemento #s-<id>); sem `id`, volta ao topo. */
+export function scrollToSection(id?: string, smooth = true) {
+  const behavior: ScrollBehavior = smooth && !reducedMotion() ? 'smooth' : 'auto';
+  if (id) document.getElementById(`s-${id}`)?.scrollIntoView({ behavior, block: 'start' });
+  else document.querySelector('.page-scroll')?.scrollTo({ top: 0, behavior });
+}
+
 /* ---------- progresso das lições ---------- */
 const done = createStore<ReadonlySet<string>>(new Set(storage.get<string[]>('done', [])));
 export const useDone = () => useSyncExternalStore(done.subscribe, done.get);

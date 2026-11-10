@@ -117,35 +117,6 @@ Dê duplo clique na régua à esquerda do código (ou :kbd[Ctrl+Shift+B]). Ao ex
 ::::
 :::::
 
-:::quiz
-### Qual o tipo deduzido em `DATA(code) = 'LH'.`?
-
-- [ ] `string`
-- [x] `c LENGTH 2`
-- [ ] `n LENGTH 2`
-- [ ] `abap_bool`
-
-> Aspas simples criam um literal de texto do tipo c com o tamanho do literal. Crases criam string.
-
-### Qual o valor de `-7 MOD 3` em ABAP?
-
-- [ ] -1
-- [ ] 1
-- [x] 2
-- [ ] -2
-
-> Em ABAP o resultado de MOD nunca é negativo: -7 = 3 × (-3) + 2.
-
-### Dentro de um `DO … ENDDO`, qual campo do sistema conta as voltas?
-
-- [ ] `sy-tabix`
-- [x] `sy-index`
-- [ ] `sy-dbcnt`
-- [ ] `sy-subrc`
-
-> sy-index conta voltas de DO e WHILE. sy-tabix é o índice da linha em LOOP AT.
-:::
-
 :::documentacao
 - [DATA](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapdata.htm)
 - [TYPES](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abaptypes.htm)

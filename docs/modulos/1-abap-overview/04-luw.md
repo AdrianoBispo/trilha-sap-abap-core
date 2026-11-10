@@ -102,44 +102,6 @@ COMMIT WORK.                      " fora de implementações RAP
 
 Uma violação, como um `INSERT` na fase de modificação ou um `COMMIT WORK` dentro de um handler RAP, termina em erro de runtime (por exemplo, `BEHAVIOR_ILLEGAL_STATEMENT`). Dentro de uma behavior pool você **nunca** faz commit: quem consome o business object chama `COMMIT ENTITIES`, que por baixo executa um `COMMIT WORK`. No ABAP Cloud a atualização é sempre local e síncrona.
 
-:::quiz
-### Por que gravar com `UPDATE` em cada tela de uma transação clássica é um erro?
-
-- [ ] O banco não aceita `UPDATE` em diálogo
-- [x] Cada passo de diálogo termina em commit implícito, e a gravação não pode mais ser desfeita
-- [ ] O comando bloqueia o Enqueue Server
-- [ ] `UPDATE` só funciona em background
-
-> A LUW de banco termina a cada passo. A SAP LUW adia as gravações para o COMMIT WORK.
-
-### Quando um módulo chamado com `IN UPDATE TASK` é executado?
-
-- [ ] Imediatamente
-- [ ] No próximo passo de diálogo
-- [x] Depois do `COMMIT WORK`
-- [ ] Só se o usuário sair da transação
-
-> A chamada apenas registra o módulo e seus parâmetros. O COMMIT WORK dispara a execução.
-
-### O que o `ROLLBACK WORK` faz com os módulos de update já registrados?
-
-- [ ] Executa todos antes de desfazer
-- [x] Descarta os registros e encerra a SAP LUW
-- [ ] Guarda para a próxima LUW
-- [ ] Nada: eles ficam pendentes
-
-> ROLLBACK WORK remove os registros, desfaz a LUW de banco atual e libera os bloqueios.
-
-### Na SAP LUW controlada, o que acontece se o código gravar no banco durante a fase de modificação?
-
-- [ ] A gravação é adiada automaticamente
-- [ ] Um aviso aparece no ATC e nada mais
-- [x] Ocorre um erro de runtime
-- [ ] O framework converte a gravação em EML
-
-> As fases são verificadas em tempo de execução. Operação fora da fase gera dump.
-:::
-
 :::documentacao
 - [Controlled SAP LUW (SAP Help Portal)](https://help.sap.com/docs/abap-cloud/abap-concepts/controlled-sap-luw?locale=en-US)
 - [ABAP Keyword Documentation: SAP LUW](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abensap_luw.htm)

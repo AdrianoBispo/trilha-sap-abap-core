@@ -136,44 +136,6 @@ A extensão roda **dentro** da transação do business object original: a valida
 Em sistemas S/4HANA privados e on-premise, as técnicas clássicas do módulo continuam disponíveis. A recomendação da SAP é usá-las só quando não existir ponto liberado e isolar o acesso não liberado em uma classe wrapper, para que o restante do código possa seguir o modelo ABAP Cloud.
 :::
 
-:::quiz
-### Qual contrato de liberação um objeto precisa ter para ser estendido?
-
-- [x] C0
-- [ ] C1
-- [ ] C2
-- [ ] C3
-
-> C0 · Extend é o contrato de extensibilidade. C1 libera o uso, não a extensão.
-
-### Qual tipo de extensibilidade usa apps Fiori e dispensa o ADT?
-
-- [x] Key user
-- [ ] On-stack
-- [ ] Side-by-side
-- [ ] Modificação
-
-> Custom Fields e Custom Logic são ferramentas de key user, com a versão ABAP for Key Users.
-
-### Quando uma validação acrescentada por behavior extension é executada?
-
-- [ ] Em um job posterior
-- [x] No mesmo save do business object original
-- [ ] Só em chamadas remotas
-- [ ] Antes do logon
-
-> A extensão faz parte da transação do BO. Se a validação falhar, nada é gravado.
-
-### Qual é a principal característica da extensibilidade side-by-side?
-
-- [ ] Roda na mesma LUW do core
-- [ ] Usa modificações controladas
-- [x] Roda em outra plataforma e se comunica por APIs remotas e eventos
-- [ ] Só permite acrescentar campos
-
-> O acoplamento é baixo e o ciclo de vida é independente do sistema S/4HANA.
-:::
-
 :::documentacao
 - [ABAP Cloud (SAP Help Portal)](https://help.sap.com/docs/abap-cloud?locale=en-US)
 - [ABAP RESTful Application Programming Model (SAP Help Portal)](https://help.sap.com/docs/abap-cloud/abap-rap/abap-restful-application-programming-model?locale=en-US)

@@ -144,44 +144,6 @@ Os campos acrescentados precisam de um prefixo do cliente, para não colidirem c
 
 No ABAP Cloud nada disto está disponível, com exceção das BAdIs liberadas. A extensibilidade passa a depender de pontos que a SAP libera de forma explícita, tema de [Extensibilidade no ABAP Cloud](#extensibilidade-cloud).
 
-:::quiz
-### Qual é a diferença essencial entre modificação e ampliação?
-
-- [ ] A ampliação é mais rápida em runtime
-- [x] A modificação altera o objeto da SAP; a ampliação acrescenta código em objetos do cliente
-- [ ] A modificação só existe no ABAP Cloud
-- [ ] Não há diferença após o upgrade
-
-> Ampliações sobrevivem a upgrades porque o objeto original não é alterado.
-
-### Onde um customer exit é ativado?
-
-- [ ] Na SMOD
-- [x] Em um projeto na CMOD
-- [ ] Na SE18
-- [ ] No include MV45AFZZ
-
-> A SMOD mostra as ampliações da SAP. O cliente as inclui em um projeto na CMOD e ativa o projeto.
-
-### Qual a diferença entre `ENHANCEMENT-POINT` e `ENHANCEMENT-SECTION`?
-
-- [ ] Nenhuma: são sinônimos
-- [x] O ponto acrescenta código; a seção substitui o trecho original
-- [ ] O ponto só existe em classes
-- [ ] A seção aceita várias implementações ativas
-
-> Como a seção troca o código standard, apenas uma implementação pode estar ativa.
-
-### Por que pontos de ampliação implícitos são arriscados?
-
-- [ ] Exigem chave de modificação
-- [ ] Não funcionam em produção
-- [x] Dependem de código interno que a SAP pode alterar sem aviso
-- [ ] Só aceitam uma linha de código
-
-> Não há interface estável. O entorno do ponto pode mudar em qualquer nota ou upgrade.
-:::
-
 :::documentacao
 - [ABAP Keyword Documentation: enhancements com BAdIs](https://help.sap.com/docs/abap-cloud/abap-keyword/enhancements-using-badis)
 - [ABAP Keyword Documentation: ENHANCEMENT-POINT](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapenhancement-point.htm)

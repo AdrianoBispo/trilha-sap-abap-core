@@ -145,44 +145,6 @@ ENDTRY.
 
 O módulo chamado existe só no sistema remoto, então o compilador local não conhece a interface dele. O ADT resolve isso com um **service consumption model** do tipo RFC, que gera uma classe proxy com os tipos e a chamada prontos. BAPIs e IDocs continuam disponíveis em sistemas S/4HANA; para integrações novas, a SAP publica as APIs equivalentes em OData e SOAP.
 
-:::quiz
-### Qual exceção indica que o sistema remoto não pôde ser alcançado?
-
-- [ ] `system_failure`
-- [x] `communication_failure`
-- [ ] `resource_failure`
-- [ ] `flight_not_found`
-
-> communication_failure trata de conexão. system_failure indica dump no sistema chamado.
-
-### Como uma BAPI informa que ocorreu um erro?
-
-- [ ] Lançando uma exceção clássica
-- [ ] Preenchendo `sy-subrc`
-- [x] Por mensagens no parâmetro `RETURN`
-- [ ] Encerrando a sessão
-
-> BAPIs não lançam exceções. O chamador precisa inspecionar a tabela ou estrutura RETURN.
-
-### O que acontece se você chamar uma BAPI de gravação e não chamar `BAPI_TRANSACTION_COMMIT`?
-
-- [ ] O documento é gravado mesmo assim
-- [x] Nada é gravado no banco
-- [ ] A BAPI faz o commit sozinha após um minuto
-- [ ] O sistema remoto gera um IDoc
-
-> BAPIs registram as alterações e deixam o commit para quem chama.
-
-### Um IDoc de entrada está com status 51. O que isso significa?
-
-- [ ] Foi processado com sucesso
-- [ ] Ainda não chegou ao sistema
-- [x] Houve erro na aplicação e ele pode ser reprocessado
-- [ ] Foi apagado
-
-> 51 é erro de aplicação. Após a correção, o IDoc é reprocessado, por exemplo na BD87.
-:::
-
 :::documentacao
 - [ABAP Integration and Connectivity (SAP Help Portal)](https://help.sap.com/docs/abap-cloud/abap-integration-connectivity/abap-integration-and-connectivity?locale=en-US)
 - [ABAP Keyword Documentation: RFC](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenrfc.htm)

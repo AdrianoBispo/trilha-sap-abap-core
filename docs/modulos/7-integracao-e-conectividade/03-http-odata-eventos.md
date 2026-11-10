@@ -163,44 +163,6 @@ Dentro do mesmo sistema, outro código pode reagir ao evento com um **handler lo
 | Novo consumidor | Exige mudança no emissor | Basta uma nova inscrição |
 | Bom para | Consultas e comandos que precisam de retorno | Notificar mudanças e disparar processos em outros sistemas |
 
-:::quiz
-### De onde vêm o host e as credenciais em `create_by_comm_arrangement`?
-
-- [ ] Do código-fonte
-- [ ] De um arquivo de configuração no servidor
-- [x] Do communication arrangement mantido pelo administrador
-- [ ] Do navegador do usuário
-
-> O código só informa o cenário e o serviço de saída. A configuração técnica fica fora dele.
-
-### O que um service consumption model gera para um serviço OData remoto?
-
-- [ ] Uma tabela de banco com os dados copiados
-- [x] Tipos de dados e um proxy tipado para chamar o serviço
-- [ ] Uma behavior definition
-- [ ] Um communication system
-
-> O assistente lê os metadados do serviço e cria os artefatos locais para consumi-lo.
-
-### Em que momento `RAISE ENTITY EVENT` pode ser executado?
-
-- [ ] Em qualquer validação
-- [ ] Antes da leitura dos dados
-- [x] Na fase de save
-- [ ] Só em jobs em background
-
-> O evento precisa refletir dados que serão gravados, por isso é disparado na sequência de save.
-
-### Qual é a principal vantagem de um evento sobre uma chamada direta?
-
-- [ ] Resposta mais rápida
-- [x] O emissor não precisa conhecer nem esperar os consumidores
-- [ ] Dispensa autenticação
-- [ ] Garante a mesma LUW nos dois sistemas
-
-> Eventos desacoplam os sistemas: consumidores entram e saem sem mudar o emissor.
-:::
-
 :::documentacao
 - [ABAP Integration and Connectivity (SAP Help Portal)](https://help.sap.com/docs/abap-cloud/abap-integration-connectivity/abap-integration-and-connectivity?locale=en-US)
 - [ABAP RESTful Application Programming Model (SAP Help Portal)](https://help.sap.com/docs/abap-cloud/abap-rap/abap-restful-application-programming-model?locale=en-US)

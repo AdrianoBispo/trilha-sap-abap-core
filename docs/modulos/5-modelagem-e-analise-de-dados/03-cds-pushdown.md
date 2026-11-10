@@ -78,35 +78,6 @@ having count( * ) > 1
 Todo elemento fora de uma função de agregação precisa estar no `group by`. `avg` exige `as` com um tipo decimal ou de ponto flutuante.
 :::
 
-:::quiz
-### Qual função CDS divide com número definido de casas decimais?
-
-- [ ] `div( )`
-- [x] `division( )`
-- [ ] `round( )`
-- [ ] `mod( )`
-
-> division( a, b, n ) retorna o quociente com n casas decimais.
-
-### Como obter a data atual do sistema em uma CDS view?
-
-- [ ] `sy-datum`
-- [x] `$session.system_date`
-- [ ] `current_date( )`
-- [ ] `@today`
-
-> $session.system_date é a variável de sessão com a data do sistema.
-
-### O que `avg( )` exige em CDS?
-
-- [ ] Um alias numérico
-- [x] A adição `as` com tipo decimal ou flutuante
-- [ ] Um parâmetro
-- [ ] Nada
-
-> avg( campo as abap.dec( 10, 2 ) ) define o tipo do resultado.
-:::
-
 :::documentacao
 - [Cheat sheet: CDS View Entities](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/15_CDS_View_Entities.md)
 :::

@@ -92,35 +92,6 @@ define view entity ZI_ConnectionWithCarrier
 Em CDS o separador é o ponto (`c.carrier_id`); em ABAP SQL é o til (`c~carrier_id`).
 :::
 
-:::quiz
-### Qual palavra-chave cria uma CDS view entity?
-
-- [x] `define view entity`
-- [ ] `create view`
-- [ ] `define table`
-- [ ] `annotate view`
-
-> define view entity Nome as select from fonte { … }.
-
-### Como se referencia um parâmetro dentro da view?
-
-- [ ] `@p_from`
-- [x] `$parameters.p_from`
-- [ ] `:p_from`
-- [ ] `p_from#`
-
-> Parâmetros são acessados com $parameters.nome.
-
-### Qual prefixo VDM indica uma view de interface?
-
-- [ ] `C_`
-- [x] `I_`
-- [ ] `R_`
-- [ ] `P_`
-
-> I_ interface, C_ consumo, R_ raiz de business object.
-:::
-
 :::documentacao
 - [Cheat sheet: CDS View Entities](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/15_CDS_View_Entities.md)
 :::

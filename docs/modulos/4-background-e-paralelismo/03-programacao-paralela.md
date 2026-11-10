@@ -149,44 +149,6 @@ ENDLOOP.
 | Controle de recursos | Grupo de servidores RFC | Parâmetros do construtor (percentual, número de tarefas) |
 | Coleta de resultados | Callback com `RECEIVE RESULTS` | Tabela de saída de `run_inst` |
 
-:::quiz
-### O que a adição `STARTING NEW TASK` faz em um `CALL FUNCTION`?
-
-- [ ] Agenda um job em background
-- [x] Executa o módulo de forma assíncrona, em outra sessão
-- [ ] Registra o módulo para o `COMMIT WORK`
-- [ ] Repete a chamada em caso de erro
-
-> A chamada volta imediatamente e o módulo roda em paralelo, em outro work process.
-
-### O que significa a exceção `resource_failure` em uma chamada aRFC?
-
-- [ ] O módulo terminou com erro
-- [ ] A rede caiu
-- [x] Não havia work process disponível para iniciar a tarefa
-- [ ] O banco estava bloqueado
-
-> A tarefa nem começou. O programa deve esperar uma tarefa terminar e tentar de novo.
-
-### Por que a classe usada com `CL_ABAP_PARALLEL` precisa ser global?
-
-- [ ] Porque classes locais não têm atributos
-- [x] Porque o objeto é serializado e recriado em outra sessão, que precisa conhecer a classe
-- [ ] Porque `run_inst` é um método estático
-- [ ] Porque o framework grava a classe no banco
-
-> A outra sessão não tem acesso às classes locais do programa que disparou as tarefas.
-
-### Qual destes casos é um bom candidato à paralelização?
-
-- [ ] Uma única consulta SQL lenta
-- [ ] Um loop em que cada volta depende do resultado da anterior
-- [x] O recálculo de milhares de documentos que não se relacionam
-- [ ] A gravação de um único registro
-
-> O ganho vem de tarefas independentes. Dependência entre elas elimina o benefício.
-:::
-
 :::documentacao
 - [ABAP Keyword Documentation: CALL FUNCTION … STARTING NEW TASK](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapcall_function_starting.htm)
 - [ABAP Keyword Documentation: WAIT FOR ASYNCHRONOUS TASKS](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapwait_arfc.htm)

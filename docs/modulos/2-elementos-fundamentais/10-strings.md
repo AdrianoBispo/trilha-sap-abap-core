@@ -53,35 +53,6 @@ FIND ALL OCCURRENCES OF PCRE `\d{4}` IN `Voos 0400 e 0401`
 out->write( lines( hits ) ).   " 2
 ```
 
-:::quiz
-### O que ``condense( val = `  a   b  ` )`` retorna?
-
-- [x] `` `a b` ``
-- [ ] `` `ab` ``
-- [ ] `` `  a   b` ``
-- [ ] `` `a   b` ``
-
-> condense remove espaços nas pontas e reduz sequências internas a um espaço.
-
-### Quanto vale ``find( val = `ABAP` sub = `X` )``?
-
-- [ ] 0
-- [x] -1
-- [ ] 4
-- [ ] Exceção
-
-> find retorna o deslocamento da ocorrência ou -1 quando não encontra.
-
-### Em ``substring( val = `Trilha` off = 1 len = 3 )``, qual o resultado?
-
-- [ ] `` `Tri` ``
-- [x] `` `ril` ``
-- [ ] `` `rilh` ``
-- [ ] `` `ilh` ``
-
-> off é baseado em zero: começa no segundo caractere e pega três.
-:::
-
 :::documentacao
 - [Cheat sheet: String Processing](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/07_String_Processing.md)
 - [Cheat sheet: Regular Expressions](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/28_Regular_Expressions.md)

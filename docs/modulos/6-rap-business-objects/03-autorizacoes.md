@@ -38,35 +38,6 @@ define role ZI_TRAVEL {
 }
 ```
 
-:::quiz
-### Após `AUTHORITY-CHECK`, qual `sy-subrc` indica autorização concedida?
-
-- [x] 0
-- [ ] 4
-- [ ] 8
-- [ ] 12
-
-> 0 = autorizado, 4 = sem autorização para os valores, 12 = nenhuma autorização para o objeto.
-
-### Qual o código padrão de atividade para exibir?
-
-- [ ] 01
-- [ ] 02
-- [x] 03
-- [ ] 06
-
-> 01 criar, 02 alterar, 03 exibir, 06 eliminar.
-
-### Como proteger leituras de uma CDS view por autorização?
-
-- [ ] `AUTHORITY-CHECK` em cada programa
-- [x] Com um access control (DCL)
-- [ ] Com `@UI`
-- [ ] Com ABAP Doc
-
-> O DCL filtra linhas automaticamente em todo SELECT sobre a view.
-:::
-
 :::documentacao
 - [AUTHORITY-CHECK](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapauthority-check.htm)
 - [Cheat sheet: Authorization Checks](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/25_Authorization_Checks.md)

@@ -47,35 +47,6 @@ SELECT SINGLE FROM /dmo/connection
 
 ::laboratorio{id="corr"}
 
-:::quiz
-### Qual caractere seleciona um componente de estrutura?
-
-- [ ] `.`
-- [ ] `~`
-- [x] `-`
-- [ ] `=>`
-
-> connection-carrier_id usa o hífen como seletor de componente.
-
-### O que `CORRESPONDING #( )` copia por padrão?
-
-- [ ] Todos os componentes por posição
-- [x] Componentes com o mesmo nome
-- [ ] Apenas a chave
-- [ ] Nada sem `MAPPING`
-
-> Componentes com nomes iguais são copiados; MAPPING liga nomes diferentes.
-
-### Para que serve `BASE` em `CORRESPONDING #( BASE ( alvo ) origem )`?
-
-- [x] Manter valores do alvo que não vêm da origem
-- [ ] Ordenar componentes
-- [ ] Converter tipos
-- [ ] Copiar só a chave
-
-> Sem BASE, componentes não copiados ficam iniciais; com BASE, mantêm o valor original do alvo.
-:::
-
 :::documentacao
 - [TYPES BEGIN OF](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abaptypes_struc.htm)
 - [Cheat sheet: Structures](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/02_Structures.md)

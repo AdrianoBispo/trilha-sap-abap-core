@@ -54,35 +54,6 @@ SELECT FROM /dmo/flight
 ```
 :::
 
-:::quiz
-### O que é code pushdown?
-
-- [ ] Mover código para o navegador
-- [x] Executar cálculos no banco e trazer só o resultado
-- [ ] Compilar ABAP em JavaScript
-- [ ] Usar mais `LOOP`s
-
-> O banco calcula agregações e filtros; menos dados trafegam para o servidor de aplicação.
-
-### Num `SELECT` com `GROUP BY carrier_id`, qual campo pode aparecer sem função de agregação?
-
-- [ ] Qualquer um
-- [x] Somente `carrier_id`
-- [ ] Somente a chave da tabela
-- [ ] Nenhum
-
-> Elementos fora de agregações precisam estar no GROUP BY.
-
-### Qual separador ABAP SQL usa entre alias e campo em joins?
-
-- [ ] `.`
-- [ ] `-`
-- [x] `~`
-- [ ] `=>`
-
-> Em ABAP SQL usa-se til: c~carrier_id. Em CDS usa-se ponto.
-:::
-
 :::documentacao
 - [SELECT](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapselect.htm)
 - [Cheat sheet: ABAP SQL](https://github.com/SAP-samples/abap-cheat-sheets/blob/main/03_ABAP_SQL.md)

@@ -1,27 +1,46 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Button, IllustratedMessage, NavigationLayout, ProgressIndicator, SearchItem, ShellBar, ShellBarBranding, ShellBarItem,
-  ShellBarSearch, SideNavigation, SideNavigationGroup, SideNavigationItem, Tag, Toast,
+  ShellBarSearch, Toast,
 } from '@ui5/webcomponents-react';
 import type { NavigationLayoutDomRef, ToastDomRef } from '@ui5/webcomponents-react';
 import '@ui5/webcomponents-fiori/dist/illustrations/PageNotFound.js';
 import '@ui5/webcomponents-icons/dist/menu2.js';
-import '@ui5/webcomponents-icons/dist/home.js';
 import '@ui5/webcomponents-icons/dist/course-book.js';
-import '@ui5/webcomponents-icons/dist/education.js';
 import '@ui5/webcomponents-icons/dist/syntax.js';
 import '@ui5/webcomponents-icons/dist/light-mode.js';
 import '@ui5/webcomponents-icons/dist/dark-mode.js';
 import '@ui5/webcomponents-icons/dist/document-text.js';
-import { lessonById, LESSONS, MODULES, REFERENCE } from './content/content';
+import { lessonById, LESSONS, moduleBySlug, MODULES, REFERENCE, type Lesson, type Module } from './content/content';
 import { toText } from './content/markdown';
 import LessonPage from './pages/LessonPage';
+import ModulePage from './pages/ModulePage';
 import HomePage from './pages/HomePage';
 import ReferencePage from './pages/ReferencePage';
-import ExamPage from './pages/ExamPage';
-import { navigate, toggleTheme, useDone, useRoute, useTheme, useToastState } from './state/store';
+import ModuleNav from './components/ModuleNav';
+import { navigate, scrollToSection, toggleTheme, useDone, useRoute, useTheme, useToastState } from './state/store';
 
 const APP = 'Trilha ABAP Core';
+
+/* ---------- Rotas ---------- */
+// #inicio · #referencia · #<módulo> · #<lição> · #<lição>/<seção>
+type View =
+  | { kind: 'home' }
+  | { kind: 'reference' }
+  | { kind: 'module'; module: Module }
+  | { kind: 'lesson'; lesson: Lesson; section?: string }
+  | { kind: 'missing' };
+
+function resolve(route: string): View {
+  const [head, sub] = route.split('/');
+  if (head === 'inicio') return { kind: 'home' };
+  if (head === 'referencia') return { kind: 'reference' };
+  const lesson = lessonById(head);
+  if (lesson) return { kind: 'lesson', lesson, section: lesson.sections.some(s => s.id === sub) ? sub : undefined };
+  const module = moduleBySlug(head);
+  if (module) return { kind: 'module', module };
+  return { kind: 'missing' };
+}
 
 /* ---------- Pesquisa ---------- */
 interface Hit { title: string; desc: string; route: string; icon: string; hay: string }
@@ -29,6 +48,10 @@ function buildIndex(): Hit[] {
   const refTable = REFERENCE.sections.flatMap(s => s.nodes).find(n => n.type === 'table');
   const refRows = refTable && refTable.type === 'table' ? refTable.children.slice(1) : [];
   return [
+    ...MODULES.map(c => ({
+      title: `Módulo ${c.label} · ${c.title}`, desc: `${c.lessons.length} lições`, route: c.slug, icon: c.icon,
+      hay: `módulo ${c.label} ${c.title} ${c.desc}`.toLowerCase(),
+    })),
     ...LESSONS.map(l => ({
       title: l.title, desc: `Módulo ${l.module.label} · ${l.sub}`, route: l.id, icon: l.icon,
       hay: [l.title, l.sub, l.objectives.join(' '), l.keywords, l.sections.map(s => s.titleText).join(' ')].join(' ').toLowerCase(),
@@ -38,7 +61,6 @@ function buildIndex(): Hit[] {
       return { title: syn, desc: `Referência · ${what}`, route: lessonById(les) ? les : 'referencia', icon: 'syntax', hay: `${syn} ${what} ${cat}`.toLowerCase() };
     }),
     { title: 'Referência rápida', desc: 'Sintaxe e glossário', route: 'referencia', icon: 'course-book', hay: 'referência glossário cheat sheet sintaxe' },
-    { title: 'Simulado de certificação', desc: 'Questões sorteadas, nota mínima 65%', route: 'simulado', icon: 'education', hay: 'simulado certificação prova exame quiz' },
   ];
 }
 
@@ -51,8 +73,8 @@ function Search({ slot }: { slot?: string }) {
   return (
     <ShellBarSearch
       slot={slot}
-      placeholder="Pesquisar lições, comandos…"
-      accessibleName="Pesquisar lições e comandos"
+      placeholder="Pesquisar módulos, lições, comandos…"
+      accessibleName="Pesquisar módulos, lições e comandos"
       showClearIcon
       value={q}
       onInput={e => setQ(e.target.value)}
@@ -80,13 +102,17 @@ export default function App() {
   const navRef = useRef<NavigationLayoutDomRef>(null);
   const [mode, setMode] = useState<'Auto' | 'Collapsed' | 'Expanded'>('Auto');
 
-  const lesson = lessonById(route);
-  const known = lesson || ['inicio', 'referencia', 'simulado'].includes(route);
-  const current = known ? route : '';
+  const view = resolve(route);
+  // O índice lateral só existe na página de um módulo e nas lições dele.
+  const mod = view.kind === 'module' ? view.module : view.kind === 'lesson' ? view.lesson.module : undefined;
 
   useEffect(() => {
-    document.title = lesson ? `${lesson.title} · ${APP}` : route === 'referencia' ? `Referência rápida · ${APP}` : route === 'simulado' ? `Simulado · ${APP}` : APP;
-  }, [route, lesson]);
+    document.title =
+      view.kind === 'lesson' ? `${view.lesson.title} · ${APP}`
+      : view.kind === 'module' ? `Módulo ${view.module.label} · ${view.module.title} · ${APP}`
+      : view.kind === 'reference' ? `Referência rápida · ${APP}`
+      : APP;
+  }, [route]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (toastState.n && toastRef.current) {
@@ -98,21 +124,20 @@ export default function App() {
   const toggleNav = () => setMode(navRef.current?.isSideCollapsed() ? 'Expanded' : 'Collapsed');
   const onSelect = (id: string | undefined) => {
     if (!id) return;
-    navigate(id);
+    // Clicar de novo no item atual não muda o endereço; rola mesmo assim.
+    if (id === route) scrollToSection(id.split('/')[1]);
+    else navigate(id);
     if (innerWidth < 600) setMode('Collapsed');
   };
-
-  // Com sete módulos, só o módulo da lição aberta fica expandido (o primeiro, fora das lições).
-  const openModule = lesson ? lesson.module.id : MODULES[0]?.id;
 
   const total = LESSONS.length;
   const nDone = LESSONS.filter(l => done.has(l.id)).length;
 
   let page;
-  if (lesson) page = <LessonPage key={lesson.id} lesson={lesson} />;
-  else if (route === 'referencia') page = <ReferencePage />;
-  else if (route === 'simulado') page = <ExamPage />;
-  else if (route === 'inicio') page = <HomePage />;
+  if (view.kind === 'lesson') page = <LessonPage key={view.lesson.id} lesson={view.lesson} section={view.section} />;
+  else if (view.kind === 'module') page = <ModulePage key={view.module.id} module={view.module} />;
+  else if (view.kind === 'reference') page = <ReferencePage />;
+  else if (view.kind === 'home') page = <HomePage />;
   else
     page = (
       <div className="page page-scroll center">
@@ -126,25 +151,27 @@ export default function App() {
     <>
       <NavigationLayout
         ref={navRef}
-        mode={mode}
+        // Sem índice lateral, o painel fica recolhido para não cobrir a página no celular.
+        mode={mod ? mode : 'Collapsed'}
         header={
           <ShellBar
-            startButton={<Button icon="menu2" design="Transparent" tooltip="Navegação" accessibleName="Alternar navegação" onClick={toggleNav} />}
+            startButton={mod ? <Button icon="menu2" design="Transparent" tooltip="Índice do módulo" accessibleName="Mostrar ou ocultar o índice do módulo" onClick={toggleNav} /> : undefined}
             branding={
               <ShellBarBranding href="#inicio" accessibleName={`${APP}, início`} logo={<img src="./favicon.svg" alt="" />}>
                 {APP}
               </ShellBarBranding>
             }
-            secondaryTitle="ABAP do clássico à nuvem · estudo guiado"
+            secondaryTitle="ABAP do clássico à nuvem · documentação guiada"
             showSearchField
             searchField={<Search />}
             content={
-              <div className="shell-progress" title="Progresso na trilha">
-                <span>{nDone}/{total} lições</span>
-                <ProgressIndicator hideValue value={(nDone / total) * 100} valueState={nDone === total ? 'Positive' : 'None'} accessibleName={`${nDone} de ${total} lições concluídas`} />
+              <div className="shell-progress" title="Lições lidas">
+                <span>{nDone}/{total} lidas</span>
+                <ProgressIndicator hideValue value={(nDone / total) * 100} valueState={nDone === total ? 'Positive' : 'None'} accessibleName={`${nDone} de ${total} lições lidas`} />
               </div>
             }
           >
+            <ShellBarItem icon="syntax" text="Referência rápida" onClick={() => navigate('referencia')} />
             <ShellBarItem
               icon={theme === 'dark' ? 'light-mode' : 'dark-mode'}
               text={theme === 'dark' ? 'Tema claro (Morning Horizon)' : 'Tema escuro (Evening Horizon)'}
@@ -152,33 +179,7 @@ export default function App() {
             />
           </ShellBar>
         }
-        sideContent={
-          <SideNavigation
-            accessibleName="Lições"
-            onSelectionChange={e => onSelect((e.detail.item as HTMLElement).dataset.route)}
-          >
-            <SideNavigationItem text="Início" icon="home" data-route="inicio" selected={current === 'inicio'} />
-            {MODULES.map(c => (
-              <SideNavigationGroup key={c.id} text={`Módulo ${c.label} · ${c.title}`} expanded={openModule === c.id}>
-                {c.lessons.map(l => (
-                  <SideNavigationItem
-                    key={l.id}
-                    text={`${String(l.num).padStart(2, '0')}  ${l.title}`}
-                    icon={l.icon}
-                    data-route={l.id}
-                    selected={current === l.id}
-                    tooltip={l.sub}
-                    tag={done.has(l.id) ? <Tag design="Positive" size="S" hideStateIcon>✓</Tag> : undefined}
-                  />
-                ))}
-              </SideNavigationGroup>
-            ))}
-            <SideNavigationGroup text="Recursos" expanded>
-              <SideNavigationItem text="Referência rápida" icon="course-book" data-route="referencia" selected={current === 'referencia'} />
-              <SideNavigationItem text="Simulado de certificação" icon="education" data-route="simulado" selected={current === 'simulado'} />
-            </SideNavigationGroup>
-          </SideNavigation>
-        }
+        sideContent={mod ? <ModuleNav module={mod} lessonId={view.kind === 'lesson' ? view.lesson.id : undefined} onSelect={onSelect} /> : undefined}
       >
         <main className="main" id="conteudo">{page}</main>
       </NavigationLayout>

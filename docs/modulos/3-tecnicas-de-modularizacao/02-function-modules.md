@@ -118,44 +118,6 @@ FUNCTION z_flight_get_free_seats.
 ENDFUNCTION.
 ```
 
-:::quiz
-### O que acontece com os dados globais de um grupo de funções entre duas chamadas na mesma sessão interna?
-
-- [ ] São apagados a cada chamada
-- [x] São mantidos
-- [ ] São gravados no banco
-- [ ] Ficam visíveis a todos os usuários
-
-> O grupo é carregado uma vez por sessão interna, e os dados do include TOP permanecem até ela terminar.
-
-### Na chamada `CALL FUNCTION`, em que bloco você informa os parâmetros da aba **Import** do módulo?
-
-- [x] `EXPORTING`
-- [ ] `IMPORTING`
-- [ ] `TABLES`
-- [ ] `EXCEPTIONS`
-
-> Os papéis se invertem: o que o módulo importa, o chamador exporta.
-
-### Um módulo lança uma exceção clássica que o chamador não tratou em `EXCEPTIONS`. Qual é o resultado?
-
-- [ ] `sy-subrc` recebe 4
-- [ ] A exceção é ignorada
-- [x] O programa termina com erro de runtime
-- [ ] O módulo é executado de novo
-
-> Só as exceções listadas (ou OTHERS) viram sy-subrc. As demais provocam dump.
-
-### Qual exigência vale para os parâmetros de um módulo remote-enabled?
-
-- [ ] Devem ser todos opcionais
-- [x] Devem ser passados por valor
-- [ ] Devem ser tabelas
-- [ ] Devem ter valor padrão
-
-> Entre dois sistemas não existe referência à memória do chamador; os dados são copiados.
-:::
-
 :::documentacao
 - [ABAP Keyword Documentation: FUNCTION](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapfunction.htm)
 - [ABAP Keyword Documentation: CALL FUNCTION](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapcall_function.htm)

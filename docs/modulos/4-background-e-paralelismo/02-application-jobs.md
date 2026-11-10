@@ -150,44 +150,6 @@ O objeto da operação é **serializado** e recriado na sessão de background, e
 | Monitoramento | App Application Jobs e application log | Monitor do bgPF e tratamento de erro da operação |
 | Caso típico | Fechamento noturno, carga em massa | Efeito colateral de uma gravação |
 
-:::quiz
-### Qual artefato torna uma classe disponível para agendamento como application job?
-
-- [ ] Service binding
-- [x] Job catalog entry
-- [ ] Behavior definition
-- [ ] Communication scenario
-
-> O catalog entry registra a classe; o template acrescenta valores padrão para os parâmetros.
-
-### Em que método da classe do job fica a lógica executada em background?
-
-- [ ] `if_apj_dt_exec_object~get_parameters`
-- [x] `if_apj_rt_exec_object~execute`
-- [ ] `if_oo_adt_classrun~main`
-- [ ] `constructor`
-
-> A interface de tempo de design descreve os parâmetros; a de runtime executa.
-
-### O que acontece com uma operação bgPF registrada se a transação terminar em rollback?
-
-- [ ] É executada mesmo assim
-- [ ] Fica pendente para a próxima transação
-- [x] É descartada
-- [ ] Gera um dump
-
-> A operação só entra na fila com o commit. É o que garante que a tarefa corresponda a dados gravados.
-
-### Por que o objeto de uma operação bgPF deve guardar apenas dados simples?
-
-- [ ] Para economizar memória da sessão atual
-- [x] Porque ele é serializado e recriado em outra sessão
-- [ ] Porque o framework só aceita o tipo `string`
-- [ ] Porque a operação roda no navegador
-
-> Referências a objetos vivos da sessão original não fazem sentido na sessão de background.
-:::
-
 :::documentacao
 - [Background Processing Framework (SAP Help Portal)](https://help.sap.com/docs/abap-cloud/abap-concepts/background-processing-framework?locale=en-US)
 - [Controlled SAP LUW (SAP Help Portal)](https://help.sap.com/docs/abap-cloud/abap-concepts/controlled-sap-luw?locale=en-US)

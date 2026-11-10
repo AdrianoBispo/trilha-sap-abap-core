@@ -145,44 +145,6 @@ Dados e comportamento ficam juntos na **classe**. Cada instância tem o próprio
 
 A recomendação da SAP é direta: **ABAP Objects para tudo o que for novo**. Blocos procedurais ficam restritos ao que a técnica exige, como o módulo de função que recebe uma chamada RFC, e mesmo ali o ideal é o módulo apenas repassar a chamada para um método. As próximas lições seguem essa ordem: [Módulos de função](#function-modules), [Classes locais](#classes-locais) e [Classes globais](#classes-globais).
 
-:::quiz
-### Qual é a principal diferença entre um include e um procedimento?
-
-- [ ] O include é mais rápido
-- [x] O include é texto inserido na compilação, sem interface nem dados locais
-- [ ] O include só existe no ABAP Cloud
-- [ ] O procedimento não pode ter parâmetros
-
-> INCLUDE apenas copia código-fonte. Procedimentos têm interface e são chamados em runtime.
-
-### Por que trocar a ordem dos argumentos em um `PERFORM` é perigoso?
-
-- [ ] O programa não ativa
-- [x] Os parâmetros são posicionais, e tipos compatíveis não geram erro
-- [ ] O runtime ordena os argumentos por nome
-- [ ] `PERFORM` ignora os argumentos
-
-> Sem nomes na chamada, a posição define o parâmetro. O compilador só reclama se os tipos forem incompatíveis.
-
-### Qual técnica a SAP recomenda para código novo?
-
-- [ ] Sub-rotinas em includes
-- [ ] Macros
-- [x] Métodos de classes
-- [ ] Módulos de função em qualquer situação
-
-> ABAP Objects é o padrão. Módulos de função ficam para os casos em que a técnica os exige.
-
-### O que acontece se dois programas incluírem o mesmo include?
-
-- [ ] Compartilham os dados em runtime
-- [x] Cada um compila sua própria cópia do código
-- [ ] O segundo programa falha ao ativar
-- [ ] O include vira uma classe global
-
-> O texto é inserido em cada programa. Não há nada compartilhado em tempo de execução.
-:::
-
 :::documentacao
 - [ABAP Keyword Documentation: FORM](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapform.htm)
 - [ABAP Keyword Documentation: INCLUDE](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapinclude_prog.htm)

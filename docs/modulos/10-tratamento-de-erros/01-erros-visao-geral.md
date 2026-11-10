@@ -167,44 +167,6 @@ ENDMETHOD.
 3. **Nas fronteiras de saída**, converta exceções no que o consumidor entende: mensagens em uma tela, a estrutura `reported` em RAP, um status HTTP em um serviço, uma linha no application log em um job.
 4. **Nunca engula** um erro com um `CATCH` vazio. Se a decisão for ignorar, deixe o motivo escrito.
 
-:::quiz
-### Um método faz um `SELECT SINGLE` que não encontra nada. Qual é a forma recomendada de avisar quem chamou?
-
-- [ ] Devolver `sy-subrc` em um parâmetro
-- [ ] Não fazer nada: o chamador testa `sy-subrc`
-- [x] Lançar uma exceção baseada em classe
-- [ ] Usar `ASSERT sy-subrc = 0`
-
-> sy-subrc é testado onde o comando está. Para cima sobe uma exceção com significado de negócio.
-
-### O que acontece com a LUW de banco quando ocorre um erro de runtime?
-
-- [ ] É confirmada
-- [x] É desfeita
-- [ ] Fica pendente até o próximo logon
-- [ ] Não é afetada
-
-> O dump encerra a sessão interna e provoca o rollback das alterações ainda não confirmadas.
-
-### Para qual situação `ASSERT` é adequado?
-
-- [ ] Validar um campo digitado pelo usuário
-- [ ] Tratar a queda de um sistema remoto
-- [x] Verificar uma condição que o próprio código deveria garantir
-- [ ] Mostrar uma mensagem de aviso
-
-> Asserções expõem erros de programação. Entradas inválidas são situações esperadas.
-
-### Qual destes erros de runtime não pode ser evitado com `TRY … CATCH`?
-
-- [ ] `COMPUTE_INT_ZERODIVIDE`
-- [ ] `ITAB_LINE_NOT_FOUND`
-- [x] `TIME_OUT`
-- [ ] `CONVT_NO_NUMBER`
-
-> Não existe exceção tratável para o tempo limite. O processamento precisa ser redesenhado, por exemplo como job.
-:::
-
 :::documentacao
 - [ABAP Keyword Documentation: tratamento de erros](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abenabap_exceptions.htm)
 - [ABAP Keyword Documentation: ASSERT](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapassert.htm)

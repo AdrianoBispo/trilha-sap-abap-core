@@ -113,44 +113,6 @@ Existe ainda um segundo público: BAdIs liberadas para **key users** são implem
 Uma BAdI liberada tem contrato estável, e a própria interface limita o que o seu código pode alterar: só os parâmetros `CHANGING` e `EXPORTING` do método. É isso que mantém a ampliação compatível com o clean core.
 :::
 
-:::quiz
-### Quais comandos chamam uma BAdI nova?
-
-- [ ] `CALL CUSTOMER-FUNCTION`
-- [x] `GET BADI` e `CALL BADI`
-- [ ] `PERFORM … IN PROGRAM`
-- [ ] `ENHANCEMENT-POINT`
-
-> GET BADI seleciona as implementações ativas e CALL BADI chama o método em cada uma.
-
-### O que acontece em `CALL BADI` quando uma BAdI de uso múltiplo não tem implementações ativas?
-
-- [ ] Ocorre um dump
-- [ ] É lançada `CX_BADI_NOT_IMPLEMENTED`
-- [x] Nada é chamado e o programa segue
-- [ ] A classe fallback é obrigatória
-
-> Zero implementações é um estado válido para uso múltiplo. Em uso único sem fallback, GET BADI lançaria exceção.
-
-### Para que serve um filtro em uma BAdI?
-
-- [ ] Limitar as linhas de um `SELECT`
-- [x] Selecionar quais implementações valem para um valor, como país ou companhia
-- [ ] Restringir a autorização do usuário
-- [ ] Ordenar as implementações
-
-> Cada implementação declara seus valores de filtro, e GET BADI seleciona as que combinam.
-
-### Onde um key user implementa uma BAdI liberada para ele?
-
-- [ ] Na SE19
-- [ ] No ADT
-- [x] No app Custom Logic
-- [ ] Na CMOD
-
-> O app Custom Logic oferece um editor web com a versão restrita ABAP for Key Users.
-:::
-
 :::documentacao
 - [ABAP Keyword Documentation: GET BADI](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapget_badi.htm)
 - [ABAP Keyword Documentation: CALL BADI](https://help.sap.com/doc/abapdocu_latest_index_htm/latest/en-US/index.htm?file=abapcall_badi.htm)

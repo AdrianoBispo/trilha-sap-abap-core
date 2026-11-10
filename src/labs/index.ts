@@ -35,6 +35,7 @@ import PathLab from './PathLab';
 import CaseLab from './CaseLab';
 import UiLab from './UiLab';
 import FunctionBuilder from './FunctionBuilder';
+import ClassBuilder from './ClassBuilder';
 
 /**
  * Laboratórios disponíveis para o Markdown: `::laboratorio{id="hello"}`.
@@ -62,4 +63,5 @@ export const LABS: Record<string, ComponentType> = {
   caselab: CaseLab,
   uilab: UiLab,
   functionbuilder: FunctionBuilder,
+  classbuilder: ClassBuilder,
 };
